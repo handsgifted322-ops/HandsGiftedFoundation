@@ -2,18 +2,18 @@ import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { missionPath, programs, projects, surfaces } from "../lib/catalog";
 
-const highlights = [
-  ["20", "program pathways"],
-  ["3", "connected app surfaces"],
-  ["52", "weeks of family study"],
-  ["1", "family-first mission"],
-];
-
 const storyCards = [
   ["01", "Start with the household", "Build order, routines, meals, school support, Sabbath preparation, needs, and stability before expansion."],
   ["02", "Develop gifts into skill", "Practice cooking, sewing, braiding, gardening, media, technology, entrepreneurship, and practical life."],
   ["03", "Turn skill into proof", "Create meals, garments, gardens, portfolios, resources, products, services, and teachable projects."],
   ["04", "Serve from capacity", "Use what has been proven to strengthen women, children, families, and neighbors without exposing private family records."],
+];
+
+const pillars = [
+  ["FAITH", "Foundation and character"],
+  ["FAMILY", "Stronger households"],
+  ["SKILLS", "Hands-on learning"],
+  ["STABILITY", "Purposeful growth"],
 ];
 
 const featuredPrograms = [
@@ -31,25 +31,26 @@ export default function Home() {
     <main>
       <SiteHeader />
 
-      <section id="top" className="hero-shell">
-        <div className="hero-content">
-          <div className="eyebrow light">Faith · Family · Stability · Purpose</div>
-          <h1>Use your hands.<br/><span>Build your household.</span><br/>Serve your community.</h1>
-          <p className="lead light-copy">Hands Gifted is a faith-centered, family-first ecosystem helping households grow in order, learning, practical skill, production, stability, and service.</p>
+      <section id="top" className="hero-shell recovered-hero">
+        <div className="hero-content recovered-hero-content">
+          <div className="eyebrow light">Build the household. Develop the gift. Serve with purpose.</div>
+          <h1 className="recovered-headline">Strong hands.<br/><span>Strong families.</span></h1>
+          <p className="lead light-copy">Hands Gifted Foundation is building faith-centered pathways where women, children and families can strengthen daily life, develop practical skills, learn together and grow with purpose.</p>
           <div className="hero-actions">
-            <a className="button gold" href="#story">Start with our story</a>
-            <a className="button glass" href="/programs">Explore programs</a>
+            <a className="button gold" href="/programs">Explore programs</a>
+            <a className="button glass" href="#story">Our story</a>
           </div>
-          <div className="hero-proof">
-            {highlights.map(([number, label]) => <div key={label}><strong>{number}</strong><span>{label}</span></div>)}
-          </div>
+          <div className="hero-path-note">Use your hands. Build your household. Serve your community. Walk according to the Most High.</div>
         </div>
-        <div className="hero-visual">
-          <div className="hero-logo-frame">
-            <img src="/hands-gifted-logo.png" alt="Hands Gifted Foundation crest" />
-          </div>
-          <div className="hero-floating-note"><span>Our build order</span><strong>Seek → Examine → Build → Establish → Develop → Produce → Stabilize → Serve → Teach</strong></div>
-        </div>
+      </section>
+
+      <section className="pillar-band" aria-label="Hands Gifted pillars">
+        {pillars.map(([title, body]) => (
+          <article key={title}>
+            <strong>{title}</strong>
+            <span>{body}</span>
+          </article>
+        ))}
       </section>
 
       <section className="announcement-bar">
@@ -117,7 +118,7 @@ export default function Home() {
 
       <section id="programs" className="section parchment programs-section">
         <div className="programs-topline">
-          <div className="section-heading left no-margin"><span>Featured pathways</span><h2>Start with the area that meets your need or gift.</h2></div>
+          <div className="section-heading left no-margin"><span>Explore Hands Gifted</span><h2>Programs families can grow through.</h2></div>
           <div className="programs-intro"><p>The full Hands Gifted ecosystem includes 20 program pathways. The homepage highlights six major entry points so visitors can understand the work without being overwhelmed.</p><a className="button" href="/programs">Browse all programs</a></div>
         </div>
         <div className="featured-program-grid">
