@@ -1,0 +1,12 @@
+import type { Metadata } from "next";
+import { SiteHeader } from "../../../components/SiteHeader";
+import { SiteFooter } from "../../../components/SiteFooter";
+import { createSupabaseServerClient } from "../../../lib/supabase/server";
+
+export const metadata:Metadata={title:"Resources & Media | Hands Gifted Command Center",robots:{index:false,follow:false}};
+const modules=[['Products & Resources','products'],['Brand Assets','brand_assets'],['Brand Profiles','brand_profiles'],['Documents / Source Artifacts','source_artifacts'],['Managed Content','content_items'],['Sewing Garments','sewing_garments'],['Measurement Profiles','sewing_measurement_profiles']];
+export default async function ResourcesPage(){
+ let state:"config"|"signed_out"|"denied"|"ready"="signed_out";let counts:Record<string,number>={};
+ try{const supabase=await createSupabaseServerClient();const {data:auth}=await supabase.auth.getUser();if(!auth.user)state="signed_out";else{const {data:memberships}=await supabase.from("organization_members").select("organization_id,role").eq("user_id",auth.user.id);const m=memberships?.find(r=>["owner","admin","staff"].includes(String(r.role)));if(!m)state="denied";else{state="ready";const rs=await Promise.all(modules.map(async([,t])=>{const {count}=await supabase.from(t).select("*",{count:"exact",head:true}).eq("organization_id",m.organization_id);return[t,count??0] as const;}));counts=Object.fromEntries(rs);}}}catch{state="config"}
+ return <main><SiteHeader/><section className="inner-hero"><span>Command Center · Resources</span><h1>Products, Documents & Media</h1><p>Manage the resources that support the public Foundation, family learning, creative work, products, documents, and brand consistency.</p></section><section className="section">{state!=="ready"?<div className="access-note"><strong>{state==="signed_out"?"AUTH REQUIRED":state==="denied"?"ACCESS DENIED":"PARTIAL — Supabase runtime unavailable"}</strong></div>:<><div className="section-heading left no-margin"><span>Resource inventory</span><h2>What is stored now</h2></div><div className="detail-grid" style={{marginTop:32}}>{modules.map(([label,t])=><article key={t}><span>{label}</span><h3>{counts[t]??0}</h3><p>Durable records visible in this resource area.</p>{t==="content_items"?<a className="button" href="/command-center/content">Open Content Management</a>:null}</article>)}</div></>}</section><SiteFooter/></main>
+}
