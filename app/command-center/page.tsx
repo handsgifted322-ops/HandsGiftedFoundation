@@ -14,7 +14,10 @@ export default function CommandCenterPage() {
           <h1>Hands Gifted Command Center</h1>
           <p>{surface.description}</p>
           <div className="secure-badge">
-            This route remains a safe landing page until Supabase authentication, role authorization, durable writes, and readback are verified end to end.
+            The Command Center is the control plane for the Foundation and Family Dashboard. The first real management slice is now Website & Academy Content.
+          </div>
+          <div className="hero-actions">
+            <a className="button gold" href="/command-center/content">Open content management</a>
           </div>
         </div>
         <div className="secure-card">
