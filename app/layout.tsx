@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./visual-recovery.css";
 
 export const metadata: Metadata = {
   title: "Hands Gifted Foundation | Build the Household. Serve the Community.",
