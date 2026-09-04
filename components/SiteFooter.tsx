@@ -3,7 +3,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-brand-block">
         <a className="footer-brand" href="/">
-          <img src="/hands-gifted-logo.png" alt="Hands Gifted Foundation logo" />
+          <img src="/hands-gifted-logo.jpg" alt="Hands Gifted Foundation logo" />
           <div><strong>Hands Gifted Foundation</strong><p>Faith · Family · Creativity · Service</p></div>
         </a>
         <p className="footer-summary">Building households, developing gifts, creating practical value, and serving from increasing stability.</p>
