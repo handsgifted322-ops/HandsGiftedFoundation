@@ -2,6 +2,80 @@
    This file intentionally overrides the stripped-down fallback treatments
    without changing production or private application routes. */
 
+/* --- recovered hero --- */
+.recovered-hero {
+  position: relative;
+  display: block !important;
+  min-height: 690px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 30%, rgba(125,60,144,.46), transparent 32%),
+    linear-gradient(110deg,#190621 0%,#321044 47%,#5b1b70 100%) !important;
+}
+
+.recovered-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,rgba(20,4,28,.98) 0%,rgba(31,8,42,.91) 42%,rgba(44,12,58,.46) 68%,rgba(44,12,58,.12) 100%),
+    radial-gradient(circle at 78% 40%,rgba(240,196,73,.12),transparent 30%);
+  pointer-events: none;
+}
+
+.recovered-hero-content {
+  position: relative;
+  z-index: 2;
+  min-height: 690px;
+  width: min(760px, 68vw);
+  padding: 100px 7vw 76px !important;
+}
+
+.recovered-headline {
+  margin: 16px 0 24px !important;
+  max-width: 760px;
+  font-size: clamp(4.2rem,8vw,7.8rem) !important;
+  line-height: .88 !important;
+  letter-spacing: -.045em !important;
+}
+
+.recovered-headline span { color: #fff !important; }
+.recovered-hero .eyebrow { color: var(--gold2) !important; max-width: 620px; }
+.recovered-hero .lead { max-width: 690px; font-size: clamp(1.08rem,1.8vw,1.35rem); }
+.recovered-hero .hero-actions { margin-bottom: 28px; }
+
+.hero-path-note {
+  max-width: 650px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.76);
+  font-size: .84rem;
+  letter-spacing: .04em;
+}
+
+/* --- four visible pillars from the approved visual baseline --- */
+.pillar-band {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  padding: 0 clamp(18px,5vw,76px);
+  background: linear-gradient(135deg,#3f075e,#5e0b82 58%,#451064);
+  color: white;
+}
+
+.pillar-band article {
+  padding: 28px 34px;
+  border-right: 1px solid rgba(255,255,255,.14);
+}
+.pillar-band article:last-child { border-right: 0; }
+.pillar-band strong {
+  display: block;
+  color: var(--gold2);
+  font: 700 clamp(1.45rem,2vw,2rem) Georgia,"Times New Roman",serif;
+  margin-bottom: 4px;
+}
+.pillar-band span { display: block; font-size: 1rem; color: rgba(255,255,255,.92); }
+
+/* --- restore real imagery wherever branch assets are present --- */
 .hero-logo-frame img,
 .showcase-image img,
 .footer-brand img {
@@ -13,50 +87,17 @@
   padding: 0 !important;
   background: #1b0826 !important;
 }
+.hero-logo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.hero-logo-frame::before,.hero-logo-frame::after { display: none !important; }
 
-.hero-logo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
+.showcase-image { overflow: hidden; background: #1b0826 !important; }
+.showcase-image::before { display: none !important; }
+.showcase-image img { width: 100%; height: 100%; object-fit: cover; }
+.showcase-grid article:first-child .showcase-image { aspect-ratio: 16 / 11; }
+.showcase-grid article:not(:first-child) .showcase-image { aspect-ratio: 4 / 3; }
 
-.hero-logo-frame::before,
-.hero-logo-frame::after {
-  display: none !important;
-}
-
-.showcase-image {
-  overflow: hidden;
-  background: #1b0826 !important;
-}
-
-.showcase-image::before {
-  display: none !important;
-}
-
-.showcase-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.showcase-grid article:first-child .showcase-image {
-  aspect-ratio: 16 / 11;
-}
-
-.showcase-grid article:not(:first-child) .showcase-image {
-  aspect-ratio: 4 / 3;
-}
-
-.site-footer .footer-brand {
-  align-items: center;
-}
-
-.footer-brand::before {
-  display: none !important;
-}
-
+.site-footer .footer-brand { align-items: center; }
+.footer-brand::before { display: none !important; }
 .footer-brand img {
   width: 64px;
   height: 64px;
@@ -65,29 +106,32 @@
   border: 2px solid rgba(240,196,73,.65);
 }
 
-/* Preserve the purple/gold visual language while giving the homepage more
-   photographic presence like the approved visual references. */
 .showcase-section {
-  background:
-    radial-gradient(circle at 15% 0%, rgba(240,196,73,.12), transparent 26%),
-    #fff9ef;
+  background: radial-gradient(circle at 15% 0%, rgba(240,196,73,.12), transparent 26%), #fff9ef;
 }
-
-.showcase-grid article {
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.showcase-grid article:hover {
-  transform: translateY(-3px);
-}
+.showcase-grid article { transition: transform .2s ease, box-shadow .2s ease; }
+.showcase-grid article:hover { transform: translateY(-3px); }
 
 @media (max-width: 900px) {
-  .hero-logo-frame {
-    width: min(360px, 86vw);
+  .recovered-hero { min-height: 760px; }
+  .recovered-hero::before {
+    background:
+      linear-gradient(180deg,rgba(20,4,28,.94) 0%,rgba(31,8,42,.86) 56%,rgba(43,12,58,.72) 100%),
+      radial-gradient(circle at 74% 22%,rgba(240,196,73,.12),transparent 30%);
   }
-
+  .recovered-hero-content {
+    min-height: 760px;
+    width: 100%;
+    padding: 92px 34px 60px !important;
+    justify-content: flex-end;
+  }
+  .recovered-headline {
+    font-size: clamp(4rem,17vw,6.4rem) !important;
+    max-width: 620px;
+  }
+  .pillar-band { grid-template-columns: 1fr; padding: 0 34px; }
+  .pillar-band article { padding: 24px 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .pillar-band article:last-child { border-bottom: 0; }
   .showcase-grid article:first-child .showcase-image,
-  .showcase-grid article:not(:first-child) .showcase-image {
-    aspect-ratio: 16 / 10;
-  }
+  .showcase-grid article:not(:first-child) .showcase-image { aspect-ratio: 16 / 10; }
 }
