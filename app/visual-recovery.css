@@ -2,15 +2,18 @@
    This file intentionally overrides the stripped-down fallback treatments
    without changing production or private application routes. */
 
-/* --- recovered hero --- */
+/* --- recovered hero with preserved family photography --- */
 .recovered-hero {
   position: relative;
   display: block !important;
   min-height: 690px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 82% 30%, rgba(125,60,144,.46), transparent 32%),
-    linear-gradient(110deg,#190621 0%,#321044 47%,#5b1b70 100%) !important;
+  background-image:
+    linear-gradient(90deg,rgba(20,4,28,.98) 0%,rgba(31,8,42,.91) 42%,rgba(44,12,58,.48) 68%,rgba(44,12,58,.16) 100%),
+    url('/hero-family.jpg') !important;
+  background-size: cover !important;
+  background-position: center 38% !important;
+  background-repeat: no-repeat !important;
 }
 
 .recovered-hero::before {
@@ -18,8 +21,8 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg,rgba(20,4,28,.98) 0%,rgba(31,8,42,.91) 42%,rgba(44,12,58,.46) 68%,rgba(44,12,58,.12) 100%),
-    radial-gradient(circle at 78% 40%,rgba(240,196,73,.12),transparent 30%);
+    radial-gradient(circle at 80% 35%,rgba(240,196,73,.12),transparent 32%),
+    linear-gradient(180deg,transparent 56%,rgba(20,4,28,.18) 100%);
   pointer-events: none;
 }
 
@@ -75,10 +78,22 @@
 }
 .pillar-band span { display: block; font-size: 1rem; color: rgba(255,255,255,.92); }
 
-/* --- restore real imagery wherever branch assets are present --- */
-.hero-logo-frame img,
-.showcase-image img,
+/* --- recovered logo asset --- */
+.brand-logo,
 .footer-brand img {
+  display: block !important;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(240,196,73,.65);
+}
+.brand-logo { width: 50px; height: 50px; }
+.site-footer .footer-brand { align-items: center; }
+.footer-brand::before { display: none !important; }
+.footer-brand img { width: 64px; height: 64px; }
+
+/* --- restore imagery wherever branch assets are present --- */
+.hero-logo-frame img,
+.showcase-image img {
   display: block !important;
 }
 
@@ -96,16 +111,6 @@
 .showcase-grid article:first-child .showcase-image { aspect-ratio: 16 / 11; }
 .showcase-grid article:not(:first-child) .showcase-image { aspect-ratio: 4 / 3; }
 
-.site-footer .footer-brand { align-items: center; }
-.footer-brand::before { display: none !important; }
-.footer-brand img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid rgba(240,196,73,.65);
-}
-
 .showcase-section {
   background: radial-gradient(circle at 15% 0%, rgba(240,196,73,.12), transparent 26%), #fff9ef;
 }
@@ -113,11 +118,15 @@
 .showcase-grid article:hover { transform: translateY(-3px); }
 
 @media (max-width: 900px) {
-  .recovered-hero { min-height: 760px; }
+  .recovered-hero {
+    min-height: 760px;
+    background-image:
+      linear-gradient(180deg,rgba(20,4,28,.38) 0%,rgba(31,8,42,.46) 42%,rgba(20,4,28,.94) 88%),
+      url('/hero-family.jpg') !important;
+    background-position: 61% center !important;
+  }
   .recovered-hero::before {
-    background:
-      linear-gradient(180deg,rgba(20,4,28,.94) 0%,rgba(31,8,42,.86) 56%,rgba(43,12,58,.72) 100%),
-      radial-gradient(circle at 74% 22%,rgba(240,196,73,.12),transparent 30%);
+    background: radial-gradient(circle at 74% 22%,rgba(240,196,73,.10),transparent 30%);
   }
   .recovered-hero-content {
     min-height: 760px;
