@@ -14,9 +14,9 @@ export type ApplicationSurface = {
 /**
  * Canonical Hands Gifted application surfaces.
  *
- * This file is the routing/ownership boundary for features. New features should
- * be assigned here before UI work begins so public storytelling, parent/admin
- * operations, and family self-service do not get mixed together.
+ * The Command Center is the control plane. The Foundation is the public
+ * learning/participation experience. The Family Dashboard is the private
+ * family implementation layer.
  */
 export const applicationSurfaces: readonly ApplicationSurface[] = [
   {
@@ -24,17 +24,18 @@ export const applicationSurfaces: readonly ApplicationSurface[] = [
     label: "Hands Gifted Foundation",
     access: "public",
     audienceLabel: "Public",
-    description: "The public-facing mission, story, programs, learning pathways, approved resources, products/services, outreach, media, and ways to connect.",
+    description: "The public learning and participation experience where people can explore, learn, study, pray, apply, create, and serve through approved Hands Gifted content.",
     routes: ["/", "/programs", "/academy"],
     includes: [
       "Mission and story",
       "Public program registry",
-      "Public Family Academy overview",
-      "Learning pathways and educational resources",
+      "Public Academy and learning pathways",
+      "Study, prayer, reflection, and application resources",
+      "Practical skill learning and public projects",
       "Approved products and services",
       "Outreach and partnership information",
       "Public media and storytelling",
-      "Contact, support, and participation pathways",
+      "Contact, support, participation, and service pathways",
     ],
     excludes: [
       "Child records",
@@ -50,10 +51,13 @@ export const applicationSurfaces: readonly ApplicationSurface[] = [
     label: "Parent / Operator Command Center",
     access: "private_parent_operator",
     audienceLabel: "Private · parent/operator",
-    description: "The protected operating workspace for household administration, approvals, stability work, Hands Gifted operations, and system verification.",
+    description: "The protected control plane for the Foundation website and Family Dashboard: create, organize, assign, approve, publish, verify, and administer the Hands Gifted ecosystem.",
     routes: ["/command-center"],
     includes: [
       "Today, priorities, tasks, and approvals",
+      "Website content management and publishing controls",
+      "Program, resource, media, and product administration",
+      "Academy curriculum management, assignments, verification, and progress oversight",
       "Household planning, routines, zones, and verification",
       "Family oversight and school administration",
       "Needs, resource navigation, and stability work",
@@ -80,17 +84,18 @@ export const applicationSurfaces: readonly ApplicationSurface[] = [
     label: "Family Dashboard",
     access: "private_role_aware",
     audienceLabel: "Private · role-aware",
-    description: "The family-facing dashboard where each signed-in person receives only the information and actions appropriate to that role.",
+    description: "The private family vision and implementation layer where each signed-in person receives role-appropriate learning, responsibilities, goals, progress, and support.",
     routes: ["/family", "/family/[child]"],
     includes: [
       "My Day / Today",
       "Responsibilities and chores",
       "School Support",
       "Family Academy",
+      "Bible study and family learning",
       "Progress and demonstrated growth",
       "Projects and practical skills",
+      "Goals, reminders, and rewards",
       "Ask for Help",
-      "Age-appropriate reminders and rewards",
     ],
     excludes: [
       "Sibling private records",
@@ -101,12 +106,22 @@ export const applicationSurfaces: readonly ApplicationSurface[] = [
   },
 ] as const;
 
+export const publicLearningJourney = [
+  ["Explore", "Discover Hands Gifted programs, stories, resources, and learning pathways."],
+  ["Learn", "Gain biblical understanding, practical knowledge, and useful household or creative skills."],
+  ["Study", "Open Scripture, guided lessons, questions, notes, and supporting resources."],
+  ["Pray", "Respond with prayer, reflection, gratitude, repentance, wisdom-seeking, or intercession."],
+  ["Apply", "Choose a practical action that puts the lesson into daily life."],
+  ["Create", "Produce something useful from the learning: a meal, garment, garden step, journal entry, project, resource, or other demonstrated work."],
+  ["Serve", "Use growing knowledge and skill to strengthen the household or help others appropriately."],
+] as const;
+
 export const sharedModules = [
   {
     name: "Family Academy",
-    publicSurface: "Public overview and learning-path explanation",
-    commandCenterSurface: "Parent assignment, verification, progress oversight, and role management",
-    dashboardSurface: "Role-appropriate lessons, practice, progress, projects, and help requests",
+    publicSurface: "Public learning experience using Explore → Learn → Study → Pray → Apply → Create → Serve",
+    commandCenterSurface: "Curriculum creation, publishing, parent assignment, verification, progress oversight, and role management",
+    dashboardSurface: "Role-appropriate private lessons, practice, assignments, progress, projects, and help requests",
   },
 ] as const;
 
