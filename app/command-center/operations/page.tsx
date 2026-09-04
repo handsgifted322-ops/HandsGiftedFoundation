@@ -1,0 +1,12 @@
+import type { Metadata } from "next";
+import { SiteHeader } from "../../../components/SiteHeader";
+import { SiteFooter } from "../../../components/SiteFooter";
+import { createSupabaseServerClient } from "../../../lib/supabase/server";
+
+export const metadata:Metadata={title:"Operations | Hands Gifted Command Center",robots:{index:false,follow:false}};
+const modules=[['Tasks','tasks'],['Programs','programs'],['Projects','projects'],['Events','events'],['Grant Opportunities','grant_opportunities'],['Grant Projects','grant_projects'],['Household Needs','household_needs'],['School Records','school_records'],['Partner Family Applications','partner_family_applications'],['Signals / Knowledge','operating_knowledge']];
+export default async function OperationsPage(){
+ let state:"config"|"signed_out"|"denied"|"ready"="signed_out"; let counts:Record<string,number>={};
+ try{const supabase=await createSupabaseServerClient();const {data:auth}=await supabase.auth.getUser();if(!auth.user)state="signed_out";else{const {data:memberships}=await supabase.from("organization_members").select("organization_id,role").eq("user_id",auth.user.id);const m=memberships?.find(r=>["owner","admin","staff"].includes(String(r.role)));if(!m)state="denied";else{state="ready";const rs=await Promise.all(modules.map(async([,t])=>{const {count}=await supabase.from(t).select("*",{count:"exact",head:true}).eq("organization_id",m.organization_id);return[t,count??0] as const;}));counts=Object.fromEntries(rs);}}}catch{state="config"}
+ return <main><SiteHeader/><section className="inner-hero"><span>Command Center · Operations</span><h1>Operations & Stability</h1><p>Track execution work across tasks, programs, projects, events, grants, household needs, school administration, family-support pipelines, and operational knowledge.</p></section><section className="section">{state!=="ready"?<div className="access-note"><strong>{state==="signed_out"?"AUTH REQUIRED":state==="denied"?"ACCESS DENIED":"PARTIAL — Supabase runtime unavailable"}</strong></div>:<><div className="section-heading left no-margin"><span>Durable operations</span><h2>Current operational record map</h2><p>Counts come from the production organization and are shown as inventory, not as claims of completion.</p></div><div className="detail-grid" style={{marginTop:32}}>{modules.map(([label,t])=><article key={t}><span>{label}</span><h3>{counts[t]??0}</h3><p>Records currently stored for this operational area.</p></article>)}</div></>}</section><SiteFooter/></main>
+}
