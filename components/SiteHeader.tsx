@@ -16,7 +16,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <a className="brand" href="/" aria-label="Hands Gifted Foundation home">
-        <img className="brand-logo" src="/hands-gifted-logo.png" alt="Hands Gifted Foundation logo" />
+        <img className="brand-logo" src="/hands-gifted-logo.jpg" alt="Hands Gifted Foundation logo" />
         <span className="brand-copy"><strong>Hands Gifted</strong><small>Foundation</small></span>
       </a>
 
