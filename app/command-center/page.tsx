@@ -12,6 +12,7 @@ type AcademyRow={id:string;title:string;status:string;due_at:string|null};
 type ContentRow={id:string;title:string;status:string;content_type:string};
 
 const quickLinks=[
+  ["Assign Task","/command-center/assignments","Create a household assignment for a child and save it to the live family system"],
   ["Household Control","/command-center/household","Chores, routines, parent checks and weekly rotation"],
   ["Family Academy","/command-center/academy","Lessons, assignments, progress and parent feedback"],
   ["Foundation Content","/command-center/content","Draft, organize and publish approved public content"],
@@ -47,7 +48,7 @@ export default async function CommandCenterPage(){
 
   const attention=tasks.length+needs.length+household.length+academy.length+drafts.length;
   return <main><SiteHeader/>
-    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT OPERATOR</span><h1>What needs my attention today?</h1><p>This Command Center is your working home screen—not a directory. It brings household responsibility, children, Academy, stability work and Foundation administration into one parent-controlled view.</p></section>
+    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT OPERATOR</span><h1>What needs my attention today?</h1><p>This Command Center is your working home screen—not a directory. It brings household responsibility, children, Academy, stability work and Foundation administration into one parent-controlled view.</p><div className="hero-actions"><a className="button gold" href="/command-center/assignments">Assign a Task</a><a className="button" href="/command-center/household">Review Household</a></div></section>
     <section className="section">
       {state!=="ready"?<div className="access-note"><strong>{state==="signed_out"?"AUTH REQUIRED":state==="denied"?"ACCESS DENIED":"PARTIAL — Supabase runtime unavailable"}</strong><p>The private Command Center only shows live operational records to an authorized parent/operator.</p></div>:<>
         <div className="detail-grid">
@@ -56,7 +57,6 @@ export default async function CommandCenterPage(){
           <article><span>FAMILY NEEDS</span><h3>{needs.length}</h3><p>Unresolved stability or resource needs requiring follow-up.</p><a className="button" href="/command-center/operations">Review needs</a></article>
           <article><span>ACADEMY</span><h3>{academy.length}</h3><p>Learning assignments still active or waiting for completion.</p><a className="button" href="/command-center/academy">Review Academy</a></article>
         </div>
-
         <div className="section-heading left" style={{marginTop:48}}><span>Parent attention queue</span><h2>Handle the household first, then everything around it.</h2><p>The goal is to see what requires a decision, follow-up, approval, correction or next action without opening six different systems first.</p></div>
         <div className="detail-grid" style={{marginTop:24}}>
           <article><span>HOUSEHOLD / MOM CHECK</span><h3>{household.length?household[0].title:"No pending household checks"}</h3><p>{household.length?`${household[0].status.replaceAll("_"," ")} · parent check ${household[0].parent_check_status.replaceAll("_"," ")}`:"Nothing is currently waiting in this queue."}</p><a className="button" href="/command-center/household">Open household control</a></article>
@@ -64,7 +64,6 @@ export default async function CommandCenterPage(){
           <article><span>TASKS / FOLLOW-UP</span><h3>{tasks.length?tasks[0].title:"No open task in queue"}</h3><p>{tasks.length?`${tasks[0].status}${tasks[0].priority?` · ${tasks[0].priority}`:""}`:"No current task is visible to this authorized account."}</p><a className="button" href="/command-center/operations">Open tasks</a></article>
           <article><span>FOUNDATION / CONTENT</span><h3>{drafts.length?drafts[0].title:"No unpublished content in queue"}</h3><p>{drafts.length?`${drafts[0].content_type} · ${drafts[0].status}`:"Nothing currently waiting for publication review."}</p><a className="button" href="/command-center/content">Open content control</a></article>
         </div>
-
         <div className="section-heading left" style={{marginTop:48}}><span>Control areas</span><h2>Everything else stays one tap away.</h2></div>
         <div className="detail-grid" style={{marginTop:24}}>{quickLinks.map(([title,href,description])=><article key={href}><h3>{title}</h3><p>{description}</p><a className="button" href={href}>Open</a></article>)}</div>
       </>}
