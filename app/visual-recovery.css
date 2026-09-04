@@ -1,0 +1,93 @@
+/* Visual recovery layer for the Hands Gifted Foundation public site.
+   This file intentionally overrides the stripped-down fallback treatments
+   without changing production or private application routes. */
+
+.hero-logo-frame img,
+.showcase-image img,
+.footer-brand img {
+  display: block !important;
+}
+
+.hero-logo-frame {
+  overflow: hidden;
+  padding: 0 !important;
+  background: #1b0826 !important;
+}
+
+.hero-logo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hero-logo-frame::before,
+.hero-logo-frame::after {
+  display: none !important;
+}
+
+.showcase-image {
+  overflow: hidden;
+  background: #1b0826 !important;
+}
+
+.showcase-image::before {
+  display: none !important;
+}
+
+.showcase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-grid article:first-child .showcase-image {
+  aspect-ratio: 16 / 11;
+}
+
+.showcase-grid article:not(:first-child) .showcase-image {
+  aspect-ratio: 4 / 3;
+}
+
+.site-footer .footer-brand {
+  align-items: center;
+}
+
+.footer-brand::before {
+  display: none !important;
+}
+
+.footer-brand img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(240,196,73,.65);
+}
+
+/* Preserve the purple/gold visual language while giving the homepage more
+   photographic presence like the approved visual references. */
+.showcase-section {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(240,196,73,.12), transparent 26%),
+    #fff9ef;
+}
+
+.showcase-grid article {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.showcase-grid article:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .hero-logo-frame {
+    width: min(360px, 86vw);
+  }
+
+  .showcase-grid article:first-child .showcase-image,
+  .showcase-grid article:not(:first-child) .showcase-image {
+    aspect-ratio: 16 / 10;
+  }
+}
