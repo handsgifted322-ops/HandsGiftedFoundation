@@ -14,10 +14,11 @@ export default function CommandCenterPage() {
           <h1>Hands Gifted Command Center</h1>
           <p>{surface.description}</p>
           <div className="secure-badge">
-            The Command Center is the control plane for the Foundation and Family Dashboard. The first real management slice is now Website & Academy Content.
+            The Command Center is the control plane for the Foundation and Family Dashboard. Real management slices now include Website & Academy Content and private Household Chore Control.
           </div>
           <div className="hero-actions">
-            <a className="button gold" href="/command-center/content">Open content management</a>
+            <a className="button gold" href="/command-center/household">Open household chore control</a>
+            <a className="button" href="/command-center/content">Open content management</a>
           </div>
         </div>
         <div className="secure-card">
