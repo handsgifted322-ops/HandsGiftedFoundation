@@ -13,16 +13,14 @@ export type KingdomGameZone = {
 };
 
 type Props = {
-  learnerName: string;
   zones: KingdomGameZone[];
-  onNearbyZone: (zoneId: string | null) => void;
   onSelectZone: (zoneId: string) => void;
 };
 
 const WORLD_WIDTH = 1536;
 const WORLD_HEIGHT = 1024;
 
-export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZone }: Props) {
+export function KingdomGameCanvas({ zones, onSelectZone }: Props) {
   const hostRef = useRef<HTMLDivElement>(null);
   const zonesKey = useMemo(() => zones.map((z) => `${z.id}:${z.status}:${z.x}:${z.y}`).join("|"), [zones]);
 
@@ -37,22 +35,6 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
       const zoneSnapshot = zones.map((zone) => ({ ...zone }));
 
       class KingdomScene extends Phaser.Scene {
-        private player!: Phaser.GameObjects.Container;
-        private target = new Phaser.Math.Vector2(WORLD_WIDTH / 2, WORLD_HEIGHT * 0.78);
-        private keys?: {
-          up: Phaser.Input.Keyboard.Key;
-          down: Phaser.Input.Keyboard.Key;
-          left: Phaser.Input.Keyboard.Key;
-          right: Phaser.Input.Keyboard.Key;
-          w: Phaser.Input.Keyboard.Key;
-          a: Phaser.Input.Keyboard.Key;
-          s: Phaser.Input.Keyboard.Key;
-          d: Phaser.Input.Keyboard.Key;
-        };
-        private targetZoneId: string | null = null;
-        private lastNearbyId: string | null = null;
-        private glows: Phaser.GameObjects.Arc[] = [];
-
         constructor() {
           super("KingdomHub");
         }
@@ -62,137 +44,68 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
         }
 
         create() {
-          this.cameras.main.setBackgroundColor("#180f21");
-          this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+          this.cameras.main.setBackgroundColor("#120b18");
 
           const background = this.add.image(0, 0, "kingdom-background").setOrigin(0, 0);
           background.setDisplaySize(WORLD_WIDTH, WORLD_HEIGHT);
 
+          // Keep the approved Kingdom artwork intact. Phaser supplies the interaction,
+          // subtle animated beacons, locked-state indicators, and room entry events.
           zoneSnapshot.forEach((zone) => {
             const x = (zone.x / 100) * WORLD_WIDTH;
             const y = (zone.y / 100) * WORLD_HEIGHT;
-            const hit = this.add.zone(x, y, 250, 120).setOrigin(0.5).setInteractive({ useHandCursor: true });
+            const hit = this.add.zone(x, y, 330, 125).setOrigin(0.5).setInteractive({ useHandCursor: true });
             hit.setData("zoneId", zone.id);
 
-            if (zone.status !== "locked") {
-              const glow = this.add.circle(x, y + 28, 18, 0xf5c95a, 0.12).setStrokeStyle(2, 0xf7d97e, 0.55);
-              this.glows.push(glow);
-              this.tweens.add({
-                targets: glow,
-                scale: 1.7,
-                alpha: 0.03,
-                duration: 1500,
-                yoyo: true,
-                repeat: -1,
-                ease: "Sine.easeInOut",
-                delay: Math.floor(Math.random() * 600),
-              });
-            }
+            const halo = this.add.ellipse(x, y + 34, 86, 34, zone.status === "locked" ? 0x3b253f : 0xf5c95a, 0.05)
+              .setStrokeStyle(zone.status === "locked" ? 1 : 2, zone.status === "locked" ? 0x8a718d : 0xf7d97e, zone.status === "locked" ? 0.28 : 0.62);
 
-            hit.on("pointerdown", () => {
-              this.target.set(x, Math.min(WORLD_HEIGHT - 80, y + 90));
-              this.targetZoneId = zone.id;
-              onSelectZone(zone.id);
+            this.tweens.add({
+              targets: halo,
+              scaleX: zone.status === "locked" ? 1.08 : 1.34,
+              scaleY: zone.status === "locked" ? 1.08 : 1.34,
+              alpha: zone.status === "locked" ? 0.02 : 0.11,
+              duration: zone.status === "locked" ? 2200 : 1500,
+              yoyo: true,
+              repeat: -1,
+              ease: "Sine.easeInOut",
+              delay: Math.floor(Math.random() * 500),
             });
+
+            if (zone.status === "locked") {
+              this.add.text(x + 142, y + 36, "🔒", {
+                fontFamily: "Arial, sans-serif",
+                fontSize: "24px",
+              }).setOrigin(0.5).setDepth(5);
+            }
+
+            hit.on("pointerover", () => {
+              halo.setAlpha(zone.status === "locked" ? 0.08 : 0.2);
+              halo.setScale(1.22);
+            });
+            hit.on("pointerout", () => {
+              halo.setAlpha(zone.status === "locked" ? 0.03 : 0.08);
+            });
+            hit.on("pointerdown", () => onSelectZone(zone.id));
           });
 
-          const shadow = this.add.ellipse(0, 35, 50, 18, 0x000000, 0.28);
-          const robe = this.add.graphics();
-          robe.fillStyle(0xf8f0d7, 1);
-          robe.fillRoundedRect(-20, -5, 40, 58, 10);
-          robe.fillStyle(0x4f205f, 1);
-          robe.fillTriangle(-17, 2, 17, 2, 0, 52);
-          robe.lineStyle(3, 0xd9ad42, 1);
-          robe.strokeTriangle(-17, 2, 17, 2, 0, 52);
-          const head = this.add.circle(0, -23, 14, 0x79503b, 1).setStrokeStyle(2, 0x2a1915, 1);
-          const crown = this.add.text(0, -48, "♛", { fontFamily: "Georgia, serif", fontSize: "22px", color: "#f2cf68" }).setOrigin(0.5);
-          const name = this.add.text(0, 62, learnerName, {
-            fontFamily: "Arial, sans-serif",
-            fontSize: "14px",
-            color: "#fff2c8",
-            backgroundColor: "rgba(29,16,37,.82)",
-            padding: { x: 8, y: 4 },
-          }).setOrigin(0.5);
-
-          this.player = this.add.container(this.target.x, this.target.y, [shadow, robe, head, crown, name]);
-          this.player.setDepth(50);
-
-          this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
-          this.cameras.main.setDeadzone(120, 90);
-
-          if (this.input.keyboard) {
-            const cursors = this.input.keyboard.createCursorKeys();
-            this.keys = {
-              up: cursors.up!,
-              down: cursors.down!,
-              left: cursors.left!,
-              right: cursors.right!,
-              w: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
-              a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
-              s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
-              d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
-            };
-          }
-
-          this.input.on("pointerdown", (pointer: Phaser.Input.Pointer, currentlyOver: Phaser.GameObjects.GameObject[]) => {
-            if (currentlyOver.length) return;
-            const worldPoint = pointer.positionToCamera(this.cameras.main) as Phaser.Math.Vector2;
-            this.target.set(
-              Phaser.Math.Clamp(worldPoint.x, 40, WORLD_WIDTH - 40),
-              Phaser.Math.Clamp(worldPoint.y, 100, WORLD_HEIGHT - 60),
+          // Small ambient light motes make the hub feel alive without covering the art.
+          for (let i = 0; i < 14; i += 1) {
+            const mote = this.add.circle(
+              Phaser.Math.Between(120, WORLD_WIDTH - 120),
+              Phaser.Math.Between(180, WORLD_HEIGHT - 120),
+              Phaser.Math.Between(2, 4),
+              0xffdf86,
+              Phaser.Math.FloatBetween(0.16, 0.42),
             );
-            this.targetZoneId = null;
-            onNearbyZone(null);
-          });
-
-          this.scale.on("resize", (gameSize: Phaser.Structs.Size) => {
-            const compact = gameSize.width < 720;
-            this.cameras.main.setZoom(compact ? 1.02 : 1);
-          });
-        }
-
-        update(_: number, delta: number) {
-          if (!this.player) return;
-
-          const keyboardX = this.keys ? Number(this.keys.right.isDown || this.keys.d.isDown) - Number(this.keys.left.isDown || this.keys.a.isDown) : 0;
-          const keyboardY = this.keys ? Number(this.keys.down.isDown || this.keys.s.isDown) - Number(this.keys.up.isDown || this.keys.w.isDown) : 0;
-          const speed = 260 * (delta / 1000);
-
-          if (keyboardX || keyboardY) {
-            const vec = new Phaser.Math.Vector2(keyboardX, keyboardY).normalize().scale(speed);
-            this.player.x = Phaser.Math.Clamp(this.player.x + vec.x, 35, WORLD_WIDTH - 35);
-            this.player.y = Phaser.Math.Clamp(this.player.y + vec.y, 90, WORLD_HEIGHT - 55);
-            this.target.set(this.player.x, this.player.y);
-            this.targetZoneId = null;
-          } else {
-            const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.target.x, this.target.y);
-            if (distance > 4) {
-              const angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.target.x, this.target.y);
-              const step = Math.min(speed, distance);
-              this.player.x += Math.cos(angle) * step;
-              this.player.y += Math.sin(angle) * step;
-            }
-          }
-
-          let nearby: string | null = null;
-          let nearestDistance = Number.POSITIVE_INFINITY;
-          for (const zone of zoneSnapshot) {
-            const zx = (zone.x / 100) * WORLD_WIDTH;
-            const zy = (zone.y / 100) * WORLD_HEIGHT + 70;
-            const d = Phaser.Math.Distance.Between(this.player.x, this.player.y, zx, zy);
-            if (d < 115 && d < nearestDistance) {
-              nearby = zone.id;
-              nearestDistance = d;
-            }
-          }
-
-          if (nearby !== this.lastNearbyId) {
-            this.lastNearbyId = nearby;
-            onNearbyZone(nearby);
-          }
-
-          if (this.targetZoneId && nearby === this.targetZoneId) {
-            this.target.set(this.player.x, this.player.y);
+            this.tweens.add({
+              targets: mote,
+              y: mote.y - Phaser.Math.Between(24, 70),
+              alpha: 0,
+              duration: Phaser.Math.Between(2200, 4200),
+              repeat: -1,
+              delay: Phaser.Math.Between(0, 1600),
+            });
           }
         }
       }
@@ -200,9 +113,9 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
       game = new Phaser.Game({
         type: Phaser.AUTO,
         parent: hostRef.current,
-        width: hostRef.current.clientWidth || 960,
-        height: hostRef.current.clientHeight || 640,
-        backgroundColor: "#180f21",
+        width: WORLD_WIDTH,
+        height: WORLD_HEIGHT,
+        backgroundColor: "#120b18",
         transparent: false,
         render: {
           antialias: true,
@@ -210,10 +123,10 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
           roundPixels: false,
         },
         scale: {
-          mode: Phaser.Scale.RESIZE,
+          mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
-          width: "100%",
-          height: "100%",
+          width: WORLD_WIDTH,
+          height: WORLD_HEIGHT,
         },
         scene: [KingdomScene],
       });
@@ -223,10 +136,9 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
 
     return () => {
       cancelled = true;
-      onNearbyZone(null);
       if (game) game.destroy(true);
     };
-  }, [learnerName, zonesKey, onNearbyZone, onSelectZone, zones]);
+  }, [zonesKey, onSelectZone, zones]);
 
-  return <div ref={hostRef} className="kingdom-phaser-host" aria-label="Interactive Hands Gifted Kingdom Academy game world" />;
+  return <div ref={hostRef} className="kingdom-phaser-host" aria-label="Interactive Hands Gifted Kingdom Academy hub" />;
 }
