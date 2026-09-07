@@ -39,7 +39,7 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
       class KingdomScene extends Phaser.Scene {
         private player!: Phaser.GameObjects.Container;
         private target = new Phaser.Math.Vector2(WORLD_WIDTH / 2, WORLD_HEIGHT * 0.78);
-        private keys!: {
+        private keys?: {
           up: Phaser.Input.Keyboard.Key;
           down: Phaser.Input.Keyboard.Key;
           left: Phaser.Input.Keyboard.Key;
@@ -68,7 +68,6 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
           const background = this.add.image(0, 0, "kingdom-background").setOrigin(0, 0);
           background.setDisplaySize(WORLD_WIDTH, WORLD_HEIGHT);
 
-          // Give open destinations a restrained animated beacon while preserving the artwork.
           zoneSnapshot.forEach((zone) => {
             const x = (zone.x / 100) * WORLD_WIDTH;
             const y = (zone.y / 100) * WORLD_HEIGHT;
@@ -97,7 +96,6 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
             });
           });
 
-          // A simple royal learner marker. This is deliberately lightweight until custom avatars are authored.
           const shadow = this.add.ellipse(0, 35, 50, 18, 0x000000, 0.28);
           const robe = this.add.graphics();
           robe.fillStyle(0xf8f0d7, 1);
@@ -136,7 +134,6 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
             };
           }
 
-          // Tap anywhere in the Kingdom to walk there. This is the primary mobile control.
           this.input.on("pointerdown", (pointer: Phaser.Input.Pointer, currentlyOver: Phaser.GameObjects.GameObject[]) => {
             if (currentlyOver.length) return;
             const worldPoint = pointer.positionToCamera(this.cameras.main) as Phaser.Math.Vector2;
@@ -155,10 +152,10 @@ export function KingdomGameCanvas({ learnerName, zones, onNearbyZone, onSelectZo
         }
 
         update(_: number, delta: number) {
-          if (!this.player || !this.keys) return;
+          if (!this.player) return;
 
-          const keyboardX = Number(this.keys.right.isDown || this.keys.d.isDown) - Number(this.keys.left.isDown || this.keys.a.isDown);
-          const keyboardY = Number(this.keys.down.isDown || this.keys.s.isDown) - Number(this.keys.up.isDown || this.keys.w.isDown);
+          const keyboardX = this.keys ? Number(this.keys.right.isDown || this.keys.d.isDown) - Number(this.keys.left.isDown || this.keys.a.isDown) : 0;
+          const keyboardY = this.keys ? Number(this.keys.down.isDown || this.keys.s.isDown) - Number(this.keys.up.isDown || this.keys.w.isDown) : 0;
           const speed = 260 * (delta / 1000);
 
           if (keyboardX || keyboardY) {
