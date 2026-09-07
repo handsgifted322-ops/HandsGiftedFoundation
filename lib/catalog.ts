@@ -44,7 +44,7 @@ export const programs: Program[] = [
 
 export const projects = [
   ["Private Command Center", "in_progress", "Authenticated parent/owner operating system with Supabase RLS, mobile-first workflows, approvals, household planning, school administration, needs, and Hands Gifted operations."],
-  ["Public Website & Domain", "in_progress", "Replace the static Foundation page with a Git-backed application and finish domain/source synchronization."],
+  ["Public Website & Domain", "in_progress", "The Git-backed Foundation website is live on Vercel. The remaining launch step is connecting the GoDaddy custom domain and confirming final DNS and SSL routing."],
   ["TWU 2026 StartUP Grant Readiness", "in_progress", "Prepare the $5,000 Sewing & Home Goods Microenterprise Launch package while preserving the correct legal/organizational structure."],
   ["Daughters of Sarah Content Series", "planned", "Build staged women-and-girls lessons that progress after demonstrated readiness and mastery."],
   ["Love Thy Neighbor Pilot", "planned", "Formalize a Killeen-area practical support, donation, volunteer, and referral model."],
