@@ -7,14 +7,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const childNames: Record<string, string> = {
-  isayah: "Isayah",
-  caleb: "Caleb",
-  amiyah: "Amiyah",
-  kaliyah: "Kaliyah",
-  ayahnna: "Ayahnna",
-};
-
 const previewMission: AcademyWorldMission = {
   authenticated: false,
   levelNumber: 1,
@@ -28,11 +20,9 @@ const previewMission: AcademyWorldMission = {
   assessment: null,
 };
 
-export default async function AcademyWorldPage({ searchParams }: { searchParams: Promise<{ child?: string }> }) {
-  const params = await searchParams;
-  const selectedSlug = String(params.child ?? "").toLowerCase();
-  let learnerName = childNames[selectedSlug] ?? "Family Learner";
-  let roleLabel = "Family Academy";
+export default async function AcademyWorldPage() {
+  let learnerName = "Family Learner";
+  let roleLabel = "Family Academy Preview";
   let mission = previewMission;
 
   try {
@@ -49,7 +39,7 @@ export default async function AcademyWorldPage({ searchParams }: { searchParams:
 
       if (member) {
         learnerName = member.display_name;
-        roleLabel = member.household_role === "parent"
+        roleLabel = member.household_role === "parent" || member.household_role === "adult"
           ? "Adult Family Academy Pathway"
           : `${String(member.age_group ?? "child").replaceAll("_", " ")} pathway`;
 
@@ -153,7 +143,7 @@ export default async function AcademyWorldPage({ searchParams }: { searchParams:
       }
     }
   } catch {
-    // Safe preview remains available without exposing private family records.
+    // Public preview remains generic. No household identity is inferred or shown without authentication.
   }
 
   return <AcademyWorldClient learnerName={learnerName} roleLabel={roleLabel} mission={mission} />;
