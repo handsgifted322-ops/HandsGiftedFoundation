@@ -6,7 +6,7 @@ const nav = [
   ["Our Story", "/#story"],
   ["How We Build", "/#path"],
   ["Programs", "/programs"],
-  ["Family Academy", "/academy"],
+  ["Academy", "/academy"],
   ["Current Work", "/#work"],
 ] as const;
 
