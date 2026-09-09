@@ -5,7 +5,7 @@ import { useState } from "react";
 const nav = [
   ["Our Story", "/#story"],
   ["How We Build", "/#path"],
-  ["Programs", "/programs"],
+  ["Development Lanes", "/programs"],
   ["Academy", "/academy"],
   ["Current Work", "/#work"],
 ] as const;
@@ -15,9 +15,9 @@ export function SiteHeader() {
 
   return (
     <header className="site-header">
-      <a className="brand" href="/" aria-label="Hands Gifted Foundation home">
-        <img className="brand-logo" src="/hands-gifted-logo.jpg" alt="Hands Gifted Foundation logo" />
-        <span className="brand-copy"><strong>Hands Gifted</strong><small>Foundation</small></span>
+      <a className="brand" href="/" aria-label="Hands Gifted home">
+        <img className="brand-logo" src="/hands-gifted-logo.jpg" alt="Hands Gifted logo" />
+        <span className="brand-copy"><strong>Hands Gifted</strong><small>Family Development</small></span>
       </a>
 
       <nav className="primary-nav" aria-label="Primary navigation">
