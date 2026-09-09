@@ -3,27 +3,26 @@ import { SiteFooter } from "../components/SiteFooter";
 import { missionPath, programs, projects, surfaces } from "../lib/catalog";
 
 const storyCards = [
-  ["01", "Start with the household", "Build order, routines, meals, school support, Sabbath preparation, needs, and stability before expansion."],
-  ["02", "Develop gifts into skill", "Practice cooking, sewing, braiding, gardening, media, technology, entrepreneurship, and practical life."],
-  ["03", "Turn skill into proof", "Create meals, garments, gardens, portfolios, resources, products, services, and teachable projects."],
-  ["04", "Serve from capacity", "Use what has been proven to strengthen women, children, families, and neighbors without exposing private family records."],
+  ["01", "Strengthen connection", "Create intentional ways for women, children, and families to learn, work, create, and grow together again."],
+  ["02", "Learn through real life", "Use household needs as opportunities to build practical skills, confidence, responsibility, creativity, and family participation."],
+  ["03", "Document what develops", "Gather photos, videos, recipes, projects, and reflections as private evidence before deciding what is appropriate to share publicly."],
+  ["04", "Build opportunity carefully", "When a skill becomes useful, repeatable, responsible, and strong enough, explore whether it can become content, a resource, product, service, or program."],
 ];
 
 const pillars = [
-  ["FAITH", "Foundation and character"],
-  ["FAMILY", "Stronger households"],
-  ["SKILLS", "Hands-on learning"],
-  ["STABILITY", "Purposeful growth"],
+  ["FAITH", "Trust, character, stewardship"],
+  ["FAMILY", "Connection and unity"],
+  ["SKILLS", "Practical learning"],
+  ["OPPORTUNITY", "Purposeful development"],
+  ["SERVICE", "Share from capacity"],
 ];
 
-const featuredPrograms = [
-  programs[0], programs[1], programs[3], programs[5], programs[10], programs[17]
-];
+const featuredPrograms = [programs[0], programs[7], programs[10], programs[12], programs[15], programs[18]];
 
 const featuredWork = [
-  { image: "/building-strong-families.png", label: "Family Development", title: "Building strong families through faith, learning, and practical life." },
-  { image: "/modest-fashion-purpose.png", label: "Creative Skills & Trades", title: "Modest apparel and creative work developed with purpose." },
-  { image: "/hands-gifted-coming-soon.png", label: "Foundation Build", title: "A growing ecosystem for women, children, households, and community service." },
+  { image: "/building-strong-families.png", label: "Family Development", title: "Connection, practical learning, and household growth begin at home." },
+  { image: "/modest-fashion-purpose.png", label: "Creative Development", title: "Modest design, sewing, creativity, and useful skills are being learned and documented." },
+  { image: "/hands-gifted-coming-soon.png", label: "Development Stage", title: "Hands Gifted is building carefully before presenting ideas as finished services or programs." },
 ];
 
 export default function Home() {
@@ -33,41 +32,38 @@ export default function Home() {
 
       <section id="top" className="hero-shell recovered-hero">
         <div className="hero-content recovered-hero-content">
-          <div className="eyebrow light">Build the household. Develop the gift. Serve with purpose.</div>
-          <h1 className="recovered-headline">Strong hands.<br/><span>Strong families.</span></h1>
-          <p className="lead light-copy">Hands Gifted Foundation is building faith-centered pathways where women, children and families can strengthen daily life, develop practical skills, learn together and grow with purpose.</p>
+          <div className="eyebrow light">Faith-centered family development · currently in development</div>
+          <h1 className="recovered-headline">Reconnect.<br/><span>Learn. Build. Serve.</span></h1>
+          <p className="lead light-copy">Hands Gifted is being developed for women, children, and families navigating difficult seasons and working toward greater connection, practical growth, opportunity, and stability together.</p>
           <div className="hero-actions">
-            <a className="button gold" href="/programs">Explore programs</a>
-            <a className="button glass" href="#story">Our story</a>
+            <a className="button gold" href="#story">Understand the vision</a>
+            <a className="button glass" href="/programs">Explore development lanes</a>
           </div>
-          <div className="hero-path-note">Use your hands. Build your household. Serve your community. Walk according to the Most High.</div>
+          <div className="hero-path-note">Strengthen the household. Develop the gifts. Build together. Serve others.</div>
         </div>
       </section>
 
-      <section className="pillar-band" aria-label="Hands Gifted pillars">
+      <section className="pillar-band" aria-label="Hands Gifted values">
         {pillars.map(([title, body]) => (
-          <article key={title}>
-            <strong>{title}</strong>
-            <span>{body}</span>
-          </article>
+          <article key={title}><strong>{title}</strong><span>{body}</span></article>
         ))}
       </section>
 
       <section className="announcement-bar">
-        <span>Current direction</span>
-        <p>Household stability comes before expansion. What is learned and proven in real life becomes the foundation for resources that can serve other families.</p>
-        <a href="#work">See the work →</a>
+        <span>Development stage</span>
+        <p>Hands Gifted is not presenting every idea as a launched business or operating program. The current work is to learn, practice, document, organize, validate, and build responsibly.</p>
+        <a href="#work">See what is being built →</a>
       </section>
 
       <section id="story" className="section story-section">
         <div className="story-intro">
           <div className="section-heading left no-margin">
             <span>Why Hands Gifted exists</span>
-            <h2>Rebuilding life can reveal what your hands were created to do.</h2>
+            <h2>Families need more opportunities to connect, learn, and build together.</h2>
           </div>
           <div className="story-copy">
-            <p>Hands Gifted grew from a real process of examining the household, rebuilding what needed attention, learning practical skills, organizing family life, and finding ways to turn gifts into useful work.</p>
-            <p>The journey is still being built. The goal is not to pretend every program is finished; it is to document what is being learned, prove what works, and eventually use that growing capacity to strengthen other women, children, and families.</p>
+            <p>Hands Gifted grew from lived awareness of how difficult seasons can affect an entire household. The vision is larger than temporary assistance: it is about helping women, children, and families reconnect, recognize what they can do, learn practical skills, use available resources wisely, and build toward greater stability.</p>
+            <p>Faith shapes the values behind Hands Gifted. Family unity, stewardship, modesty, character, responsibility, learning, creativity, opportunity, and service guide the work while the business and organizational structure are still being developed.</p>
           </div>
         </div>
         <div className="story-grid">
@@ -76,7 +72,11 @@ export default function Home() {
       </section>
 
       <section className="section showcase-section">
-        <div className="showcase-heading"><span>Hands Gifted in motion</span><h2>Not just ideas. A growing body of work.</h2><p>These visuals come from existing Hands Gifted development and show the direction already being built across family, learning, modest apparel, and public ministry work.</p></div>
+        <div className="showcase-heading">
+          <span>Hands Gifted in development</span>
+          <h2>Real practice first. Public claims later.</h2>
+          <p>Cooking, gardening, natural hair and self-care learning, modest apparel, sewing, family learning, music, media, technology, and other practical skills are development lanes—not separate launched businesses.</p>
+        </div>
         <div className="showcase-grid">
           {featuredWork.map((item) => <article key={item.title}><div className="showcase-image"><img src={item.image} alt={item.title} /></div><div className="showcase-copy"><span>{item.label}</span><h3>{item.title}</h3></div></article>)}
         </div>
@@ -84,9 +84,9 @@ export default function Home() {
 
       <section id="path" className="section dark path-section">
         <div className="section-heading">
-          <span>How we build</span>
-          <h2>From seeking wisdom to teaching what has been demonstrated.</h2>
-          <p>The same nine-stage progression guides household development, learning, skill-building, production, stability, and service.</p>
+          <span>How Hands Gifted develops</span>
+          <h2>From faith and family needs to demonstrated skill, opportunity, and service.</h2>
+          <p>The model keeps the household first and prevents an idea from being treated like a finished business before it has been practiced and tested.</p>
         </div>
         <div className="path-timeline">
           {missionPath.map(([title, body], index) => (
@@ -99,18 +99,16 @@ export default function Home() {
       </section>
 
       <section id="surfaces" className="section surfaces-section">
-        <div className="section-heading"><span>Explore Hands Gifted</span><h2>One ecosystem. Different doors for different people.</h2><p>The Foundation, parent workspace, and child experience stay connected while protecting the information each audience should and should not see.</p></div>
+        <div className="section-heading"><span>Public and private stay separate</span><h2>One vision, with protected family spaces.</h2><p>The public Hands Gifted website explains the developing model. Private family records, school information, routines, progress, and parent administration remain in protected spaces.</p></div>
         <div className="surface-grid">
           {surfaces.map((surface, index) => {
             const href = index === 0 ? "/programs" : index === 1 ? "/command-center" : "/family";
-            const publicTitle = index === 0 ? "Explore the Foundation" : index === 1 ? "Parent Command Center" : "Kids & Family Dashboard";
-            const linkLabel = index === 0 ? "Explore programs and resources" : index === 1 ? "Open parent access" : "Open family access";
+            const publicTitle = index === 0 ? "Public Hands Gifted" : index === 1 ? "Parent Command Center" : "Children & Family Dashboard";
+            const linkLabel = index === 0 ? "Explore the developing model" : index === 1 ? "Open parent access" : "Open family access";
             return <article className={`surface-card surface-${index + 1}`} key={surface.title}>
               <div className="surface-icon">{index === 0 ? "◈" : index === 1 ? "⌂" : "✦"}</div>
               <span className="audience">{surface.audience}</span>
-              <h3>{publicTitle}</h3>
-              <p>{surface.description}</p>
-              <a className="surface-link" href={href}>{linkLabel} →</a>
+              <h3>{publicTitle}</h3><p>{surface.description}</p><a className="surface-link" href={href}>{linkLabel} →</a>
             </article>;
           })}
         </div>
@@ -118,8 +116,8 @@ export default function Home() {
 
       <section id="programs" className="section parchment programs-section">
         <div className="programs-topline">
-          <div className="section-heading left no-margin"><span>Explore Hands Gifted</span><h2>Programs families can grow through.</h2></div>
-          <div className="programs-intro"><p>The full Hands Gifted ecosystem includes 20 program pathways. The homepage highlights six major entry points so visitors can understand the work without being overwhelmed.</p><a className="button" href="/programs">Browse all programs</a></div>
+          <div className="section-heading left no-margin"><span>Development lanes</span><h2>Different skills. One family-development model.</h2></div>
+          <div className="programs-intro"><p>These are areas being developed, practiced, documented, or planned. A listing here does not mean the lane is already a public service or revenue-generating business.</p><a className="button" href="/programs">Browse development lanes</a></div>
         </div>
         <div className="featured-program-grid">
           {featuredPrograms.map((program) => <article key={program.name}><span>{program.category}</span><h3>{program.name}</h3><p>{program.description}</p><a href="/programs">Learn more →</a></article>)}
@@ -130,19 +128,19 @@ export default function Home() {
         <div className="academy-panel">
           <div className="academy-copy">
             <div className="eyebrow">Family Academy</div>
-            <h2>Learning that connects Scripture, responsibility, practical skill, and demonstrated growth.</h2>
-            <p>The Academy gives women, parents, children, and youth structured learning pathways while keeping school administration and private family records in the appropriate protected spaces.</p>
+            <h2>Parents and children learning, practicing, creating, and documenting growth together.</h2>
+            <p>The Academy is being developed as a parent-guided family learning environment connecting faith, academics, practical skills, creativity, technology, responsibility, and individual gifts.</p>
             <div className="academy-actions"><a className="button" href="/academy">Explore Family Academy</a><a className="text-link" href="/family">Family sign in →</a></div>
           </div>
           <div className="academy-board">
             <div className="academy-window-head"><span></span><span></span><span></span><strong>Family Academy</strong></div>
             <div className="academy-window-body">
               {[
-                ["Daughters of Sarah", "Biblical womanhood, household wisdom, modesty, practical skill"],
-                ["Kings of God", "Character, service, practical competence, technology, leadership"],
-                ["Family Study", "Shared Scripture, discussion, memory, family application"],
-                ["Practical Skills", "Cooking, gardening, sewing, creativity, technology, money skills"],
-                ["Mastery", "Learn → Practice → Ready to Show → Demonstrated → Helper → Mentor/Teacher"],
+                ["Connect", "Family learning and projects create purposeful time together"],
+                ["Learn", "Faith, academics, practical life, creativity, technology, and money skills"],
+                ["Practice", "Use knowledge through supervised real household projects"],
+                ["Create", "Meals, gardens, drawings, sewing, media, music, and useful projects"],
+                ["Document", "Private portfolio evidence before any founder-approved public sharing"],
               ].map(([title, body], index) => <div className="academy-row" key={title}><span>{String(index + 1).padStart(2,"0")}</span><div><strong>{title}</strong><p>{body}</p></div></div>)}
             </div>
           </div>
@@ -151,8 +149,8 @@ export default function Home() {
 
       <section id="work" className="section dark roadmap-section">
         <div className="roadmap-head">
-          <div className="section-heading left no-margin"><span>What is happening now</span><h2>Building publicly without pretending everything is finished.</h2></div>
-          <p>Each project is labeled by maturity so visitors can distinguish active work, in-development work, and future plans.</p>
+          <div className="section-heading left no-margin"><span>What is happening now</span><h2>Development with clear truth labels.</h2></div>
+          <p>Current work is labeled so visitors can distinguish what is in progress from what is only planned.</p>
         </div>
         <div className="roadmap">
           {projects.slice(0,6).map(([name, status, description]) => <article key={name}><span className={`status ${status}`}>{status.replace("_", " ")}</span><h3>{name}</h3><p>{description}</p><div className="roadmap-line"></div></article>)}
@@ -160,19 +158,19 @@ export default function Home() {
       </section>
 
       <section className="section support-section">
-        <div className="support-heading"><span>Ways to connect</span><h2>Come through the door that fits what you need.</h2></div>
+        <div className="support-heading"><span>The developing model</span><h2>Connect. Learn. Build. Share.</h2></div>
         <div className="support-grid">
-          <article><span>01</span><h3>Get support</h3><p>Explore family stability, resource navigation, education, and practical support pathways.</p><a href="/#connect">Find support →</a></article>
-          <article><span>02</span><h3>Learn a skill</h3><p>Explore sewing, braiding, cooking, gardening, media, practical life, and entrepreneurship development.</p><a href="/programs">Explore skills →</a></article>
-          <article><span>03</span><h3>Partner or contribute</h3><p>Support materials, outreach, programs, learning resources, and community-centered development.</p><a href="/#connect">Connect with us →</a></article>
+          <article><span>01</span><h3>Connect</h3><p>Strengthen family connection through purposeful learning, shared responsibilities, projects, and time together.</p></article>
+          <article><span>02</span><h3>Develop</h3><p>Build practical skills, individual gifts, confidence, creativity, financial understanding, and readiness for opportunity.</p></article>
+          <article><span>03</span><h3>Share</h3><p>As capacity grows, develop appropriate resources, content, products, services, referrals, or community support that may help others.</p></article>
         </div>
       </section>
 
       <section id="connect" className="connect-section">
         <div>
-          <span className="eyebrow light">Hands Gifted Foundation</span>
-          <h2>Gifted hands. Purposed heart. Kingdom impact.</h2>
-          <p>Follow the journey, explore the programs, connect for support, or partner with the work as it develops.</p>
+          <span className="eyebrow light">Hands Gifted</span>
+          <h2>Strengthen the household. Develop the gifts. Build together. Serve others.</h2>
+          <p>Hands Gifted is currently in development. Follow the journey as the family-development model, practical skills, content, resources, and business structure are built responsibly.</p>
         </div>
         <div className="connect-actions"><a className="button gold" href="/programs">Explore Hands Gifted</a><a className="button glass" href="/family">Family sign in</a></div>
       </section>
