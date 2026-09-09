@@ -19,6 +19,39 @@ const pillars = [
 
 const featuredPrograms = [programs[0], programs[7], programs[10], programs[12], programs[15], programs[18]];
 
+const creatingNow = [
+  {
+    category: "Cooking & Food",
+    experience: "Family meals, learning how to eat healthier, cooking together, and simple Cooking 101 moments with the children.",
+    creation: "Approved meal photos, recipes, short cooking videos, healthy-eating lessons, and future G&G Food Services connections.",
+    status: "Creating now",
+  },
+  {
+    category: "Gardening & Growing",
+    experience: "Family garden outings, visiting places where food is grown, picking vegetables, learning plants, and growing our own food at home.",
+    creation: "Garden photos and videos, planting notes, growth updates, harvest-to-kitchen stories, and family science observations.",
+    status: "Creating now",
+  },
+  {
+    category: "Sewing & Making",
+    experience: "Learning, practicing, repairing, designing, and using our hands to create useful or modest items for real family needs.",
+    creation: "Progress photos, finished projects, design ideas, sewing lessons, and future products only after the work is ready.",
+    status: "In development",
+  },
+  {
+    category: "Art & Creativity",
+    experience: "Drawing, coloring, painting, character ideas, design, crafts, music, media, and creative projects involving the children and family.",
+    creation: "Parent-approved artwork, project photos, digital creations, music or video projects, and portfolio pieces that show growth without exposing private records.",
+    status: "Creating now",
+  },
+  {
+    category: "Braiding",
+    experience: "A real skill Shayla can already provide while the broader Hands Gifted service portfolio is still being developed.",
+    creation: "Braiding appointments can be offered by inquiry now. Portfolio photos, style examples, and fuller booking information can be added as approved images are uploaded.",
+    status: "Available by inquiry",
+  },
+];
+
 const featuredWork = [
   { image: "/building-strong-families.png", label: "Family Development", title: "Connection, practical learning, and household growth begin at home." },
   { image: "/modest-fashion-purpose.png", label: "Creative Development", title: "Modest design, sewing, creativity, and useful skills are being learned and documented." },
@@ -36,7 +69,7 @@ export default function Home() {
           <h1 className="recovered-headline">Reconnect.<br/><span>Learn. Build. Serve.</span></h1>
           <p className="lead light-copy">Hands Gifted is being developed for women, children, and families navigating difficult seasons and working toward greater connection, practical growth, opportunity, and stability together.</p>
           <div className="hero-actions">
-            <a className="button gold" href="#story">Understand the vision</a>
+            <a className="button gold" href="#creating">See what we’re creating</a>
             <a className="button glass" href="/programs">Explore development lanes</a>
           </div>
           <div className="hero-path-note">Strengthen the household. Develop the gifts. Build together. Serve others.</div>
@@ -52,7 +85,7 @@ export default function Home() {
       <section className="announcement-bar">
         <span>Development stage</span>
         <p>Hands Gifted is not presenting every idea as a launched business or operating program. The current work is to learn, practice, document, organize, validate, and build responsibly.</p>
-        <a href="#work">See what is being built →</a>
+        <a href="#creating">See what is being created →</a>
       </section>
 
       <section id="story" className="section story-section">
@@ -68,6 +101,28 @@ export default function Home() {
         </div>
         <div className="story-grid">
           {storyCards.map(([number, title, body]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
+        </div>
+      </section>
+
+      <section id="creating" className="section parchment programs-section">
+        <div className="programs-topline">
+          <div className="section-heading left no-margin">
+            <span>What we’re creating</span>
+            <h2>Every area has two sides: what the family experiences and what we create from it.</h2>
+          </div>
+          <div className="programs-intro">
+            <p>Hands Gifted does not wait for everything to become a product before showing real growth. Approved photos, videos, projects, meals, garden moments, artwork, and lessons can document what is actually happening now. Products and larger services remain clearly labeled until they are ready.</p>
+          </div>
+        </div>
+        <div className="featured-program-grid">
+          {creatingNow.map((item) => (
+            <article key={item.category}>
+              <span>{item.status}</span>
+              <h3>{item.category}</h3>
+              <p><strong>Family side:</strong> {item.experience}</p>
+              <p><strong>Creation side:</strong> {item.creation}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -172,7 +227,7 @@ export default function Home() {
           <h2>Strengthen the household. Develop the gifts. Build together. Serve others.</h2>
           <p>Hands Gifted is currently in development. Follow the journey as the family-development model, practical skills, content, resources, and business structure are built responsibly.</p>
         </div>
-        <div className="connect-actions"><a className="button gold" href="/programs">Explore Hands Gifted</a><a className="button glass" href="/family">Family sign in</a></div>
+        <div className="connect-actions"><a className="button gold" href="#creating">See what we’re creating</a><a className="button glass" href="/family">Family sign in</a></div>
       </section>
 
       <SiteFooter />
