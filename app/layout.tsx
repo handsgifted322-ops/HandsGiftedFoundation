@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./visual-recovery.css";
+import "./catalog-redesign.css";
 
 export const metadata: Metadata = {
-  title: "Hands Gifted Foundation | Build the Household. Serve the Community.",
-  description: "Hands Gifted strengthens women, children, families, and households through faith, practical skills, stability, learning, creativity, and service.",
+  title: "Hands Gifted | Faith, Family, Skills, Opportunity & Service",
+  description: "Hands Gifted is a faith-centered family-development venture connecting practical skills, creativity, learning, opportunity, and service.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
