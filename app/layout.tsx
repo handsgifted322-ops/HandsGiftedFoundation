@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./visual-recovery.css";
 import "./catalog-redesign.css";
+import "./public-areas.css";
 
 export const metadata: Metadata = {
   title: "Hands Gifted | Faith, Family, Skills, Opportunity & Service",
