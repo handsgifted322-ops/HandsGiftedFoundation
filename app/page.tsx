@@ -1,5 +1,6 @@
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
+import { PublicAreaNav } from "../components/PublicAreaNav";
 import { missionPath, programs, projects, surfaces } from "../lib/catalog";
 
 const storyCards = [
@@ -75,6 +76,8 @@ export default function Home() {
           <div className="hero-path-note">Strengthen the household. Develop the gifts. Build together. Serve others.</div>
         </div>
       </section>
+
+      <PublicAreaNav />
 
       <section className="pillar-band" aria-label="Hands Gifted values">
         {pillars.map(([title, body]) => (
