@@ -1,5 +1,6 @@
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
+import { PublicAreaNav } from "../components/PublicAreaNav";
 import { exploreItems } from "../lib/explore";
 
 const creatingNow = [
@@ -24,6 +25,8 @@ export default function Home(){
       </div>
       <div className="catalog-hero-art" role="img" aria-label="Hands Gifted family development"></div>
     </section>
+
+    <PublicAreaNav />
 
     <section id="explore" className="catalog-section">
       <div className="catalog-heading"><span>Explore Hands Gifted</span><h2>Choose an area and look inside.</h2><p>Short, visual, and easy to browse. Each card opens its own page instead of putting the entire vision on one long screen.</p></div>
