@@ -8,9 +8,9 @@ export function SiteFooter() {
         </a>
         <p className="footer-summary">A faith-centered family-development venture in progress: strengthening connection, developing practical skills, documenting growth, and building opportunities responsibly.</p>
       </div>
-      <div className="footer-column"><strong>Explore</strong><a href="/#story">Our Story</a><a href="/programs">Development Lanes</a><a href="/academy">Family Academy</a><a href="/#work">Current Work</a></div>
-      <div className="footer-column"><strong>Family</strong><a href="/family">Family Sign In</a><a href="/command-center">Parent Command Center</a><a href="/academy">Children & Academy</a></div>
-      <div className="footer-column"><strong>Connect</strong><a href="/#connect">Follow the Journey</a><a href="/#connect">Connect</a><a href="/#connect">Share Resources</a></div>
+      <div className="footer-column"><strong>Explore</strong><a href="/#explore">Explore Hands Gifted</a><a href="/programs">Development Lanes</a><a href="/academy">Family Academy</a><a href="/about">About</a></div>
+      <div className="footer-column"><strong>Public</strong><a href="/shop">Shop</a><a href="/services">Services</a><a href="/contact">Contact</a></div>
+      <div className="footer-column"><strong>Connect</strong><a href="/#creating">What We’re Creating</a><a href="/contact">Questions & Inquiries</a></div>
       <div className="footer-bottom"><span>HandsGiftedFoundation.com</span><span>Public storytelling and private family information remain intentionally separated.</span></div>
     </footer>
   );

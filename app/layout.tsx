@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./visual-recovery.css";
 import "./public-areas.css";
+import "./catalog-redesign.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://handsgiftedfoundation.com"),
