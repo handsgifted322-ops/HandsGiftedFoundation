@@ -12,6 +12,7 @@ type AcademyRow={id:string;title:string;status:string;due_at:string|null};
 type ContentRow={id:string;title:string;status:string;content_type:string};
 
 const quickLinks=[
+  ["Vision & Progress Map","/command-center/vision-map","Step out of individual chats and see what is lived, learning, active, parked, future, accelerating or stalled"],
   ["Assign Task","/command-center/assignments","Create a household assignment for a child and save it to the live family system"],
   ["Household Control","/command-center/household","Chores, routines, parent checks and weekly rotation"],
   ["Family Academy","/command-center/academy","Lessons, assignments, progress and parent feedback"],
@@ -49,11 +50,11 @@ export default async function CommandCenterPage(){
 
   const attention=tasks.length+needs.length+household.length+academy.length+drafts.length;
   return <main><SiteHeader/>
-    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT OPERATOR</span><h1>What needs my attention today?</h1><p>This Command Center is your working home screen—not a directory. It brings household responsibility, children, Academy, stability work and Foundation administration into one parent-controlled view.</p><div className="hero-actions"><a className="button gold" href="/command-center/assignments">Assign a Task</a><a className="button" href="/command-center/household">Review Household</a><a className="button" href="/command-center/sops">Open SOP Library</a></div></section>
+    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT / FOUNDER OPERATOR</span><h1>What needs my attention—and where does it fit in the bigger picture?</h1><p>This Command Center is the executive-administrative home screen for household responsibility, family learning, stability work, Hands Gifted business, ideas, progress and decisions. The Vision & Progress Map helps prevent many separate chats from hiding the overall direction.</p><div className="hero-actions"><a className="button gold" href="/command-center/vision-map">Open Vision Map</a><a className="button" href="/command-center/assignments">Assign a Task</a><a className="button" href="/command-center/sops">Open SOP Library</a></div></section>
     <section className="section">
       {state!=="ready"?<div className="access-note"><strong>{state==="signed_out"?"AUTH REQUIRED":state==="denied"?"ACCESS DENIED":"PARTIAL — Supabase runtime unavailable"}</strong><p>The private Command Center only shows live operational records to an authorized parent/operator.</p></div>:<>
         <div className="detail-grid">
-          <article><span>TODAY</span><h3>{attention}</h3><p>Open items across household, Academy, stability, tasks and Foundation content.</p></article>
+          <article><span>TODAY</span><h3>{attention}</h3><p>Open items across household, Academy, stability, tasks and Hands Gifted content.</p></article>
           <article><span>HOUSEHOLD CHECKS</span><h3>{household.length}</h3><p>Responsibilities that still need completion or parent verification.</p><a className="button" href="/command-center/household">Review household</a></article>
           <article><span>FAMILY NEEDS</span><h3>{needs.length}</h3><p>Unresolved stability or resource needs requiring follow-up.</p><a className="button" href="/command-center/operations">Review needs</a></article>
           <article><span>ACADEMY</span><h3>{academy.length}</h3><p>Learning assignments still active or waiting for completion.</p><a className="button" href="/command-center/academy">Review Academy</a></article>
@@ -63,7 +64,7 @@ export default async function CommandCenterPage(){
           <article><span>HOUSEHOLD / MOM CHECK</span><h3>{household.length?household[0].title:"No pending household checks"}</h3><p>{household.length?`${household[0].status.replaceAll("_"," ")} · parent check ${household[0].parent_check_status.replaceAll("_"," ")}`:"Nothing is currently waiting in this queue."}</p><a className="button" href="/command-center/household">Open household control</a></article>
           <article><span>STABILITY / NEEDS</span><h3>{needs.length?needs[0].title:"No unresolved needs in queue"}</h3><p>{needs.length?`${needs[0].category} · ${needs[0].status}${needs[0].priority?` · ${needs[0].priority}`:""}`:"No current need is visible to this authorized account."}</p><a className="button" href="/command-center/operations">Open stability work</a></article>
           <article><span>TASKS / FOLLOW-UP</span><h3>{tasks.length?tasks[0].title:"No open task in queue"}</h3><p>{tasks.length?`${tasks[0].status}${tasks[0].priority?` · ${tasks[0].priority}`:""}`:"No current task is visible to this authorized account."}</p><a className="button" href="/command-center/operations">Open tasks</a></article>
-          <article><span>FOUNDATION / CONTENT</span><h3>{drafts.length?drafts[0].title:"No unpublished content in queue"}</h3><p>{drafts.length?`${drafts[0].content_type} · ${drafts[0].status}`:"Nothing currently waiting for publication review."}</p><a className="button" href="/command-center/content">Open content control</a></article>
+          <article><span>HANDS GIFTED / CONTENT</span><h3>{drafts.length?drafts[0].title:"No unpublished content in queue"}</h3><p>{drafts.length?`${drafts[0].content_type} · ${drafts[0].status}`:"Nothing currently waiting for publication review."}</p><a className="button" href="/command-center/content">Open content control</a></article>
         </div>
         <div className="section-heading left" style={{marginTop:48}}><span>Control areas</span><h2>Everything else stays one tap away.</h2></div>
         <div className="detail-grid" style={{marginTop:24}}>{quickLinks.map(([title,href,description])=><article key={href}><h3>{title}</h3><p>{description}</p><a className="button" href={href}>Open</a></article>)}</div>
