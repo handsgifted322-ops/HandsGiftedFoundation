@@ -107,6 +107,7 @@ export default async function AcademyManagementPage() {
           "academy_progress",
           "academy_requests",
           "academy_assessments",
+          "household_sops",
         ];
 
         const [countResults, childResult, recentAssignmentsResult, schoolTrackResult] = await Promise.all([
@@ -183,6 +184,7 @@ export default async function AcademyManagementPage() {
     ["Progress Records", "academy_progress"],
     ["Help Requests", "academy_requests"],
     ["Assessments", "academy_assessments"],
+    ["SOP Learning Resources", "household_sops"],
     ["School Records", "school_records"],
   ];
 
@@ -192,9 +194,11 @@ export default async function AcademyManagementPage() {
       <section className="inner-hero">
         <span>Command Center · Academy</span>
         <h1>Family Academy Management</h1>
-        <p>Create curriculum, assign learning, review progress, respond to help requests, and connect each child&apos;s real school needs to private Family Academy support.</p>
+        <p>Create curriculum, assign learning, review progress, respond to help requests, and connect each child&apos;s real school and practical-life needs to private Family Academy support.</p>
         <div className="hero-actions">
           <a className="button gold" href="/family/academy/world">Enter Academy World</a>
+          <a className="button" href="/command-center/sops">Manage SOP Resources</a>
+          <a className="button" href="/family/academy/resources">Preview Family SOP Resources</a>
           <a className="button" href="/command-center/operations">System Operations</a>
         </div>
       </section>
@@ -212,8 +216,14 @@ export default async function AcademyManagementPage() {
                   <span>{label}</span>
                   <h3>{counts[table] ?? 0}</h3>
                   <p>Durable records currently visible in this Academy module.</p>
+                  {table === "household_sops" ? <a className="button" href="/command-center/sops">Open SOP Resource Center</a> : null}
                 </article>
               ))}
+            </div>
+
+            <div className="access-note" style={{ marginTop: 32 }}>
+              <strong>One SOP source, two experiences.</strong>
+              <p>The Command Center manages the live procedure. Family Academy reads the same approved SOP and presents age-appropriate practical-life guidance. Assignment completion and parent verification stay in the household system.</p>
             </div>
 
             <div className="section-heading left" style={{ marginTop: 48 }}>
