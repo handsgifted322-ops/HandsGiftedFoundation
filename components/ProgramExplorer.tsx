@@ -4,10 +4,13 @@ import { useMemo, useState } from "react";
 import { programs } from "../lib/catalog";
 
 const statuses: Record<string, string> = {
-  active: "Active development",
-  in_development: "In development",
-  planned: "Planned",
-  in_progress: "In progress",
+  lived: "Lived / doing",
+  learning: "Learning",
+  framework: "Framework in development",
+  prototype: "Prototype",
+  active: "Active business work",
+  supporting: "Supporting development",
+  future: "Future / parked",
 };
 
 export function ProgramExplorer() {
@@ -26,8 +29,8 @@ export function ProgramExplorer() {
     <div className="explorer">
       <div className="explorer-controls">
         <label className="search-label">
-          <span>Search development lanes</span>
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try: sewing, cooking, business…" />
+          <span>Search Hands Gifted development lanes</span>
+          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try: sewing, cooking, household…" />
         </label>
         <div className="chips" aria-label="Development lane categories">
           {categories.map((item) => (
@@ -38,7 +41,7 @@ export function ProgramExplorer() {
       <div className="program-grid">
         {shown.map((program) => (
           <article className="program-card" key={program.name}>
-            <div className="program-meta"><span>{program.category}</span><span className={`status ${program.status}`}>{statuses[program.status]}</span></div>
+            <div className="program-meta"><span>{program.category}</span><span className="status">{statuses[program.status] ?? program.status}</span></div>
             <h3>{program.name}</h3>
             <p>{program.description}</p>
           </article>
