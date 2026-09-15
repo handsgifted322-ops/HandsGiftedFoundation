@@ -1,9 +1,9 @@
 const publicAreas = [
-  ["Home", "/", "The public Hands Gifted starting point."],
-  ["Shop", "/shop", "Digital products and future Hands Gifted goods."],
-  ["Services", "/services", "Current availability and services in development."],
-  ["About", "/about", "The family-first purpose and development model."],
-  ["Contact", "/contact", "Questions, inquiries, collaborations, and updates."],
+  ["Home", "/", "The current Hands Gifted family-business starting point."],
+  ["Shop", "/shop", "Products and digital resources being prepared for release."],
+  ["Services", "/services", "What can be requested now and what is still in development."],
+  ["About", "/about", "Why the business starts with our own household first."],
+  ["Contact", "/contact", "Questions, inquiries, future collaborations, and updates."],
 ] as const;
 
 export function PublicAreaNav() {
@@ -11,8 +11,8 @@ export function PublicAreaNav() {
     <section className="public-area-shell" aria-label="Public Hands Gifted website areas">
       <div className="public-area-intro">
         <span>Public website</span>
-        <h2>Five clear places to start.</h2>
-        <p>The existing Hands Gifted catalog and development content stays in place. These public areas make it easier for visitors to find what they need quickly.</p>
+        <h2>Know what is real, what is ready, and what is still being built.</h2>
+        <p>The public website documents the family business honestly. Private household systems stay protected, while products, services, skills, and development work are shared according to their actual status.</p>
       </div>
       <nav className="public-area-grid">
         {publicAreas.map(([label, href, description], index) => (

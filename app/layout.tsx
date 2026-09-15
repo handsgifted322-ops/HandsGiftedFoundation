@@ -6,8 +6,8 @@ import "./catalog-redesign.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://handsgiftedfoundation.com"),
-  title: "Hands Gifted Foundation | Build the Household. Serve the Community.",
-  description: "Hands Gifted strengthens women, children, families, and households through faith, practical skills, stability, learning, creativity, and service.",
+  title: "Hands Gifted | Built at Home. Made with Purpose.",
+  description: "Hands Gifted is a faith-led, family-owned business in development, building practical skills, products, services, learning systems, and income opportunities from real family life.",
   alternates: {
     canonical: "/",
   },

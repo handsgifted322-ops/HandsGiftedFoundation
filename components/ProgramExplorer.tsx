@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { programs } from "../lib/catalog";
 
 const statuses: Record<string, string> = {
-  active: "Active",
+  active: "Active development",
   in_development: "In development",
   planned: "Planned",
   in_progress: "In progress",
@@ -26,10 +26,10 @@ export function ProgramExplorer() {
     <div className="explorer">
       <div className="explorer-controls">
         <label className="search-label">
-          <span>Search the ecosystem</span>
-          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try: sewing, youth, stability…" />
+          <span>Search development lanes</span>
+          <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try: sewing, cooking, business…" />
         </label>
-        <div className="chips" aria-label="Program categories">
+        <div className="chips" aria-label="Development lane categories">
           {categories.map((item) => (
             <button className={category === item ? "chip active" : "chip"} key={item} onClick={() => setCategory(item)}>{item}</button>
           ))}
@@ -44,7 +44,7 @@ export function ProgramExplorer() {
           </article>
         ))}
       </div>
-      {!shown.length && <p className="empty">No programs match that filter.</p>}
+      {!shown.length && <p className="empty">No development lanes match that filter.</p>}
     </div>
   );
 }
