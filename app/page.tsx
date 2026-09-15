@@ -3,87 +3,92 @@ import { SiteFooter } from "../components/SiteFooter";
 import { PublicAreaNav } from "../components/PublicAreaNav";
 import { exploreItems } from "../lib/explore";
 
-const proofPath = [
-  ["01", "Start with a real need", "Our household comes first. We begin with what our family actually needs to improve, learn, organize, make, or earn."],
-  ["02", "Build the skill", "We study, practice, repeat, and improve through real family use instead of presenting unfinished ideas as finished offers."],
-  ["03", "Create proof", "Meals, projects, systems, designs, lessons, portfolios, and routines become evidence of what works and what still needs work."],
-  ["04", "Turn proof into opportunity", "When the work is useful and repeatable, it can become a product, service, resource, learning experience, or income stream."],
+const systemParts = [
+  ["Weekly household planning", "Bring schedules, priorities, preparation, and family follow-through into one weekly view."],
+  ["Meals & inventory", "Plan meals, track what is on hand, and reduce last-minute grocery and dinner decisions."],
+  ["Cleaning & resets", "Use repeatable room resets and simple standards instead of rebuilding the routine from memory."],
+  ["Children’s responsibilities", "Make age-appropriate responsibilities visible, consistent, and easier to verify."],
+  ["Family scheduling", "Coordinate school, work, appointments, preparation, and recurring household rhythms."],
+  ["Simple household SOPs", "Turn recurring tasks into clear procedures that can be followed, improved, and reused."],
 ] as const;
 
-const currentFocus = [
-  ["Family systems", "Household organization, routines, meals, learning, Sabbath preparation, practical life, and the private tools that help our family operate better."],
-  ["Skills into income", "Cooking, braiding, sewing, gardening, technology, design, media, and entrepreneurship are being developed into useful family skills and future earning lanes."],
-  ["Products & services", "Digital resources, apparel concepts, recipes, learning tools, creative work, and selected services are released only when they are genuinely ready."],
+const validationPath = [
+  ["01", "Build from real household use", "We test the systems internally before translating the useful parts into customer-facing tools."],
+  ["02", "Keep the offer focused", "The current business focus is one household operating system—not many unrelated launches at once."],
+  ["03", "Learn from target users", "We are validating whether women and mothers managing busy or rebuilding households understand, want, and use the system."],
+  ["04", "Expand only from evidence", "Cooking, gardening, sewing, hair, Family Academy, and other work remain research and development unless evidence supports promotion."],
 ] as const;
 
 export default function Home(){
-  const featured = exploreItems.slice(0, 6);
+  const rAndD = exploreItems.slice(0, 6);
 
   return <main className="hg-home">
     <SiteHeader />
 
     <section className="hg-hero">
       <div className="hg-hero-copy">
-        <div className="hg-kicker">Family-owned • Faith-led • Built from real life</div>
-        <h1>Built at home.<br/><span>Made with purpose.</span></h1>
-        <p className="hg-hero-lead">Hands Gifted is a family-owned business in development, starting with our own household first. We are building practical skills, stronger systems, creative work, products, services, and income opportunities from what we are actually learning and proving at home.</p>
+        <div className="hg-kicker">Practical household systems • Family-tested • Built for real life</div>
+        <h1>Less scattered.<br/><span>More organized at home.</span></h1>
+        <p className="hg-hero-lead">Hands Gifted is developing one practical Family Household Operating System for women and mothers managing busy or rebuilding households—bringing meals, schedules, routines, responsibilities, inventory, and household procedures into a clearer system.</p>
         <div className="hg-hero-actions">
-          <a className="button gold" href="#builds">See what we&apos;re building</a>
-          <a className="button glass" href="/about">Read our story</a>
+          <a className="button gold" href="/household-system">See the household system</a>
+          <a className="button glass" href="/about">Why we&apos;re building it</a>
         </div>
-        <div className="hg-hero-note"><strong>Our family is the first proving ground.</strong><span>What works here can grow responsibly from here.</span></div>
+        <div className="hg-hero-note"><strong>One 90-day business focus.</strong><span>Build the system, validate it with the right customer, and expand only from evidence.</span></div>
       </div>
-      <div className="hg-hero-visual" aria-label="Hands Gifted family-owned business in development">
-        <div className="hg-visual-main"><img src="/catalog/family-learning.jpg" alt="Family learning and building together" /></div>
+      <div className="hg-hero-visual" aria-label="Hands Gifted Family Household Operating System">
+        <div className="hg-visual-main"><img src="/catalog/family-learning.jpg" alt="Family household planning and learning" /></div>
         <div className="hg-visual-stack">
-          <img src="/catalog/cooking.jpg" alt="Cooking and family food development" />
-          <img src="/catalog/sewing.jpg" alt="Sewing and practical skill development" />
+          <img src="/catalog/cooking.jpg" alt="Meal and kitchen planning" />
+          <img src="/catalog/gardening.jpg" alt="Household practical-life development" />
         </div>
-        <div className="hg-visual-badge"><span>HANDS GIFTED</span><strong>Family first.</strong><small>Build • prove • grow</small></div>
+        <div className="hg-visual-badge"><span>HANDS GIFTED</span><strong>Household system.</strong><small>Plan • operate • review</small></div>
       </div>
     </section>
 
-    <section className="hg-value-strip" aria-label="Hands Gifted operating values">
-      <article><span>01</span><strong>Faith</strong><small>Character and stewardship first</small></article>
-      <article><span>02</span><strong>Family First</strong><small>Our household is the starting point</small></article>
-      <article><span>03</span><strong>Skill to Opportunity</strong><small>Practice becomes proof, then income</small></article>
-      <article><span>04</span><strong>Grow Responsibly</strong><small>Public claims follow demonstrated work</small></article>
+    <section className="hg-value-strip" aria-label="Hands Gifted household system values">
+      <article><span>01</span><strong>Clarity</strong><small>Know what needs attention</small></article>
+      <article><span>02</span><strong>Consistency</strong><small>Use repeatable household rhythms</small></article>
+      <article><span>03</span><strong>Practicality</strong><small>Tools designed for real family use</small></article>
+      <article><span>04</span><strong>Stability</strong><small>Build order before expansion</small></article>
     </section>
 
     <section id="builds" className="hg-section hg-builds">
       <div className="hg-section-heading">
-        <span>What we&apos;re building now</span>
-        <h2>One family business. Multiple skills growing together.</h2>
-        <p>These are development lanes inside Hands Gifted—not separate companies. Each one grows from real family needs, practice, documentation, and proof.</p>
+        <span>The flagship we are building</span>
+        <h2>One household operating system, built around recurring family work.</h2>
+        <p>The first version is intentionally practical: planning pages, routines, trackers, preparation systems, and simple SOPs that reduce how much a household has to hold in memory.</p>
       </div>
       <div className="hg-build-grid">
-        {featured.map((item)=><a className="hg-build-card" key={item.slug} href={`/explore/${item.slug}`}>
-          <div className="hg-build-image"><img src={item.image} alt={item.title}/><span>{item.status}</span></div>
-          <div className="hg-build-body"><small>{item.tag}</small><h3>{item.title}</h3><p>{item.summary}</p><strong>Open lane →</strong></div>
-        </a>)}
+        {systemParts.map(([title,body])=><article className="hg-build-card" key={title}>
+          <div className="hg-build-body"><small>Family Household Operating System</small><h3>{title}</h3><p>{body}</p></div>
+        </article>)}
       </div>
+      <div className="hg-hero-actions" style={{marginTop:32}}><a className="button gold" href="/household-system">Open the flagship overview</a><a className="button" href="/contact">Ask about the pilot</a></div>
     </section>
 
     <section className="hg-section hg-model">
       <div className="hg-model-intro">
-        <span>How Hands Gifted grows</span>
-        <h2>Need → skill → proof → opportunity.</h2>
-        <p>We are not building a business by pretending everything is already finished. The business grows from work we can actually demonstrate.</p>
+        <span>How we are validating it</span>
+        <h2>Test → document → simplify → validate.</h2>
+        <p>Our household is an internal testing environment, not the public product. Public resources are created from privacy-safe lessons and repeatable systems.</p>
       </div>
       <div className="hg-proof-grid">
-        {proofPath.map(([number,title,body])=><article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
+        {validationPath.map(([number,title,body])=><article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
       </div>
     </section>
 
     <section className="hg-section hg-now">
       <div className="hg-now-copy">
-        <span>Current priority</span>
-        <h2>Build our household and the business together.</h2>
-        <p>The immediate goal is lawful earned income, stronger family systems, practical skill development, completed products and services, and long-term opportunity for our household.</p>
-        <p>Serving other families remains part of the long-term vision, but it is a later expansion phase. We first need to prove the systems, skills, products, and business model in our own family.</p>
+        <span>Internal research & development</span>
+        <h2>Other skills still matter—but they are not competing businesses right now.</h2>
+        <p>Cooking, gardening, sewing, hair/self-care, Family Academy, and creative work continue as household-tested R&D. They can generate evidence, content, skills, and useful components without distracting from the current flagship.</p>
       </div>
-      <div className="hg-focus-grid">
-        {currentFocus.map(([title,body])=><article key={title}><h3>{title}</h3><p>{body}</p></article>)}
+      <div className="hg-build-grid">
+        {rAndD.map((item)=><a className="hg-build-card" key={item.slug} href={`/explore/${item.slug}`}>
+          <div className="hg-build-image"><img src={item.image} alt={item.title}/><span>Internal R&amp;D</span></div>
+          <div className="hg-build-body"><small>{item.tag}</small><h3>{item.title}</h3><p>{item.summary}</p><strong>See the work →</strong></div>
+        </a>)}
       </div>
     </section>
 
@@ -91,18 +96,18 @@ export default function Home(){
 
     <section className="hg-section hg-future">
       <div>
-        <span>Future direction</span>
-        <h2>Share from strength, not from pressure.</h2>
-        <p>As Hands Gifted becomes stable, repeatable, and sustainable, selected resources may be adapted for other households. That future mission grows from demonstrated capacity—not ahead of it.</p>
+        <span>90-day decision point</span>
+        <h2>We expand only after the flagship proves useful.</h2>
+        <p>The current test is straightforward: does the target customer understand the household problem, want the system, use it, and consider it worth paying for? Broader programs and additional business lines come later.</p>
       </div>
-      <div className="hg-future-actions"><a className="button gold" href="/services">See current availability</a><a className="button" href="/shop">View products in development</a></div>
+      <div className="hg-future-actions"><a className="button gold" href="/household-system">See the system</a><a className="button" href="/contact">Share feedback</a></div>
     </section>
 
-    <section className="hg-private-note"><strong>Private family systems stay private.</strong><span>School records, child progress, household operations, parent notes, finances, and other protected information remain inside authenticated family and Command Center spaces.</span></section>
+    <section className="hg-private-note"><strong>Private family systems stay private.</strong><span>School records, child progress, household operations, parent notes, finances, journals, and other protected information remain inside authenticated family and Command Center spaces.</span></section>
 
     <section className="hg-final-cta">
-      <div><span>Hands Gifted</span><h2>We&apos;re building the work before we scale the story.</h2><p>Follow what is being developed, ask about current services, or connect about future products and collaborations.</p></div>
-      <div><a className="button gold" href="/contact">Contact Hands Gifted</a><a className="button glass" href="/about">Learn how we&apos;re building</a></div>
+      <div><span>Hands Gifted</span><h2>A practical household system is the focus now.</h2><p>If managing the home feels scattered across too many places, follow the development of the Family Household Operating System or contact Hands Gifted about the pilot.</p></div>
+      <div><a className="button gold" href="/household-system">Explore the system</a><a className="button glass" href="/contact">Contact Hands Gifted</a></div>
     </section>
 
     <SiteFooter />
