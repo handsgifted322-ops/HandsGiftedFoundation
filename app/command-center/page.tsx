@@ -15,6 +15,7 @@ const quickLinks=[
   ["Assign Task","/command-center/assignments","Create a household assignment for a child and save it to the live family system"],
   ["Household Control","/command-center/household","Chores, routines, parent checks and weekly rotation"],
   ["Family Academy","/command-center/academy","Lessons, assignments, progress and parent feedback"],
+  ["SOP Resource Center","/command-center/sops","Clickable live procedures, age-adapted guidance, safety notes and Academy resource connections"],
   ["Foundation Content","/command-center/content","Draft, organize and publish approved public content"],
   ["Operations & Stability","/command-center/operations","Needs, tasks, school, grants, events and family-support work"],
   ["Resources & Media","/command-center/resources","Products, documents, brand assets and creative resources"],
@@ -48,7 +49,7 @@ export default async function CommandCenterPage(){
 
   const attention=tasks.length+needs.length+household.length+academy.length+drafts.length;
   return <main><SiteHeader/>
-    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT OPERATOR</span><h1>What needs my attention today?</h1><p>This Command Center is your working home screen—not a directory. It brings household responsibility, children, Academy, stability work and Foundation administration into one parent-controlled view.</p><div className="hero-actions"><a className="button gold" href="/command-center/assignments">Assign a Task</a><a className="button" href="/command-center/household">Review Household</a></div></section>
+    <section className="inner-hero"><span>PRIVATE · MOTHER / PARENT OPERATOR</span><h1>What needs my attention today?</h1><p>This Command Center is your working home screen—not a directory. It brings household responsibility, children, Academy, stability work and Foundation administration into one parent-controlled view.</p><div className="hero-actions"><a className="button gold" href="/command-center/assignments">Assign a Task</a><a className="button" href="/command-center/household">Review Household</a><a className="button" href="/command-center/sops">Open SOP Library</a></div></section>
     <section className="section">
       {state!=="ready"?<div className="access-note"><strong>{state==="signed_out"?"AUTH REQUIRED":state==="denied"?"ACCESS DENIED":"PARTIAL — Supabase runtime unavailable"}</strong><p>The private Command Center only shows live operational records to an authorized parent/operator.</p></div>:<>
         <div className="detail-grid">
