@@ -1,25 +1,28 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
 
-const nav = [["Home","/"],["Shop","/shop"],["Services","/services"],["About","/about"],["Contact","/contact"]] as const;
+const contactReasons = [
+  ["Resource correction or suggestion", "Report an outdated link, suggest a legitimate family or youth resource, or share public information that may belong in the Resource Center.", "Hands%20Gifted%20Resource%20Suggestion"],
+  ["Product or membership interest", "Ask about workbooks, planners, children's learning resources, family systems, future membership access, or other Hands Gifted products as they become available.", "Hands%20Gifted%20Product%20or%20Membership%20Interest"],
+  ["Collaboration or partnership", "Organizations, educators, youth programs, vendors, and community groups can introduce a real collaboration opportunity. Hands Gifted will not label an organization a partner until a partnership actually exists.", "Hands%20Gifted%20Collaboration%20Inquiry"],
+  ["General question", "Use the public contact channel for questions about Hands Gifted resources, the website, or current availability.", "Hands%20Gifted%20General%20Inquiry"],
+] as const;
 
 export default function ContactPage(){
   return <main className="public-page">
     <SiteHeader />
     <section className="public-page-hero">
       <span>Contact Hands Gifted</span>
-      <h1>Questions, inquiries, and future collaboration.</h1>
-      <p>Use this page for current service questions, product interest, vendor or collaboration conversations, and general Hands Gifted business inquiries.</p>
+      <h1>Questions, resource suggestions, and collaboration.</h1>
+      <p>Use the public contact channel for Hands Gifted resource questions, corrections, product or membership interest, and legitimate collaboration conversations.</p>
     </section>
     <section className="public-page-content">
-      <nav className="public-page-nav" aria-label="Public website">{nav.map(([label,href])=><a href={href} key={label}>{label}</a>)}</nav>
       <div className="public-page-grid">
-        <article className="public-page-card"><span className="status-label">General contact</span><h2>Email Hands Gifted</h2><p>The public business contact for Hands Gifted is available for questions and inquiries.</p><div className="contact-list"><a href="mailto:handsgifted322@gmail.com">handsgifted322@gmail.com</a></div><a className="button gold" href="mailto:handsgifted322@gmail.com?subject=Hands%20Gifted%20Inquiry">Send an email</a></article>
-        <article className="public-page-card"><span className="status-label">Service inquiry</span><h2>Braiding</h2><p>Ask about current availability, style needs, and next steps. Full booking and pricing tools are still being organized.</p><a className="button" href="mailto:handsgifted322@gmail.com?subject=Hands%20Gifted%20Braiding%20Inquiry">Braiding inquiry</a></article>
-        <article className="public-page-card"><span className="status-label">Product interest</span><h2>Products in development</h2><p>Ask about digital resources, family organization tools, journals, guides, recipes, apparel concepts, and other Hands Gifted products as they become ready.</p><a className="button" href="mailto:handsgifted322@gmail.com?subject=Hands%20Gifted%20Product%20Interest">Product inquiry</a></article>
-        <article className="public-page-card public-page-wide"><h2>Vendors, collaborators, and future partnerships</h2><p>Hands Gifted is still building its family-owned business model. Potential vendors, mentors, collaborators, organizations, and future partners can use the public email and clearly state the purpose of the message.</p><div className="public-page-actions"><a className="button gold" href="mailto:handsgifted322@gmail.com?subject=Hands%20Gifted%20Collaboration%20Inquiry">Collaboration inquiry</a><a className="button" href="/about">Read about Hands Gifted</a></div></article>
+        <article className="public-page-card public-page-wide"><span className="status-label">Public contact</span><h2>Email Hands Gifted</h2><p>For general public inquiries, use the Hands Gifted business email and include enough detail to identify what you are contacting us about.</p><div className="contact-list"><a href="mailto:handsgifted322@gmail.com">handsgifted322@gmail.com</a></div></article>
+        {contactReasons.map(([title,body,subject])=><article className="public-page-card" key={title}><span className="status-label">Contact reason</span><h3>{title}</h3><p>{body}</p><a className="button" href={`mailto:handsgifted322@gmail.com?subject=${subject}`}>Email about this</a></article>)}
+        <article className="public-page-card public-page-wide"><span className="status-label">Resource integrity</span><h2>Resource listings and partnerships are not the same thing.</h2><p>Hands Gifted may share public information about an outside organization because it appears useful and has been checked. That does not mean the organization sponsors, endorses, or partners with Hands Gifted. Formal relationships should be identified only after they actually exist.</p></article>
       </div>
-      <div className="public-page-note"><strong>Privacy:</strong> Do not send children&apos;s school records, medical information, financial records, case-management documents, or other private family information through the public contact channel.</div>
+      <div className="public-page-note"><strong>Privacy:</strong> Do not send children's school records, medical information, financial records, legal documents, case-management records, passwords, precise home addresses, or other private family information through the public contact channel.</div>
     </section>
     <SiteFooter />
   </main>;
