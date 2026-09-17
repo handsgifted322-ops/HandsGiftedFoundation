@@ -1,24 +1,34 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
 
-const nav = [["Home","/"],["Household System","/household-system"],["R&D","/programs"],["About","/about"],["Contact","/contact"]] as const;
+const serviceLanes = [
+  ["Resource Navigation", "Public resource pages can help families find verified outside programs, youth opportunities, and practical support. Basic access information should remain free."],
+  ["Learning & Life-Skills Resources", "Hands Gifted can develop structured lessons, activity packs, workbooks, family learning paths, and practical skill resources for children and caregivers."],
+  ["Household Systems", "Deeper planning systems, routines, checklists, SOP collections, meal/inventory tools, and implementation resources can be offered as products or guided services."],
+  ["Workshops & Classes", "Future workshops may cover practical life skills, family organization, children's learning, technology, cooking, sewing, or other developed areas only after the material and delivery model are ready."],
+  ["Membership / Resource Library", "A future subscription can provide organized access to deeper lessons, downloads, updated resource collections, family tools, and member-only learning pathways."],
+  ["Collaboration & Community Work", "Hands Gifted may work with verified organizations, educators, youth programs, vendors, or community groups when a real relationship and clear scope exist."],
+] as const;
 
 export default function ServicesPage(){
   return <main className="public-page">
     <SiteHeader />
     <section className="public-page-hero">
-      <span>Hands Gifted Current Focus</span>
-      <h1>One flagship first.</h1>
-      <p>The current business-development focus is the Hands Gifted Family Household Operating System. Other skills and concepts remain internal research and development unless validation supports a later launch.</p>
+      <span>Hands Gifted Services & Deeper Support</span>
+      <h1>Free information first. Deeper support when it is ready.</h1>
+      <p>The public resource center is designed to be genuinely useful on its own. Products, memberships, classes, workshops, and direct services are separate deeper layers and should only be offered when Hands Gifted has developed the content, process, pricing, safety standards, and delivery needed to support them well.</p>
+      <div className="hg-hero-actions"><a className="button gold" href="/resources">Use public resources</a><a className="button" href="/contact">Ask about availability</a></div>
     </section>
+
     <section className="public-page-content">
-      <nav className="public-page-nav" aria-label="Public website">{nav.map(([label,href])=><a href={href} key={label}>{label}</a>)}</nav>
       <div className="public-page-grid">
-        <article className="public-page-card"><span className="status-label">90-day flagship</span><h2>Family Household Operating System</h2><p>A practical system in development for women and mothers managing busy or rebuilding households, bringing recurring planning, meals, inventory, resets, responsibilities, schedules, and simple SOPs into one clearer operating approach.</p><a className="button gold" href="/household-system">See the flagship</a></article>
-        <article className="public-page-card"><span className="status-label">Validation</span><h2>Pilot & Customer Feedback</h2><p>Hands Gifted is validating whether the target customer understands the household-overload problem, wants the system, uses it, and finds it valuable enough to pay for.</p><a className="button" href="/contact">Ask about participating</a></article>
-        <article className="public-page-card"><span className="status-label">Internal R&amp;D</span><h2>Skills & Development Lanes</h2><p>Cooking, gardening, sewing, hair/self-care, Family Academy, creative work, and related concepts continue as research, household practice, and content evidence rather than separate active business launches.</p><a className="button" href="/programs">See R&amp;D lanes</a></article>
+        {serviceLanes.map(([title,body])=><article className="public-page-card" key={title}><span className="status-label">Service pathway</span><h2>{title}</h2><p>{body}</p></article>)}
+        <article className="public-page-card public-page-wide">
+          <span className="status-label">Current availability standard</span>
+          <h2>Do not confuse a future service lane with a service that can be purchased today.</h2>
+          <p>Hands Gifted will clearly label what is available now, what is accepting interest, what is being piloted, and what remains in development. Public resource information does not create a professional-client relationship and does not replace licensed medical, legal, financial, mental-health, educational, or social-service professionals.</p>
+        </article>
       </div>
-      <div className="public-page-note"><strong>Proof before expansion:</strong> Hands Gifted will not treat every useful skill or idea as a separate launched business. New public offers move forward only when the flagship focus and evidence support them.</div>
     </section>
     <SiteFooter />
   </main>;
