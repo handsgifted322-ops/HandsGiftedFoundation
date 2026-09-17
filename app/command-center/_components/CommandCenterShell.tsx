@@ -28,6 +28,10 @@ export function CommandCenterShell({children,active="today",context="all",rightR
   return <div className={styles.shell}>
     <header className={styles.appBar}>
       <div className={styles.brand}><div className={styles.brandMark}>HG</div><div className={styles.brandText}><strong>Command Center</strong><span>Founder + Family Operations</span></div></div>
+      <nav className={styles.viewSwitch} aria-label="Command Center view">
+        <Link className={styles.viewMode} href="/command-center/dashboard">Focus View</Link>
+        <span className={`${styles.viewMode} ${styles.viewModeActive}`}>Operator View</span>
+      </nav>
       <div className={styles.actions}><span className={styles.privateBadge}>Private</span><Link className={styles.iconButton} href="/command-center/discover" aria-label="Search and discover">⌕</Link><Link className={styles.iconButton} href="/command-center/approvals" aria-label="Open decisions and alerts">●</Link><Link className={styles.iconButton} href="/command-center/more" aria-label="Open profile and settings">S</Link></div>
     </header>
     <div className={styles.contextBar}><nav className={styles.contextTabs} aria-label="Command Center context">
