@@ -2,11 +2,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "../command-center.module.css";
 
-type ActiveNav="today"|"inbox"|"calendar"|"more"|"approvals"|"waiting"|"projects"|"routines"|"discover"|"review";
+type ActiveNav="dashboard"|"today"|"inbox"|"calendar"|"more"|"approvals"|"waiting"|"projects"|"routines"|"discover"|"review";
 type Context="all"|"business"|"family"|"personal";
 
 const sideActionLinks=[
-  ["Today","/command-center","today"],
+  ["Dashboard","/command-center/dashboard","dashboard"],
+  ["My Day","/command-center","today"],
   ["Inbox & Triage","/command-center/inbox","inbox"],
   ["Approvals","/command-center/approvals","approvals"],
   ["Waiting & Follow-ups","/command-center/waiting","waiting"],
@@ -23,7 +24,7 @@ const sideSystemLinks=[
 function contextHref(path:string, context:Context){return context==="all"?path:`${path}?context=${context}`}
 
 export function CommandCenterShell({children,active="today",context="all",rightRail}: {children:ReactNode;active?:ActiveNav;context?:Context;rightRail?:ReactNode}){
-  const currentPath=active==="today"?"/command-center":active==="inbox"?"/command-center/inbox":active==="calendar"?"/command-center/calendar":active==="more"?"/command-center/more":`/command-center/${active}`;
+  const currentPath=active==="dashboard"?"/command-center/dashboard":active==="today"?"/command-center":active==="inbox"?"/command-center/inbox":active==="calendar"?"/command-center/calendar":active==="more"?"/command-center/more":`/command-center/${active}`;
   return <div className={styles.shell}>
     <header className={styles.appBar}>
       <div className={styles.brand}><div className={styles.brandMark}>HG</div><div className={styles.brandText}><strong>Command Center</strong><span>Founder + Family Operations</span></div></div>
@@ -43,7 +44,7 @@ export function CommandCenterShell({children,active="today",context="all",rightR
       <aside className={styles.detailPane} aria-label="Command Center quick status">{rightRail??<><div className={styles.detailCard}><h3>Operating rule</h3><p>The Command Center brings decisions and next actions forward. Private records stay private; public release always requires an explicit approval.</p></div></>}</aside>
     </div>
     <nav className={styles.bottomNav} aria-label="Primary Command Center navigation">
-      <Link href={contextHref("/command-center",context)} className={`${styles.navItem} ${active==="today"?styles.navActive:""}`}><span className={styles.navIcon}>⌂</span><span>Today</span></Link>
+      <Link href={contextHref("/command-center/dashboard",context)} className={`${styles.navItem} ${active==="dashboard"?styles.navActive:""}`}><span className={styles.navIcon}>⌂</span><span>Dashboard</span></Link>
       <Link href={contextHref("/command-center/inbox",context)} className={`${styles.navItem} ${active==="inbox"?styles.navActive:""}`}><span className={styles.navIcon}>▣</span><span>Inbox</span></Link>
       <Link href="/command-center/inbox#capture" className={`${styles.navItem} ${styles.capture}`}><span className={styles.navIcon}>＋</span><span>Capture</span></Link>
       <Link href={contextHref("/command-center/calendar",context)} className={`${styles.navItem} ${active==="calendar"?styles.navActive:""}`}><span className={styles.navIcon}>□</span><span>Calendar</span></Link>
