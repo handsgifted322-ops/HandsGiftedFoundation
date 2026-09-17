@@ -3,9 +3,9 @@ import { SiteFooter } from "../../components/SiteFooter";
 
 const contactReasons = [
   ["Resource correction or suggestion", "Report an outdated link, suggest a legitimate family or youth resource, or share public information that may belong in the Resource Center.", "Hands%20Gifted%20Resource%20Suggestion"],
-  ["Product or membership interest", "Ask about workbooks, planners, children's learning resources, family systems, future membership access, or other Hands Gifted products as they become available.", "Hands%20Gifted%20Product%20or%20Membership%20Interest"],
+  ["Product interest", "Ask about workbooks, planners, children's learning resources, skill-based products, family systems, or other Hands Gifted creations as they become available.", "Hands%20Gifted%20Product%20Interest"],
   ["Collaboration or partnership", "Organizations, educators, youth programs, vendors, and community groups can introduce a real collaboration opportunity. Hands Gifted will not label an organization a partner until a partnership actually exists.", "Hands%20Gifted%20Collaboration%20Inquiry"],
-  ["General question", "Use the public contact channel for questions about Hands Gifted resources, the website, or current availability.", "Hands%20Gifted%20General%20Inquiry"],
+  ["General question", "Use the public contact channel for questions about Hands Gifted resources, the website, products, services, or current availability.", "Hands%20Gifted%20General%20Inquiry"],
 ] as const;
 
 export default function ContactPage(){
@@ -13,8 +13,9 @@ export default function ContactPage(){
     <SiteHeader />
     <section className="public-page-hero">
       <span>Contact Hands Gifted</span>
-      <h1>Questions, resource suggestions, and collaboration.</h1>
-      <p>Use the public contact channel for Hands Gifted resource questions, corrections, product or membership interest, and legitimate collaboration conversations.</p>
+      <h1>Questions, service requests, resources, products, and collaboration.</h1>
+      <p>Use the service-booking pathway for Cooking, Gardening, Braiding, or Sewing inquiries. Use this public contact page for resource corrections, product questions, collaboration conversations, and general Hands Gifted business inquiries.</p>
+      <div className="hg-hero-actions"><a className="button gold" href="/book">Book / request a service</a><a className="button" href="/skills">Explore Hands Gifted Skills</a></div>
     </section>
     <section className="public-page-content">
       <div className="public-page-grid">
