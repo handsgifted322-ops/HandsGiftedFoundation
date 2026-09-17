@@ -26,18 +26,18 @@ function isPast(value:string|null){return Boolean(value && new Date(value).getTi
 function priorityScore(value:string|null){return value==="urgent"?4:value==="high"?3:value==="normal"?2:1}
 
 const workAreas = [
-  ["📖","Spiritual Foundation","Bible · Prayer · Sabbath · Study","/command-center/more"],
-  ["🏠","Household","Home · Meals · Routines · Family care","/command-center/household"],
-  ["💼","Executive","Schedule · Email · Tasks · Follow-ups","/command-center/inbox"],
-  ["♛","Hands Gifted CEO","Projects · Programs · Content · Business","/command-center/projects"],
-  ["🛡","Family Stability","Housing · Utilities · Transportation · Needs","/command-center/operations"],
-  ["🎓","Family Academy","Learning · Assignments · Progress · Skills","/command-center/academy"],
-  ["🎒","Children & School","Schedules · Assignments · Events · Supplies","/command-center/academy"],
-  ["🍴","Food & Kitchen","Meals · Prep · Inventory · Grocery systems","/command-center/household"],
-  ["🧹","Home Management","Cleaning · Laundry · Repairs · Organization","/command-center/household"],
-  ["📦","Inventory Center","Needs · Low items · Household supplies","/command-center/operations"],
-  ["✉","Communication Hub","Email · Messages · Alerts · Follow-ups","/command-center/inbox"],
-  ["🖥","Website Development","Content · Design · Pages · Deployment","/command-center/projects"],
+  ["📖","Spiritual Foundation","Bible · Prayer · Sabbath · Study","/command-center/workspace/spiritual"],
+  ["🏠","Household","Home · Meals · Routines · Family care","/command-center/workspace/household"],
+  ["💼","Executive","Schedule · Email · Tasks · Follow-ups","/command-center/workspace/executive"],
+  ["♛","Hands Gifted CEO","Projects · Programs · Content · Business","/command-center/workspace/hands-gifted-ceo"],
+  ["🛡","Family Stability","Housing · Utilities · Transportation · Needs","/command-center/workspace/stability"],
+  ["🎓","Family Academy","Learning · Assignments · Progress · Skills","/command-center/workspace/academy"],
+  ["🎒","Children & School","Schedules · Assignments · Events · Supplies","/command-center/workspace/children-school"],
+  ["🍴","Food & Kitchen","Meals · Prep · Inventory · Grocery systems","/command-center/workspace/food-kitchen"],
+  ["🧹","Home Management","Cleaning · Laundry · Repairs · Organization","/command-center/workspace/home-management"],
+  ["📦","Inventory Center","Needs · Low items · Household supplies","/command-center/workspace/inventory"],
+  ["✉","Communication Hub","Email · Messages · Alerts · Follow-ups","/command-center/workspace/communications"],
+  ["🖥","Website Development","Content · Design · Pages · Deployment","/command-center/workspace/website"],
 ] as const;
 
 export default async function MyDayDashboard(){
