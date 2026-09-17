@@ -1,18 +1,18 @@
 const publicAreas = [
-  ["Home", "/", "The current Hands Gifted family-business starting point."],
-  ["Shop", "/shop", "Products and digital resources being prepared for release."],
-  ["Services", "/services", "What can be requested now and what is still in development."],
-  ["About", "/about", "Why the business starts with our own household first."],
-  ["Contact", "/contact", "Questions, inquiries, future collaborations, and updates."],
+  ["Resource Center", "/resources", "Browse the six main resource pathways for children, parents, caregivers, and families."],
+  ["Kids & Learning", "/resources/kids-learning", "Education, gifts, technology, creativity, money skills, and opportunities for children."],
+  ["Community Resources", "/resources/community-resources", "Verified programs, family assistance, youth opportunities, and community support."],
+  ["Shop", "/shop", "Workbooks, planners, digital resources, and other Hands Gifted products as they are released."],
+  ["About", "/about", "The child-centered, faith-based purpose and public-resource model behind Hands Gifted."],
 ] as const;
 
 export function PublicAreaNav() {
   return (
     <section className="public-area-shell" aria-label="Public Hands Gifted website areas">
       <div className="public-area-intro">
-        <span>Public website</span>
-        <h2>Know what is real, what is ready, and what is still being built.</h2>
-        <p>The public website documents the family business honestly. Private household systems stay protected, while products, services, skills, and development work are shared according to their actual status.</p>
+        <span>Keep exploring</span>
+        <h2>One question can lead to a much deeper learning path.</h2>
+        <p>Hands Gifted is designed to let families move from a real need into practical information, scripture study, verified resources, skill development, and deeper tools without exposing private family information.</p>
       </div>
       <nav className="public-area-grid">
         {publicAreas.map(([label, href, description], index) => (
