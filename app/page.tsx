@@ -38,12 +38,12 @@ export default function Home(){
       <div className="hg-hero-copy">
         <div className="hg-kicker">Children • Family • Faith • Skills • Resources</div>
         <h1>Discover the gift.<br/><span>Build the skill. Prepare for life.</span></h1>
-        <p className="hg-hero-lead">Hands Gifted is a faith-centered child and family development platform where children and families can learn, build practical skills, follow scripture into real-life application, find trustworthy resources, request Hands Gifted services, and discover original products as they are developed.</p>
+        <p className="hg-hero-lead">Choose what you need today: help a child learn, practice a useful skill, strengthen home routines, find family resources, or explore Hands Gifted services and products.</p>
         <div className="hg-hero-actions">
-          <a className="button gold" href="/resources/kids-learning">Start with kids & learning</a>
-          <a className="button glass" href="/skills">Explore Hands Gifted Skills</a>
+          <a className="button gold" href="/resources/kids-learning">Help a child learn</a>
+          <a className="button glass" href="/skills">Practice a skill</a>
         </div>
-        <div className="hg-hero-note"><strong>Children at the center. Families around them. Skills put into practice.</strong><span>Public information should be valuable without giving away every complete Hands Gifted tool, product, or service process.</span></div>
+        <div className="hg-hero-note"><strong>Start where you are.</strong><span>Choose a pathway, use the available tools and resources, and take your next practical step.</span></div>
       </div>
       <div className="hg-hero-visual" aria-label="Hands Gifted child, family, and practical skill development">
         <div className="hg-visual-main"><img src="/catalog/family-learning.jpg" alt="Children and family learning together" /></div>
@@ -65,8 +65,8 @@ export default function Home(){
     <section id="children" className="hg-section hg-builds">
       <div className="hg-section-heading">
         <span>Start with the child</span>
-        <h2>What does this child need to learn, practice, discover, or access?</h2>
-        <p>Hands Gifted organizes learning around the whole child: knowledge, practical skills, faith, creativity, technology, responsibility, opportunity, and preparation for adulthood.</p>
+        <h2>What do you need today?</h2>
+        <p>Choose a pathway below and go directly to information, activities, resources, skills, or support you can use.</p>
       </div>
       <div className="hg-build-grid">
         {childPathways.map(([title,body,href])=><a className="hg-build-card" key={title} href={href}>
@@ -92,9 +92,9 @@ export default function Home(){
 
     <section className="hg-section hg-model">
       <div className="hg-model-intro">
-        <span>How the ecosystem works</span>
-        <h2>Child → skill → family → faith → deeper value.</h2>
-        <p>The public website should help someone learn something useful first. From there they can move into practical skill worlds, scripture study, family support, verified resources, products, or services without everything being collapsed into one giant free page.</p>
+        <span>Choose your next step</span>
+        <h2>Learn. Practice. Support your family. Keep building.</h2>
+        <p>Use the pathway that fits your need now. Move between learning, practical skills, scripture study, family support, verified resources, products, and services as needed.</p>
       </div>
       <div className="hg-proof-grid">
         {supportModel.map(([number,title,body])=><article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
@@ -104,8 +104,8 @@ export default function Home(){
     <section className="hg-section hg-now">
       <div className="hg-now-copy">
         <span>Hands Gifted Resource Center</span>
-        <h2>Six doors into a deeper family-resource ecosystem.</h2>
-        <p>Each area continues into subtopics, scripture study trails, practical guidance, verified outside resources, free information, and deeper Hands Gifted tools as they are developed.</p>
+        <h2>Find information and resources by need.</h2>
+        <p>Open the area that matches your situation to find practical guidance, scripture study trails, and verified outside resources.</p>
       </div>
       <div className="hg-build-grid">
         {publicResourceAreas.map((area)=><a className="hg-build-card" key={area.slug} href={`/resources/${area.slug}`}>
@@ -131,19 +131,19 @@ export default function Home(){
 
     <section className="hg-section hg-future">
       <div>
-        <span>Free resources + protected creations + direct services</span>
-        <h2>Give real value without giving away the entire Hands Gifted business.</h2>
-        <p>Public information, scripture pathways, verified resources, and selected starter guidance can remain accessible. Original books, workbooks, planners, kits, courses, systems, member resources, and service processes belong in the product or service layer when they are ready.</p>
+        <span>Resources, products & services</span>
+        <h2>Choose what you want to use.</h2>
+        <p>Use free resources now, explore available products, or request a service. Offerings appear here when they are ready for public use.</p>
       </div>
       <div className="hg-future-actions"><a className="button gold" href="/resources">Use free resources</a><a className="button" href="/shop">See products</a><a className="button" href="/book">Book a service</a></div>
     </section>
 
     <PublicAreaNav />
 
-    <section className="hg-private-note"><strong>Private family information stays private.</strong><span>The public site can be informed by real experience without publishing children&apos;s school records, health information, legal matters, household finances, private journals, addresses, or other protected family details.</span></section>
+    
 
     <section className="hg-final-cta">
-      <div><span>Hands Gifted</span><h2>Learn something. Develop a gift. Use the skill. Keep going deeper.</h2><p>Start with children and learning, enter a Hands Gifted skill world, support the family around the child, connect with trustworthy resources, and use deeper products or services when they fit the need.</p></div>
+      <div><span>Hands Gifted</span><h2>What will you work on today?</h2><p>Choose learning, a practical skill, family resources, a product, or a service and take the next step.</p></div>
       <div><a className="button gold" href="/skills">Explore Hands Gifted Skills</a><a className="button glass" href="/resources">Find family resources</a></div>
     </section>
 
