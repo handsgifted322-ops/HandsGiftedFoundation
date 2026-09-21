@@ -17,6 +17,7 @@ export async function captureWork(formData:FormData){
   const dueRaw=String(formData.get("due_at")??"").trim();
   const area=areas.has(rawArea)?rawArea:"general";
   const privacy=privacyLevels.has(rawPrivacy)?rawPrivacy:"private";
+  const confidentiality=privacy==="internal"?"internal":"private";
   const priority=priorities.has(rawPriority)?rawPriority:"normal";
   const dueAt=dueRaw?new Date(dueRaw+"T12:00:00").toISOString():null;
 
@@ -43,10 +44,10 @@ export async function captureWork(formData:FormData){
     summary:"Command Center capture routed to "+area.replaceAll("_"," ")+".",
     source_type:"command_center_capture",
     source_ref:task.id,
-    maturity:"captured",
-    confidentiality:privacy,
-    approval_status:"needs_triage",
-    metadata:{priority,due_at:dueAt}
+    maturity:"conversation",
+    confidentiality,
+    approval_status:"needs_review",
+    metadata:{priority,due_at:dueAt,privacy_scope:privacy}
   });
 
   revalidatePath("/command-center/dashboard");
