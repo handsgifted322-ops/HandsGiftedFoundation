@@ -15,6 +15,12 @@ Protected surfaces include:
 
 Runtime/business data remains in the Hands Gifted production Supabase project with RLS. GitHub remains the code/migration and canonical technical-documentation source of truth. Vercel remains deployment infrastructure. Library/Drive remains the document-record layer. HXOS integration remains contract-based rather than database sharing.
 
+## V2 architecture and publishing discipline
+
+V2 is organized as **Personal → Family → Public**, supported by a **Shared Knowledge & Evidence** layer and system/internal infrastructure. Personal and Family are both protected, but they are separate authorization scopes; Family access does not automatically grant access to Personal records.
+
+Content follows a readiness workflow separate from access scope and business priority. New material is private by default and moves through `CAPTURED → DEVELOPING → ORGANIZED → VERIFY → APPROVAL → PUBLISH_READY → PUBLISHED → ARCHIVED`. Public routes may use only material deliberately approved for public scope. See [`docs/V2_CONTENT_READINESS_WORKFLOW.md`](docs/V2_CONTENT_READINESS_WORKFLOW.md).
+
 ## Current business focus
 
 The current 90-day business operating model is documented in [`docs/OPERATING_MODEL_90_DAY_FOCUS.md`](docs/OPERATING_MODEL_90_DAY_FOCUS.md).
