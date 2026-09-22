@@ -48,3 +48,8 @@ Node.js 22.x is required by `package.json`.
 Continue from `main`; preserve verified components rather than rebuilding the application from old static sources. Use feature branches and Vercel previews for material changes, then promote only verified work.
 
 Do not publish private household data into public routes or repository documentation. Do not claim planned features are production-complete until code, security, data readback, authorization, and deployment verification are complete.
+
+
+### V2 three-view principle
+
+Hands Gifted V2 uses **one idea, three views**: Personal, Family/Private, and Public. These are views over a canonical lineage, not three disconnected copies. See [`docs/V2_THREE_VIEW_PRINCIPLE.md`](docs/V2_THREE_VIEW_PRINCIPLE.md).
