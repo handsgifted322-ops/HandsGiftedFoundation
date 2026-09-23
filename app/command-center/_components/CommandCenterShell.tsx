@@ -2,10 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "../command-center.module.css";
 
-type ActiveNav="dashboard"|"today"|"inbox"|"calendar"|"more"|"approvals"|"waiting"|"projects"|"routines"|"discover"|"review"|"family-operations"|"family-stability"|"private-records"|"system-health";
+type ActiveNav="workspace"|"dashboard"|"today"|"inbox"|"calendar"|"more"|"approvals"|"waiting"|"projects"|"routines"|"discover"|"review"|"family-operations"|"family-stability"|"private-records"|"system-health";
 type Context="all"|"business"|"family"|"personal";
 
 const sideActionLinks=[
+  ["My Hands Gifted","/command-center/workspace","workspace"],
   ["Dashboard","/command-center/dashboard","dashboard"],
   ["My Day","/command-center","today"],
   ["Inbox & Triage","/command-center/inbox","inbox"],
@@ -32,7 +33,7 @@ const sideSystemLinks=[
 function contextHref(path:string, context:Context){return context==="all"?path:path+"?context="+context}
 
 export function CommandCenterShell({children,active="today",context="all",rightRail}: {children:ReactNode;active?:ActiveNav;context?:Context;rightRail?:ReactNode}){
-  const currentPath=active==="dashboard"?"/command-center/dashboard":active==="today"?"/command-center":active==="inbox"?"/command-center/inbox":active==="calendar"?"/command-center/calendar":active==="more"?"/command-center/more":"/command-center/"+active;
+  const currentPath=active==="workspace"?"/command-center/workspace":active==="dashboard"?"/command-center/dashboard":active==="today"?"/command-center":active==="inbox"?"/command-center/inbox":active==="calendar"?"/command-center/calendar":active==="more"?"/command-center/more":"/command-center/"+active;
   const sideLinks=(items:readonly (readonly [string,string,ActiveNav])[])=>
     items.map(([label,href,key])=><Link key={href} className={styles.sideLink+(active===key?" "+styles.sideLinkActive:"")} href={contextHref(href,context)}><span>{label}</span><span>›</span></Link>);
   return <div className={styles.shell}>
