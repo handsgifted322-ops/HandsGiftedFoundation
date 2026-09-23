@@ -83,3 +83,29 @@ export async function captureWorkspaceItem(formData:FormData){
   });
   revalidatePath("/command-center/workspace");
 }
+
+
+export async function saveAskLearnConversation(payload:{title:string;turns:{role:"user"|"assistant";content:string}[]}){
+  const title=String(payload?.title??"").trim().slice(0,240);
+  const turns=Array.isArray(payload?.turns)?payload.turns.slice(-20).filter(t=>(t?.role==="user"||t?.role==="assistant")&&typeof t?.content==="string"&&t.content.trim()).map(t=>({role:t.role,content:t.content.trim().slice(0,12000)})):[];
+  if(!title||!turns.length) return {ok:false};
+  const access=await getCommandAccess();
+  if(access.state!=="ready") return {ok:false};
+  const supabase=await createSupabaseServerClient();
+  const summary=turns.map(t=>`${t.role==="user"?"Question":"Hands Gifted"}: ${t.content}`).join("\n\n").slice(0,12000);
+  const {data,error}=await supabase.from("project_context_entries").insert({
+    organization_id:access.organizationId,
+    area:"private_owner_records",
+    title,
+    summary,
+    source_type:"v2_ask_learn_conversation",
+    source_ref:null,
+    maturity:"conversation",
+    confidentiality:"private",
+    approval_status:"needs_review",
+    metadata:{item_kind:"research",role_lenses:[],access_scope:"personal",readiness:"captured",conversation_turns:turns}
+  }).select("id").single();
+  revalidatePath("/command-center/workspace");
+  revalidatePath("/command-center/ask-learn");
+  return error||!data?{ok:false}:{ok:true,id:String(data.id)};
+}
