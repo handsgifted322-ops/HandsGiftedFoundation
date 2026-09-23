@@ -3,6 +3,8 @@ import { getCommandAccess } from "../../command-center/_lib/access";
 
 export const runtime="nodejs";
 
+type Turn={role:"user"|"assistant";content:string};
+
 function outputText(data:any){
   if(typeof data?.output_text==="string") return data.output_text;
   return (data?.output??[]).flatMap((item:any)=>item?.content??[]).filter((part:any)=>part?.type==="output_text").map((part:any)=>part.text).join("\n");
@@ -13,9 +15,12 @@ export async function POST(request:Request){
   if(access.state!=="ready") return NextResponse.json({error:"Unauthorized"},{status:401});
   const body=await request.json().catch(()=>null);
   const question=typeof body?.question==="string"?body.question.trim():"";
+  const rawHistory=Array.isArray(body?.history)?body.history:[];
+  const history:Turn[]=rawHistory.slice(-10).filter((t:any)=>(t?.role==="user"||t?.role==="assistant")&&typeof t?.content==="string"&&t.content.trim()).map((t:any)=>({role:t.role,content:t.content.trim().slice(0,8000)}));
   if(!question||question.length>8000) return NextResponse.json({error:"Enter a question."},{status:400});
   const key=process.env.OPENAI_API_KEY;
   if(!key) return NextResponse.json({error:"Ask & Learn is built, but the server AI connection still needs its API key configured."},{status:503});
+  const input=[...history.map(t=>({role:t.role,content:t.content})),{role:"user",content:question}];
   const response=await fetch("https://api.openai.com/v1/responses",{
     method:"POST",
     headers:{"Authorization":`Bearer ${key}`,"Content-Type":"application/json"},
@@ -23,7 +28,7 @@ export async function POST(request:Request){
       model:process.env.OPENAI_MODEL||"gpt-5.6-luna",
       store:false,
       instructions:"You are the Hands Gifted Ask & Learn assistant. Give a useful, direct answer. Separate documented facts from interpretation when that distinction matters. Do not pretend a source was checked unless web search actually supplied it. When faith or Scripture is relevant, label faith interpretation separately from factual evidence. Protect private family information. End with 2-4 concise next actions the user could take with the answer.",
-      input:question
+      input
     })
   });
   const data=await response.json().catch(()=>null);
