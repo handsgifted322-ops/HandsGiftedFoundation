@@ -1,40 +1,54 @@
-# V2 Three-View Principle
+# V2 Role Lenses and Access Contexts
 
-## One idea, three views
+## Two different dimensions
 
-Hands Gifted V2 should preserve a single underlying idea/work item while allowing it to be understood and used through three primary views:
+Hands Gifted V2 must not confuse personal-development identity with authorization or publication scope.
 
-### 1. Personal
-The founder/individual development view. Research, experimentation, notes, skill development, drafts, private evidence, ideas, and work-in-progress can begin here.
+### Development role lenses
+The owner's three primary personal-development lenses are:
+1. **Wife** — marriage, communication, household partnership, growth.
+2. **Mother** — parent direction, children, teaching, family development.
+3. **Daughter of Sarah** — faith, character, study, womanhood, practical development.
 
-### 2. Family / Private
-The household and guided-development view. Appropriate material can support family operations, parent-directed Academy learning, Kings of God, Daughters of Sarah, Enhanced Gifted, projects, practice, and family evidence without exposing owner-private records.
+These lenses help organize development. They do **not** grant access, change privacy, or create three copies of the same work.
 
-### 3. Public
-The outward Hands Gifted view. Deliberately approved material can become vital information, portfolio work, resources, products, services, programs, Academy offerings, teaching content, or other public outputs.
+### Access and visibility contexts
+Access is a separate dimension:
+- **Personal** — owner-private work and development.
+- **Family / Private** — protected household and Academy information available only to authorized family users.
+- **Public** — deliberately approved outward material.
+- **Shared Knowledge & Evidence** — protected canonical knowledge/evidence used by authorized systems.
+- **System Internal** — operational/system records.
 
 ## Core rule
 
-Do not create three disconnected copies of an idea merely because it has three audiences.
-
 Preserve one canonical lineage:
-**idea/work → appropriate view(s) → approved derivative/output**
+**input/work → development → evidence → appropriate protected use → reviewed derivative → approved public output**
 
-The underlying source and provenance remain traceable. A view is not automatically a publication state.
+A role lens is not an access scope. An access scope is not a publication state.
 
 Examples:
-- A sewing project can be personal development evidence, appropriate family learning material, and an approved public portfolio/product candidate.
-- Research can begin as personal inquiry, become a family Academy lesson, and later become a sourced public educational resource.
-- A cooking experiment can remain personal, support family meal/skill development, or mature into a recipe, service, product, class, or public resource.
-- An Academy method can be used privately with the family before selected verified components become a public program or subscription offering.
+- A sewing project can connect to the Mother's development lens without becoming family-visible.
+- Research can support a Daughter of Sarah study while remaining personal/private.
+- A family Academy activity can be family-visible without exposing the owner's private Wife-development records.
+- A completed project can remain protected evidence until an explicitly reviewed public derivative is approved.
 
 ## Separate dimensions
 
-The three views do not replace:
+Keep these dimensions independent:
+- development role lens
+- access/visibility scope
 - readiness: CAPTURED → DEVELOPING → ORGANIZED → VERIFY → APPROVAL → PUBLISH_READY → PUBLISHED → ARCHIVED
-- business priority: ACTIVE BUSINESS / INTERNAL R&D / FUTURE ROADMAP
+- business priority
 - execution status
 - evidence/provenance
 - authorization and child/privacy protections
 
-A record can therefore be PUBLIC-oriented but not publish-ready, FAMILY-visible but still developing, or PERSONAL and complete with no reason to publish it.
+## Information architecture
+
+The protected owner home is **My Hands Gifted**:
+**Today | Ask & Learn | My Work | Develop Me | Family | Publish**
+
+Underlying workstreams and databases remain available, but they do not all become primary navigation.
+
+The public site and authenticated workspace are two interfaces over one Hands Gifted platform. Public visitors discover and understand value. Account holders go further through protected learning, saved work, progress, projects, and authorized program/family capabilities.
