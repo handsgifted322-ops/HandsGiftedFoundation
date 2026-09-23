@@ -5,8 +5,8 @@ import styles from "./ask.module.css";
 
 type Turn={role:"user"|"assistant";content:string};
 
-export default function AskLearnClient(){
- const [question,setQuestion]=useState(""); const [turns,setTurns]=useState<Turn[]>([]); const [error,setError]=useState(""); const [loading,setLoading]=useState(false); const [saved,setSaved]=useState(false); const [saving,setSaving]=useState(false);
+export default function AskLearnClient({initialTurns=[]}:{initialTurns?:Turn[]}){
+ const [question,setQuestion]=useState(""); const [turns,setTurns]=useState<Turn[]>(initialTurns); const [error,setError]=useState(""); const [loading,setLoading]=useState(false); const [saved,setSaved]=useState(false); const [saving,setSaving]=useState(false);
  async function submit(e:FormEvent){e.preventDefault(); const next=question.trim(); if(!next)return; setLoading(true);setError("");setSaved(false);
   try{const r=await fetch("/api/ask-learn",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:next,history:turns})});const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not get an answer.");const answer=d.answer||"No answer returned.";setTurns(t=>[...t,{role:"user",content:next},{role:"assistant",content:answer}]);setQuestion("");}
   catch(err){setError(err instanceof Error?err.message:"Could not get an answer.");}finally{setLoading(false)}
