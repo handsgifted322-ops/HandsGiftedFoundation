@@ -10,7 +10,7 @@ export const metadata:Metadata={title:"My Hands Gifted | Workspace",robots:{inde
 
 type CountRow={count:number|null};
 const actions=[
- ["Ask & Learn","Start with a question. Research, guidance and useful knowledge belong here.","/v2-preview/research"],
+ ["Ask & Learn","Start with a question. Research, guidance and useful knowledge belong here.","/command-center/ask-learn"],
  ["Add My Work","Capture an idea, design, image concept, completed work, evidence or next step.","/command-center/inbox#capture"],
  ["Continue My Work","Reopen active projects instead of starting over.","/command-center/projects"],
  ["Develop Me","Wife · Mother · Daughter of Sarah — three roles, one development record.","/command-center/private-records"],
@@ -33,7 +33,7 @@ export default async function WorkspacePage(){
  return <CommandCenterShell active="dashboard" context="personal">
   <div className={styles.wrap}>
    <section className={styles.hero}><span className={styles.eyebrow}>MY HANDS GIFTED</span><h1>What are we developing today?</h1><p>One place to learn, create, develop, document the work, support the family, and prepare the right things to share.</p>
-    <div className={styles.quick}><Link href="/v2-preview/research">Ask a question</Link><Link href="/command-center/inbox#capture">Add something</Link><Link href="/command-center/projects">Continue work</Link></div>
+    <div className={styles.quick}><Link href="/command-center/ask-learn">Ask a question</Link><Link href="/command-center/inbox#capture">Add something</Link><Link href="/command-center/projects">Continue work</Link></div>
    </section>
    <section className={styles.captureBox}><div><span className={styles.eyebrowDark}>CAPTURE ONCE</span><h2>Bring the work here.</h2><p>Question, idea, design, research note, completed work or evidence. Start with what you have; organize it after capture.</p></div><form action={captureWorkspaceItem} className={styles.captureForm}><input name="title" required maxLength={240} placeholder="What are you working on?" /><textarea name="notes" maxLength={12000} rows={4} placeholder="Add the question, idea, notes, context, or what you completed..." /><div className={styles.formRow}><select name="kind" defaultValue="idea"><option value="question">Question</option><option value="idea">Idea</option><option value="work">Work in progress</option><option value="research">Research</option><option value="design">Design / creation</option><option value="evidence">Completed work / evidence</option></select><button type="submit">Save to My Hands Gifted</button></div><fieldset><legend>Connect to my development when relevant</legend><label><input type="checkbox" name="role" value="wife" /> Wife</label><label><input type="checkbox" name="role" value="mother" /> Mother</label><label><input type="checkbox" name="role" value="daughter_of_sarah" /> Daughter of Sarah</label></fieldset></form></section>
    <section className={styles.stats}>{stats.map(([label,value])=><div key={label}><strong>{value}</strong><span>{label}</span></div>)}</section>
