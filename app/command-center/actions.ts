@@ -56,3 +56,30 @@ export async function captureWork(formData:FormData){
   revalidatePath("/command-center/family-stability");
   revalidatePath("/command-center/private-records");
 }
+
+
+export async function captureWorkspaceItem(formData:FormData){
+  const title=String(formData.get("title")??"").trim();
+  const notes=String(formData.get("notes")??"").trim();
+  const kind=String(formData.get("kind")??"idea");
+  const roleValues=formData.getAll("role").map(String).filter(v=>["wife","mother","daughter_of_sarah"].includes(v));
+  if(!title||title.length>240||notes.length>12000) return;
+  const allowedKinds=new Set(["question","idea","work","research","design","evidence"]);
+  const itemKind=allowedKinds.has(kind)?kind:"idea";
+  const access=await getCommandAccess();
+  if(access.state!=="ready") return;
+  const supabase=await createSupabaseServerClient();
+  await supabase.from("project_context_entries").insert({
+    organization_id:access.organizationId,
+    area:"private_owner_records",
+    title,
+    summary:notes||"Captured in My Hands Gifted workspace.",
+    source_type:"v2_workspace_capture",
+    source_ref:null,
+    maturity:itemKind==="evidence"?"tested":"conversation",
+    confidentiality:"private",
+    approval_status:"needs_review",
+    metadata:{item_kind:itemKind,role_lenses:roleValues,access_scope:"personal",readiness:"captured"}
+  });
+  revalidatePath("/command-center/workspace");
+}
