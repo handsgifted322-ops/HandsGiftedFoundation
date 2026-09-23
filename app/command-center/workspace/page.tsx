@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "../../../lib/supabase/server";
 import { accessMessage, getCommandAccess } from "../_lib/access";
 import { CommandCenterShell } from "../_components/CommandCenterShell";
 import styles from "./workspace.module.css";
+import { captureWorkspaceItem } from "../actions";
 
 export const metadata:Metadata={title:"My Hands Gifted | Workspace",robots:{index:false,follow:false}};
 
@@ -34,6 +35,7 @@ export default async function WorkspacePage(){
    <section className={styles.hero}><span className={styles.eyebrow}>MY HANDS GIFTED</span><h1>What are we developing today?</h1><p>One place to learn, create, develop, document the work, support the family, and prepare the right things to share.</p>
     <div className={styles.quick}><Link href="/v2-preview/research">Ask a question</Link><Link href="/command-center/inbox#capture">Add something</Link><Link href="/command-center/projects">Continue work</Link></div>
    </section>
+   <section className={styles.captureBox}><div><span className={styles.eyebrowDark}>CAPTURE ONCE</span><h2>Bring the work here.</h2><p>Question, idea, design, research note, completed work or evidence. Start with what you have; organize it after capture.</p></div><form action={captureWorkspaceItem} className={styles.captureForm}><input name="title" required maxLength={240} placeholder="What are you working on?" /><textarea name="notes" maxLength={12000} rows={4} placeholder="Add the question, idea, notes, context, or what you completed..." /><div className={styles.formRow}><select name="kind" defaultValue="idea"><option value="question">Question</option><option value="idea">Idea</option><option value="work">Work in progress</option><option value="research">Research</option><option value="design">Design / creation</option><option value="evidence">Completed work / evidence</option></select><button type="submit">Save to My Hands Gifted</button></div><fieldset><legend>Connect to my development when relevant</legend><label><input type="checkbox" name="role" value="wife" /> Wife</label><label><input type="checkbox" name="role" value="mother" /> Mother</label><label><input type="checkbox" name="role" value="daughter_of_sarah" /> Daughter of Sarah</label></fieldset></form></section>
    <section className={styles.stats}>{stats.map(([label,value])=><div key={label}><strong>{value}</strong><span>{label}</span></div>)}</section>
    <section><div className={styles.heading}><div><span>WORKBENCH</span><h2>Start with what you are actually doing.</h2></div><p>You do not need to choose a database or department first.</p></div>
     <div className={styles.grid}>{actions.map(([title,desc,href])=><Link className={styles.card} href={href} key={title}><span className={styles.arrow}>↗</span><h3>{title}</h3><p>{desc}</p></Link>)}</div>
