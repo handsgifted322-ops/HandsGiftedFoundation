@@ -22,12 +22,13 @@ export default async function WorkspacePage(){
  const access=await getCommandAccess();
  if(access.state!=="ready"){const m=accessMessage(access.state);return <div className={styles.access}><h1>{m.title}</h1><p>{m.body}</p><Link href="/">Return to Hands Gifted</Link></div>}
  const supabase=await createSupabaseServerClient(); const org=access.organizationId;
- const [projects,tasks,evidence,knowledge,academy]=await Promise.all([
+ const [projects,tasks,evidence,knowledge,academy,recentWork]=await Promise.all([
   supabase.from("projects").select("*",{count:"exact",head:true}).eq("organization_id",org).not("status","in",'("completed","complete","archived")'),
   supabase.from("tasks").select("*",{count:"exact",head:true}).eq("organization_id",org).not("status","in",'("completed","complete")'),
   supabase.from("source_artifacts").select("*",{count:"exact",head:true}).eq("organization_id",org),
   supabase.from("operating_knowledge").select("*",{count:"exact",head:true}).eq("organization_id",org),
-  supabase.from("academy_assignments").select("*",{count:"exact",head:true}).eq("organization_id",org).not("status","in",'("completed","complete")')
+  supabase.from("academy_assignments").select("*",{count:"exact",head:true}).eq("organization_id",org).not("status","in",'("completed","complete")'),
+  supabase.from("project_context_entries").select("id,title,summary,source_type,created_at,metadata").eq("organization_id",org).eq("confidentiality","private").in("source_type",["v2_workspace_capture","v2_ask_learn_conversation"]).order("created_at",{ascending:false}).limit(8)
  ]);
  const stats=[["Active projects",projects.count??0],["Open actions",tasks.count??0],["Evidence",evidence.count??0],["Knowledge",knowledge.count??0],["Academy work",academy.count??0]];
  return <CommandCenterShell active="workspace" context="personal">
@@ -37,6 +38,7 @@ export default async function WorkspacePage(){
    </section>
    <section className={styles.captureBox}><div><span className={styles.eyebrowDark}>CAPTURE ONCE</span><h2>Bring the work here.</h2><p>Question, idea, design, research note, completed work or evidence. Start with what you have; organize it after capture.</p></div><form action={captureWorkspaceItem} className={styles.captureForm}><input name="title" required maxLength={240} placeholder="What are you working on?" /><textarea name="notes" maxLength={12000} rows={4} placeholder="Add the question, idea, notes, context, or what you completed..." /><div className={styles.formRow}><select name="kind" defaultValue="idea"><option value="question">Question</option><option value="idea">Idea</option><option value="work">Work in progress</option><option value="research">Research</option><option value="design">Design / creation</option><option value="evidence">Completed work / evidence</option></select><button type="submit">Save to My Hands Gifted</button></div><fieldset><legend>Connect to my development when relevant</legend><label><input type="checkbox" name="role" value="wife" /> Wife</label><label><input type="checkbox" name="role" value="mother" /> Mother</label><label><input type="checkbox" name="role" value="daughter_of_sarah" /> Daughter of Sarah</label></fieldset></form></section>
    <section className={styles.stats}>{stats.map(([label,value])=><div key={label}><strong>{value}</strong><span>{label}</span></div>)}</section>
+   {recentWork.data&&recentWork.data.length>0&&<section><div className={styles.heading}><div><span>RECENT WORK</span><h2>Continue instead of starting over.</h2></div><p>Your latest protected Hands Gifted captures and saved learning.</p></div><div className={styles.grid}>{recentWork.data.map((item:any)=><article className={styles.card} key={item.id}><span className={styles.arrow}>{item.source_type==="v2_ask_learn_conversation"?"ASK":"WORK"}</span><h3>{item.title}</h3><p>{String(item.summary||"").slice(0,180)}{String(item.summary||"").length>180?"…":""}</p>{item.source_type==="v2_ask_learn_conversation"?<Link href={"/command-center/ask-learn?saved="+item.id}>Reopen learning →</Link>:<Link href="/command-center/projects">Continue work →</Link>}</article>)}</div></section>}
    <section><div className={styles.heading}><div><span>WORKBENCH</span><h2>Start with what you are actually doing.</h2></div><p>You do not need to choose a database or department first.</p></div>
     <div className={styles.grid}>{actions.map(([title,desc,href])=><Link className={styles.card} href={href} key={title}><span className={styles.arrow}>↗</span><h3>{title}</h3><p>{desc}</p></Link>)}</div>
    </section>
