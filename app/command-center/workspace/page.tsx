@@ -30,7 +30,7 @@ export default async function WorkspacePage(){
   supabase.from("academy_assignments").select("*",{count:"exact",head:true}).eq("organization_id",org).not("status","in",'("completed","complete")')
  ]);
  const stats=[["Active projects",projects.count??0],["Open actions",tasks.count??0],["Evidence",evidence.count??0],["Knowledge",knowledge.count??0],["Academy work",academy.count??0]];
- return <CommandCenterShell active="dashboard" context="personal">
+ return <CommandCenterShell active="workspace" context="personal">
   <div className={styles.wrap}>
    <section className={styles.hero}><span className={styles.eyebrow}>MY HANDS GIFTED</span><h1>What are we developing today?</h1><p>One place to learn, create, develop, document the work, support the family, and prepare the right things to share.</p>
     <div className={styles.quick}><Link href="/command-center/ask-learn">Ask a question</Link><Link href="/command-center/inbox#capture">Add something</Link><Link href="/command-center/projects">Continue work</Link></div>
