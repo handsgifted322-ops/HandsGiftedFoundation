@@ -1,98 +1,192 @@
-export type AcademyUnderstandingModule = {
+export type AcademyLifeLens = "world-life" | "israelite-life" | "both";
+
+export type AcademyTopic = {
   slug: string;
   title: string;
-  category: "heritage" | "history" | "biblical-understanding";
-  status: "ready" | "planned";
-  childQuestion: string;
-  purpose: string;
-  learningAreas: readonly string[];
-  familyStudy: readonly string[];
+  lens: AcademyLifeLens;
+  timing?: { months?: readonly number[]; dates?: readonly string[]; seasonLabel?: string };
+  childPrompt: string;
+  overview: string;
+  learning: readonly string[];
   activities: readonly string[];
+  familyStudy?: readonly string[];
 };
 
-export const heritageHistoryBiblicalUnderstanding = {
-  title: "Heritage, History & Biblical Understanding",
-  description:
-    "A Family Academy learning collection for understanding cultural observances, history, heritage, and the family's biblical practices. Lessons separate historical research, Scripture study, and family teaching so children can understand both what others observe and why their household may make a different choice.",
-  modules: [
-    {
-      slug: "hispanic-heritage-month",
-      title: "Hispanic Heritage Month",
-      category: "heritage",
-      status: "ready",
-      childQuestion: "What is Hispanic Heritage Month, and what are we learning from it?",
-      purpose:
-        "Explore Hispanic and Latino histories and cultures through geography, people, contributions, food, art, music, language, and hands-on learning.",
-      learningAreas: [
-        "Countries and geography",
-        "Historical people and contributions",
-        "Food and family traditions",
-        "Art, music, and language",
-        "Research and hands-on projects",
-      ],
-      familyStudy: [
-        "Learn the historical background before drawing conclusions.",
-        "Distinguish cultural learning from the family's own religious observance.",
-        "Ask respectful questions about similarities and differences among families and cultures.",
-      ],
-      activities: [
-        "Map countries and regions connected to the lesson.",
-        "Research one historical figure or contribution.",
-        "Prepare or study a traditional food.",
-        "Create an art, music, language, or history project.",
-      ],
-    },
-    {
-      slug: "christmas-history-family-practice",
-      title: "Christmas: History & Why Our Family Does Not Observe It",
-      category: "biblical-understanding",
-      status: "ready",
-      childQuestion: "Everybody at school is doing this. Why doesn't our family celebrate Christmas?",
-      purpose:
-        "Give children an age-appropriate place to study the history of Christmas, examine Scripture, understand the family's teaching and practice, ask questions, and choose a constructive alternative learning activity.",
-      learningAreas: [
-        "Historical background and development of Christmas traditions",
-        "What Scripture says and does not say",
-        "The family's biblical teaching and practice",
-        "How to explain the family's choice respectfully",
-        "How to respond when school or friends are celebrating",
-      ],
-      familyStudy: [
-        "Keep historical claims identified as history and Scripture claims identified as Scripture.",
-        "Use the KJV 1611 and Apocrypha for the family's Scripture study.",
-        "Attach parent-approved ministry or study resources only after review.",
-        "Give children room to ask questions without making them feel isolated for not participating.",
-      ],
-      activities: [
-        "Build a history timeline from researched sources.",
-        "Read and record the Scriptures selected by the parent.",
-        "Practice a respectful answer to: Why doesn't your family celebrate?",
-        "Choose a family-approved study, service, creative, or practical-life activity instead.",
-      ],
-    },
-    {
-      slug: "day-of-atonement",
-      title: "Day of Atonement",
-      category: "biblical-understanding",
-      status: "planned",
-      childQuestion: "What is the Day of Atonement, and why does our family observe it?",
-      purpose:
-        "Build an age-appropriate Scripture lesson explaining the observance, its biblical foundation, family preparation, reflection, and practical application.",
-      learningAreas: ["Scripture", "Historical and biblical context", "Family practice", "Reflection"],
-      familyStudy: ["Parent-approved Scriptures", "Age-appropriate explanation", "Questions and reflection"],
-      activities: ["Scripture notebook", "Family discussion", "Reflection activity"],
-    },
-    {
-      slug: "feast-of-tabernacles",
-      title: "Feast of Tabernacles",
-      category: "biblical-understanding",
-      status: "planned",
-      childQuestion: "What is the Feast of Tabernacles, and why does our family observe it?",
-      purpose:
-        "Build an age-appropriate Scripture and family-learning module covering the feast, its biblical context, family preparation, and meaningful activities.",
-      learningAreas: ["Scripture", "Biblical history", "Family preparation", "Hands-on learning"],
-      familyStudy: ["Parent-approved Scriptures", "Historical context", "Family teaching and practice"],
-      activities: ["Scripture notebook", "Family feast planning", "Age-appropriate hands-on project"],
-    },
-  ] satisfies readonly AcademyUnderstandingModule[],
-} as const;
+export type AcademySubcategory = {
+  slug: string;
+  title: string;
+  description: string;
+  topics: readonly AcademyTopic[];
+};
+
+export type AcademyCategory = {
+  slug: string;
+  title: string;
+  description: string;
+  subcategories: readonly AcademySubcategory[];
+};
+
+/**
+ * Academy Knowledge Library
+ *
+ * Categories -> subcategories -> topics.
+ * Topics can be surfaced contextually on a learner dashboard by month/date/season.
+ * The two lenses are intentionally distinct:
+ * - world-life: what children encounter in school, community, history, and culture
+ * - israelite-life: the household's Scripture-centered teaching, observances, and practice
+ * - both: topics designed to teach the distinction/relationship explicitly
+ */
+export const academyKnowledgeLibrary: readonly AcademyCategory[] = [
+  {
+    slug: "world-life",
+    title: "Understanding the World Around Us",
+    description:
+      "Learn the history, cultures, observances, institutions, ideas, and events children and adults encounter in everyday life without assuming that learning about an observance means participating in it.",
+    subcategories: [
+      {
+        slug: "calendar-culture-observances",
+        title: "Calendar, Culture & Observances",
+        description: "Understand what is happening around us, where it came from, and why people observe it.",
+        topics: [
+          {
+            slug: "christmas",
+            title: "Christmas in the World Around Us",
+            lens: "world-life",
+            timing: { months: [12], seasonLabel: "December" },
+            childPrompt: "Why is Christmas everywhere in December, and what is it?",
+            overview:
+              "Study the history and development of Christmas traditions, how the observance appears in school and community life, and the difference between understanding a cultural observance and participating in it.",
+            learning: ["Historical background", "Common traditions", "School and community context", "Respectful cultural understanding"],
+            activities: ["Build a history timeline", "Compare traditions across places and time", "Record questions for family study"],
+          },
+          {
+            slug: "hispanic-heritage",
+            title: "Hispanic Heritage",
+            lens: "world-life",
+            timing: { months: [9, 10], seasonLabel: "Hispanic Heritage season" },
+            childPrompt: "What histories and cultures are being highlighted during Hispanic Heritage learning?",
+            overview:
+              "Explore Hispanic and Latino histories and cultures through geography, people, contributions, food, art, music, language, and research.",
+            learning: ["Countries and geography", "Historical people and contributions", "Food and traditions", "Art, music, and language"],
+            activities: ["Map countries and regions", "Research a historical figure", "Study a traditional food", "Create an art, music, language, or history project"],
+          },
+        ],
+      },
+      {
+        slug: "history-people-community",
+        title: "History, People & Community",
+        description: "Historical events, people, communities, movements, inventions, and contributions that help learners understand the present.",
+        topics: [],
+      },
+      {
+        slug: "everyday-society",
+        title: "Everyday Society",
+        description: "Age-appropriate learning about school, community, media, civic life, work, money, technology, and the systems learners encounter.",
+        topics: [],
+      },
+    ],
+  },
+  {
+    slug: "israelite-life",
+    title: "Israelite Life & Biblical Understanding",
+    description:
+      "Learn the household's Scripture-centered identity, biblical calendar, observances, values, history, family practices, and practical application.",
+    subcategories: [
+      {
+        slug: "biblical-calendar",
+        title: "Biblical Calendar & Observances",
+        description: "Learn what the family observes, the Scriptures connected to it, how the household prepares, and what children should understand.",
+        topics: [
+          {
+            slug: "day-of-atonement",
+            title: "Day of Atonement",
+            lens: "israelite-life",
+            childPrompt: "What is the Day of Atonement, and why does our family observe it?",
+            overview: "An age-appropriate study of the observance, biblical foundation, preparation, reflection, and family practice.",
+            learning: ["Scripture", "Biblical context", "Family practice", "Reflection"],
+            familyStudy: ["Parent-approved Scriptures", "Age-appropriate explanation", "Questions and reflection"],
+            activities: ["Scripture notebook", "Family discussion", "Reflection activity"],
+          },
+          {
+            slug: "feast-of-tabernacles",
+            title: "Feast of Tabernacles",
+            lens: "israelite-life",
+            childPrompt: "What is the Feast of Tabernacles, and why does our family observe it?",
+            overview: "An age-appropriate study of the feast, biblical context, household preparation, and meaningful family activities.",
+            learning: ["Scripture", "Biblical history", "Family preparation", "Hands-on learning"],
+            familyStudy: ["Parent-approved Scriptures", "Historical context", "Family teaching and practice"],
+            activities: ["Scripture notebook", "Family feast planning", "Age-appropriate hands-on project"],
+          },
+        ],
+      },
+      {
+        slug: "scripture-identity-history",
+        title: "Scripture, Identity & History",
+        description: "Study Scripture, Israelite history, identity, family teaching, and the distinction between documented history and household doctrine.",
+        topics: [],
+      },
+      {
+        slug: "biblical-family-life",
+        title: "Biblical Family Life",
+        description: "Apply biblical principles to character, family roles, relationships, stewardship, work, learning, and daily conduct.",
+        topics: [],
+      },
+    ],
+  },
+  {
+    slug: "world-and-israelite-life",
+    title: "World Life & Israelite Life",
+    description:
+      "Side-by-side learning for questions that arise when what children encounter at school or in society differs from the household's biblical practice.",
+    subcategories: [
+      {
+        slug: "why-our-family",
+        title: "Why Does Our Family...?",
+        description: "Child-friendly explanations that teach what the world is doing, what the family teaches, and how to respond respectfully.",
+        topics: [
+          {
+            slug: "christmas-world-and-family",
+            title: "Christmas: What the World Observes & Why Our Family Does Not",
+            lens: "both",
+            timing: { months: [12], seasonLabel: "December" },
+            childPrompt: "Everybody at school is doing this. Why doesn't our family celebrate Christmas?",
+            overview:
+              "Learn the historical and cultural background first, then examine Scripture and the family's teaching so learners understand both contexts without confusing them.",
+            learning: ["World/history view", "Scripture study", "Family teaching", "Respectful response", "School-life application"],
+            familyStudy: [
+              "Keep historical claims identified as history and Scripture claims identified as Scripture.",
+              "Use the family's approved Bible and study resources.",
+              "Attach outside ministry or study resources only after parent review.",
+              "Make room for questions and help children navigate feeling different without isolating them.",
+            ],
+            activities: ["History timeline", "Scripture notebook", "Practice a respectful answer", "Choose a family-approved alternative activity"],
+          },
+        ],
+      },
+      {
+        slug: "compare-understand-apply",
+        title: "Compare, Understand & Apply",
+        description: "Learn to distinguish cultural practice, historical evidence, Scripture, household teaching, and personal conduct.",
+        topics: [],
+      },
+    ],
+  },
+];
+
+export function getSeasonalAcademyTopics(month: number, dateKey?: string) {
+  return academyKnowledgeLibrary.flatMap((category) =>
+    category.subcategories.flatMap((subcategory) =>
+      subcategory.topics
+        .filter((topic) => {
+          const monthMatch = topic.timing?.months?.includes(month) ?? false;
+          const dateMatch = dateKey ? topic.timing?.dates?.includes(dateKey) ?? false : false;
+          return monthMatch || dateMatch;
+        })
+        .map((topic) => ({
+          category: category.title,
+          subcategory: subcategory.title,
+          ...topic,
+        })),
+    ),
+  );
+}
