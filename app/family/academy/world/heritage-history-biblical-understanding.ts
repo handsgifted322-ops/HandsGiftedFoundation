@@ -1,4 +1,17 @@
 export type AcademyLifeLens = "world-life" | "israelite-life" | "both";
+export type AcademyLearningStatus = "discover" | "learning" | "practice" | "mastered";
+
+export type AcademyDashboardCard = {
+  id: string;
+  title: string;
+  reason: string;
+  category: string;
+  subcategory: string;
+  topicSlug: string;
+  lens: AcademyLifeLens;
+  status: AcademyLearningStatus;
+  kind: "today" | "seasonal" | "continue" | "parent-assigned" | "recommended";
+};
 
 export type AcademyTopic = {
   slug: string;
@@ -189,4 +202,58 @@ export function getSeasonalAcademyTopics(month: number, dateKey?: string) {
         })),
     ),
   );
+}
+
+
+/**
+ * Dashboard model inspired by established personalized-learning patterns:
+ * timely recommendations, clear next steps, parent-assigned work, and mastery/progress.
+ * It remains Hands Gifted's own Academy taxonomy and content.
+ */
+export function buildAcademyDashboard(input: {
+  month: number;
+  dateKey?: string;
+  continuingTopicSlugs?: readonly string[];
+  parentAssignedTopicSlugs?: readonly string[];
+  statusByTopic?: Readonly<Record<string, AcademyLearningStatus>>;
+}): AcademyDashboardCard[] {
+  const allTopics = academyKnowledgeLibrary.flatMap((category) =>
+    category.subcategories.flatMap((subcategory) =>
+      subcategory.topics.map((topic) => ({ category, subcategory, topic })),
+    ),
+  );
+  const statusFor = (slug: string): AcademyLearningStatus => input.statusByTopic?.[slug] ?? "discover";
+  const cards: AcademyDashboardCard[] = [];
+  const add = (kind: AcademyDashboardCard["kind"], item: (typeof allTopics)[number], reason: string) => {
+    if (cards.some((card) => card.topicSlug === item.topic.slug && card.kind === kind)) return;
+    cards.push({
+      id: `${kind}:${item.topic.slug}`,
+      title: item.topic.title,
+      reason,
+      category: item.category.title,
+      subcategory: item.subcategory.title,
+      topicSlug: item.topic.slug,
+      lens: item.topic.lens,
+      status: statusFor(item.topic.slug),
+      kind,
+    });
+  };
+
+  for (const item of allTopics) {
+    const isToday = input.dateKey ? item.topic.timing?.dates?.includes(input.dateKey) ?? false : false;
+    const isSeasonal = item.topic.timing?.months?.includes(input.month) ?? false;
+    if (isToday) add("today", item, "Today in your Academy calendar");
+    else if (isSeasonal) add("seasonal", item, item.topic.timing?.seasonLabel ?? "Relevant this month");
+  }
+
+  for (const slug of input.continuingTopicSlugs ?? []) {
+    const item = allTopics.find((entry) => entry.topic.slug === slug);
+    if (item) add("continue", item, "Continue where you left off");
+  }
+  for (const slug of input.parentAssignedTopicSlugs ?? []) {
+    const item = allTopics.find((entry) => entry.topic.slug === slug);
+    if (item) add("parent-assigned", item, "Assigned by parent");
+  }
+
+  return cards;
 }
