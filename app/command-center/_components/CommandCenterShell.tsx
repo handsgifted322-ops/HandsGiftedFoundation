@@ -26,7 +26,7 @@ const sideSystemLinks=[
   ["Projects / CEO","/command-center/projects","projects"],
   ["Discover / Insights","/command-center/discover","discover"],
   ["Weekly Review","/command-center/review","review"],
-  ["System Health","/command-center/system-health","system-health"],
+  ["Reality C.H.E.X.","/command-center/system-health","system-health"],
   ["More","/command-center/more","more"],
 ] as const;
 
