@@ -1,33 +1,4 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
 import { publicResourceAreas } from "../../lib/publicResources";
-
-export default function ResourcesPage(){
-  return <main className="public-page">
-    <SiteHeader />
-    <section className="public-page-hero">
-      <span>Hands Gifted Resource Center</span>
-      <h1>Start with the need. Keep learning from there.</h1>
-      <p>Hands Gifted is organized as a faith-centered child and family resource ecosystem. Each area opens into practical topics, scripture study trails, trustworthy outside resources, free information, and deeper tools as they are developed.</p>
-      <div className="hg-hero-actions"><a className="button gold" href="/resources/kids-learning">Start with children & learning</a><a className="button" href="/resources/community-resources">Find community resources</a></div>
-    </section>
-
-    <section className="public-page-content">
-      <div className="public-page-grid">
-        {publicResourceAreas.map((area)=><a className="public-page-card" href={`/resources/${area.slug}`} key={area.slug}>
-          <span className="status-label">{area.tag}</span>
-          <h2>{area.title}</h2>
-          <p>{area.summary}</p>
-          <strong>Explore this resource area →</strong>
-        </a>)}
-
-        <article className="public-page-card public-page-wide">
-          <span className="status-label">How the resource ecosystem works</span>
-          <h2>Free information first. Deeper structure when you want more.</h2>
-          <p>Basic educational information, community-resource navigation, scripture pathways, and selected starter tools should remain publicly useful. More developed workbooks, templates, lesson collections, household systems, courses, member libraries, products, and direct services can become paid only when they are genuinely ready.</p>
-        </article>
-      </div>
-    </section>
-    <SiteFooter />
-  </main>;
-}
+export default function ResourcesPage(){return <main className="public-page"><SiteHeader/><section className="public-page-hero"><span>Hands Gifted Resource Center</span><h1>Start with the need. Keep learning from there.</h1><p>Use practical family information, scripture pathways, learning resources, and community navigation as starting points. Then move into an activity, program, skill world, service, or protected Academy experience when it fits.</p><div className="hg-hero-actions"><a className="button gold" href="/resources/kids-learning">Children & learning</a><a className="button" href="/resources/community-resources">Community resources</a><a className="button" href="/programs">Programs</a></div></section><section className="public-page-content"><div className="public-page-grid">{publicResourceAreas.map(area=><a className="public-page-card" href={`/resources/${area.slug}`} key={area.slug}><span className="status-label">{area.tag}</span><h2>{area.title}</h2><p>{area.summary}</p><strong>Explore this resource area →</strong></a>)}<article className="public-page-card public-page-wide"><span className="status-label">Choose your next step</span><h2>Learn → practice → go deeper.</h2><p>Public resources remain useful on their own. Families can continue into hands-on activities, skill development, the Academy, original products, or a clearly scoped service without mixing private family records into the public site.</p><div className="public-page-actions"><a className="button gold" href="/activities">Try an activity</a><a className="button" href="/skills">Explore skills</a><a className="button" href="/academy">Academy</a></div></article></div></section><SiteFooter/></main>}
