@@ -1,0 +1,19 @@
+import { notFound } from "next/navigation";
+import { SiteHeader } from "../../../../components/SiteHeader";
+import { SiteFooter } from "../../../../components/SiteFooter";
+import { publicResourceAreas } from "../../../../lib/publicResources";
+const slugify=(s:string)=>s.toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+export function generateStaticParams(){return publicResourceAreas.flatMap(a=>a.topics.map(([t])=>({slug:a.slug,topic:slugify(t)})));}
+export default async function TopicPage({params}:{params:Promise<{slug:string;topic:string}>}){const{slug,topic}=await params;const area=publicResourceAreas.find(a=>a.slug===slug);const item=area?.topics.find(([t])=>slugify(t)===topic);if(!area||!item)notFound();const[title,body]=item;return <main className="public-page"><SiteHeader/>
+<section className="public-page-hero subject-hero"><span>{area.shortTitle} · Hands Gifted Guide</span><h1>{title}</h1><p>{body}</p><div className="subject-breadcrumb"><a href="/resources">Resources</a><span>›</span><a href={`/resources/${area.slug}`}>{area.shortTitle}</a><span>›</span><strong>{title}</strong></div></section>
+<section className="public-page-content subject-page">
+<article className="subject-intro"><span className="status-label">What is it?</span><h2>Understanding {title.toLowerCase()}</h2><p>{body} Hands Gifted approaches this as a practical family skill: learn the basics, practice consistently, involve children according to age and readiness, and improve the system as the family learns what works.</p></article>
+<div className="subject-qa">
+<article><h2>Why does this matter?</h2><p>Useful family skills reduce confusion and help children see how everyday responsibilities connect to preparation, wisdom, stewardship, diligence, and caring for other people.</p></article>
+<article><h2>What can children learn?</h2><p>{area.childFocus} Give children a clear, supervised role rather than expecting adult-level responsibility immediately.</p></article>
+<article><h2>How can our family practice it?</h2><p>Start with one realistic goal. Show the task, explain why it matters, practice it together, then give age-appropriate responsibility. Review the result and repeat before adding more complexity.</p></article>
+<article><h2>What should we prepare?</h2><p>Identify what you already have, what information or supplies are actually needed, who will participate, and when the task will happen. A short written checklist is usually better than trying to remember every step.</p></article>
+</div>
+<section className="faith-throughout"><span>Biblical foundation throughout</span><h2>Faith is part of the practice, not an add-on.</h2><p>Hands Gifted connects this subject with biblical principles such as wisdom, preparation, stewardship, diligent work, responsibility, service, and caring for the household. Study the references below in context and discuss how the principles apply to the actual work your family is doing.</p><div className="scripture-inline">{area.scriptureSeries.map(([theme,refs,note])=><div key={theme}><h3>{theme}</h3><p><strong>{refs.join(" • ")}</strong></p><p>{note}</p></div>)}</div></section>
+<section className="subject-next"><span className="status-label">Put it into practice</span><h2>What should we do next?</h2><p>Choose one action you can complete, document what worked, and return to the subject when you are ready for the next level.</p><div className="public-page-actions"><a className="button gold" href="/activities">Find a family activity</a><a className="button" href={`/resources/${area.slug}`}>More {area.shortTitle}</a><a className="button" href="/programs">Programs</a></div></section>
+</section><SiteFooter/></main>}
