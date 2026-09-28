@@ -40,8 +40,7 @@ export default function Home(){
         <h1>Discover the gift.<br/><span>Build the skill. Prepare for life.</span></h1>
         <p className="hg-hero-lead">Hands Gifted is a faith-centered child and family development platform where children and families can learn, build practical skills, follow scripture into real-life application, find trustworthy resources, request Hands Gifted services, and discover original products as they are developed.</p>
         <div className="hg-hero-actions">
-          <a className="button gold" href="/activities">Find a family activity</a>
-          <a className="button glass" href="/skills">Explore Hands Gifted Skills</a>
+          <a className="button gold" href="/activities">Find a family activity</a>\n          <a className="button glass" href="/programs">Explore Programs</a>
         </div>
         <div className="hg-hero-note"><strong>Children at the center. Families around them. Skills put into practice.</strong><span>Public information should be valuable without giving away every complete Hands Gifted tool, product, or service process.</span></div>
       </div>
@@ -149,7 +148,7 @@ export default function Home(){
 
     <section className="hg-final-cta">
       <div><span>Hands Gifted</span><h2>Learn something. Develop a gift. Use the skill. Keep going deeper.</h2><p>Start with children and learning, enter a Hands Gifted skill world, support the family around the child, connect with trustworthy resources, and use deeper products or services when they fit the need.</p></div>
-      <div><a className="button gold" href="/skills">Explore Hands Gifted Skills</a><a className="button glass" href="/resources">Find family resources</a></div>
+      <div><a className="button gold" href="/programs">Explore Programs</a><a className="button glass" href="/resources">Find family resources</a></div>
     </section>
 
     <SiteFooter />
