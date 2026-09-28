@@ -9,7 +9,8 @@ const sideActionLinks=[
   ["Dashboard","/command-center/dashboard","dashboard"],
   ["My Day","/command-center","today"],
   ["Inbox & Triage","/command-center/inbox","inbox"],
-  ["Approvals","/command-center/approvals","approvals"],\n  ["HXOS Decision Center","/command-center/decisions","decisions"],
+  ["Approvals","/command-center/approvals","approvals"],
+  ["HXOS Decision Center","/command-center/decisions","decisions"],
   ["Waiting & Follow-ups","/command-center/waiting","waiting"],
   ["Calendar","/command-center/calendar","calendar"],
 ] as const;
