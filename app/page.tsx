@@ -5,10 +5,10 @@ import { publicResourceAreas } from "../lib/publicResources";
 import { handsGiftedSkills } from "../lib/handsGiftedSkills";
 
 const childPathways = [
-  ["Learn", "School support, reading, STEM, technology, financial literacy, and resources that build knowledge.", "/resources/kids-learning"],
-  ["Discover Your Gifts", "Explore creativity, music, technology, entrepreneurship, practical abilities, and interests worth developing.", "/resources/kids-learning"],
-  ["Build Life Skills", "Practice cooking, gardening, braiding, sewing, money skills, communication, technology, responsibility, and independence.", "/skills"],
-  ["Grow in Faith", "Follow scripture study trails that connect biblical principles to character, wisdom, work, family, and daily life.", "/resources/kids-learning#scripture"],
+  ["Learn", "School support, reading, STEM, technology, financial literacy, and resources that build knowledge.", "/activities"],
+  ["Discover Your Gifts", "Explore creativity, music, technology, entrepreneurship, practical abilities, and interests worth developing.", "/activities/make-a-gift-map"],
+  ["Build Life Skills", "Practice cooking, gardening, braiding, sewing, money skills, communication, technology, responsibility, and independence.", "/activities"],
+  ["Grow in Faith", "Follow scripture study trails that connect biblical principles to character, wisdom, work, family, and daily life.", "/activities/scripture-into-action"],
   ["Health & Wellness", "Learn food, hygiene, routine, movement, and general wellness principles with qualified resources where needed.", "/resources/food-wellness"],
   ["Find Opportunities", "Discover verified youth programs, mentoring, arts, STEM, entrepreneurship, scholarships, camps, and community support.", "/resources/community-resources"],
 ] as const;
@@ -40,7 +40,7 @@ export default function Home(){
         <h1>Discover the gift.<br/><span>Build the skill. Prepare for life.</span></h1>
         <p className="hg-hero-lead">Hands Gifted is a faith-centered child and family development platform where children and families can learn, build practical skills, follow scripture into real-life application, find trustworthy resources, request Hands Gifted services, and discover original products as they are developed.</p>
         <div className="hg-hero-actions">
-          <a className="button gold" href="/resources/kids-learning">Start with kids & learning</a>
+          <a className="button gold" href="/activities">Find a family activity</a>
           <a className="button glass" href="/skills">Explore Hands Gifted Skills</a>
         </div>
         <div className="hg-hero-note"><strong>Children at the center. Families around them. Skills put into practice.</strong><span>Public information should be valuable without giving away every complete Hands Gifted tool, product, or service process.</span></div>
@@ -53,6 +53,11 @@ export default function Home(){
         </div>
         <div className="hg-visual-badge"><span>HANDS GIFTED</span><strong>Learn • practice • create.</strong><small>Then build opportunity</small></div>
       </div>
+    </section>
+
+    <section className="hg-section hg-builds" aria-labelledby="activity-start-title">
+      <div className="hg-section-heading"><span>Start today · Free family activities</span><h2 id="activity-start-title">Pick one thing to do together.</h2><p>Choose your child&apos;s age and interest. Each activity includes supplies, clear steps, adult guidance, family questions, and a scripture connection.</p></div>
+      <div className="hg-hero-actions"><a className="button gold" href="/activities">Find an activity</a><a className="button" href="/activities/grow-a-seed">Try the seed activity</a></div>
     </section>
 
     <section className="hg-value-strip" aria-label="Hands Gifted development priorities">
