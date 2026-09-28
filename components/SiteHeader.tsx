@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const nav = [
+  ["Try an Activity", "/activities"],
   ["Kids & Learning", "/resources/kids-learning"],
   ["Hands Gifted Skills", "/skills"],
   ["Family Resources", "/resources"],
