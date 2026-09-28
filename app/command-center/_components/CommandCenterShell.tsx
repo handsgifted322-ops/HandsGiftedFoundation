@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "../command-center.module.css";
 
-type ActiveNav="dashboard"|"today"|"inbox"|"calendar"|"more"|"approvals"|"waiting"|"projects"|"routines"|"discover"|"review"|"family-operations"|"family-stability"|"private-records"|"system-health";
+type ActiveNav="dashboard"|"today"|"inbox"|"calendar"|"more"|"approvals"|"decisions"|"waiting"|"projects"|"routines"|"discover"|"review"|"family-operations"|"family-stability"|"private-records"|"system-health";
 type Context="all"|"business"|"family"|"personal";
 
 const sideActionLinks=[
@@ -10,6 +10,7 @@ const sideActionLinks=[
   ["My Day","/command-center","today"],
   ["Inbox & Triage","/command-center/inbox","inbox"],
   ["Approvals","/command-center/approvals","approvals"],
+  ["HXOS Decision Center","/command-center/decisions","decisions"],
   ["Waiting & Follow-ups","/command-center/waiting","waiting"],
   ["Calendar","/command-center/calendar","calendar"],
 ] as const;
