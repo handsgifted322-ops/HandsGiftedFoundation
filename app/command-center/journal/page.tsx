@@ -88,7 +88,7 @@ export default async function JournalPage({ searchParams }: { searchParams: Prom
             <textarea name="body" required maxLength={12000} rows={10} placeholder="What happened? What are you thinking about? What did you learn? What needs prayer or attention?" style={{ padding: 12, borderRadius: 10, resize: "vertical" }} />
           </label>
           <div>
-            <button type="submit" className={styles.primaryButton}>Save private entry</button>
+            <button type="submit" style={{padding:"12px 18px",borderRadius:10,border:"1px solid rgba(128,128,128,.35)",fontWeight:700,cursor:"pointer"}}>Save private entry</button>
           </div>
         </form>
       </section>
