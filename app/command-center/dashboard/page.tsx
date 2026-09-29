@@ -94,6 +94,8 @@ export default async function MyDayDashboard(){
         <div className={styles.navLabel}>Personal Dashboard</div>
         <Link className={`${styles.navLink} ${styles.navActive}`} href="/command-center/dashboard"><span className={styles.navIcon}>☀</span>My Day</Link>
         <Link className={styles.navLink} href="/command-center/calendar"><span className={styles.navIcon}>□</span>Calendar</Link>
+        <Link className={styles.navLink} href="/command-center/journal"><span className={styles.navIcon}>✎</span>Journal</Link>
+        <Link className={styles.navLink} href="/command-center/calculator"><span className={styles.navIcon}>＋</span>Calculator</Link>
         <Link className={styles.navLink} href="/command-center/inbox"><span className={styles.navIcon}>✉</span>Inbox</Link>
         <Link className={styles.navLink} href="/command-center/projects"><span className={styles.navIcon}>▣</span>Projects</Link>
         <Link className={styles.navLink} href="/command-center/more"><span className={styles.navIcon}>☰</span>More</Link>
@@ -127,13 +129,14 @@ export default async function MyDayDashboard(){
 
         <section className={styles.statusGrid}>
           <article className={styles.statusPanel}><h3>⌂ Household Status</h3><div className={styles.statusChips}><div className={styles.statusChip}><strong>{assignments.length}</strong><span>Assignments</span></div><div className={styles.statusChip}><strong>{parentChecks.length}</strong><span>Checks</span></div><div className={styles.statusChip}><strong>{needs.length}</strong><span>Needs</span></div><div className={styles.statusChip}><strong>{academy.length}</strong><span>Academy</span></div></div></article>
-          <article className={styles.statusPanel}><h3>⚡ Quick Actions</h3><div className={styles.quickGrid}><Link className={styles.quick} href="/command-center/inbox#capture">Add Task</Link><Link className={styles.quick} href="/command-center/projects">Open Projects</Link><Link className={styles.quick} href="/command-center/calendar">Calendar</Link><Link className={styles.quick} href="/command-center/inbox">Inbox</Link><Link className={styles.quick} href="/command-center/household">Household</Link><Link className={styles.quick} href="/command-center/review">Review</Link></div></article>
+          <article className={styles.statusPanel}><h3>⚡ Quick Actions</h3><div className={styles.quickGrid}><Link className={styles.quick} href="/command-center/inbox#capture">Add Task</Link><Link className={styles.quick} href="/command-center/projects">Open Projects</Link><Link className={styles.quick} href="/command-center/calendar">Calendar</Link><Link className={styles.quick} href="/command-center/journal">Journal</Link><Link className={styles.quick} href="/command-center/calculator">Calculator</Link><Link className={styles.quick} href="/command-center/inbox">Inbox</Link><Link className={styles.quick} href="/command-center/household">Household</Link><Link className={styles.quick} href="/command-center/review">Review</Link></div></article>
           <article className={styles.statusPanel}><h3>♟ Family Members</h3><div className={styles.memberRow}>{members.map(member=><div className={styles.member} key={member.id}><div className={styles.avatar}>{member.display_name.slice(0,1).toUpperCase()}</div><strong>{member.display_name}</strong><span>{member.household_role.replaceAll("_"," ")}</span></div>)}</div></article>
         </section>
 
         <section className={styles.statusGrid} style={{marginTop:8}}>
           <article className={styles.statusPanel}><h3>Connected Sources</h3><div className={styles.empty}>Registered active sources: {activeConnections.length?activeConnections.join(" · "):"Supabase only"}. New integrations should feed the Command Center first, then this Dashboard surfaces only what matters.</div></article>
           <article className={styles.statusPanel}><h3>Waiting / Follow-ups</h3><div className={styles.empty}>{waiting.length} task{waiting.length===1?"":"s"} currently marked waiting or blocked. <Link href="/command-center/waiting" style={{color:"#e2c15d"}}>Open queue →</Link></div></article>
+          <article className={styles.statusPanel}><h3>Needs Clarification</h3><div className={styles.empty}>When ChatGPT or the Command Center cannot confidently identify the correct person, category, date, or destination, the item should pause here and alert Shayla instead of guessing. The routing queue is the next data-backed development step.</div></article>
           <article className={styles.statusPanel}><h3>System Rule</h3><div className={styles.empty}>Website and connected services send approved signals into the Command Center. The Command Center organizes and tracks them. My Day summarizes the information you need to stay organized and on target.</div></article>
         </section>
       </main>
