@@ -106,3 +106,50 @@
  .hg-audience>div{visibility:hidden}
  .hg-audience:before{display:none}
 }
+
+/* Mobile reference composition: preserve the desktop artwork proportions on phones. */
+@media(max-width:600px){
+ .hg-home{min-width:0;overflow-x:hidden}
+ .hg-new-hero{display:block;min-height:0;background:#fff}
+ .hg-new-hero-copy{display:none}
+ .hg-photo-hero{
+   min-height:0;height:auto;aspect-ratio:1920/880;
+   background-image:url('/images/hands-gifted/01_Hero_Photography.webp');
+   background-size:100% 100%;background-repeat:no-repeat;background-position:center
+ }
+ .hg-audience-grid{grid-template-columns:1fr 1fr;gap:3px;padding:3px}
+ .hg-audience{
+   min-height:0;aspect-ratio:900/500;padding:0;
+   background-size:100% 100%;background-repeat:no-repeat;background-position:center
+ }
+ .hg-audience>div{display:none}
+ .hg-skills-section{padding:8px 6px 10px}
+ .hg-section-title{display:flex;align-items:center;margin:0 3px 7px;gap:8px}
+ .hg-section-title>div{display:flex;align-items:baseline;gap:8px}
+ .hg-section-title h2{font-size:1.05rem;white-space:nowrap}
+ .hg-section-title p{font-size:.43rem;margin:0;white-space:nowrap}
+ .hg-section-title>a{margin-left:auto;padding:5px 7px;font-size:.43rem;white-space:nowrap}
+ .hg-skills-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;overflow:visible}
+ .hg-skill{min-width:0}
+ .hg-skill-photo{height:auto;aspect-ratio:600/400;background-size:100% 100%;background-repeat:no-repeat}
+ .hg-skill span{font-size:.48rem;margin-top:3px}
+ .hg-feature-band{display:grid;grid-template-columns:1fr;gap:3px}
+ .hg-feature-resources{grid-template-columns:1fr;padding:10px 8px;gap:7px}
+ .hg-feature-heading{display:flex;align-items:center;gap:8px}
+ .hg-feature-heading h2{font-size:1.15rem;margin:0}.hg-feature-heading p{font-size:.45rem;margin:0}.hg-feature-heading .hg-pill{margin-left:auto;font-size:.42rem;padding:5px 7px}
+ .hg-mini-grid{grid-template-columns:repeat(4,1fr);gap:4px}
+ .hg-mini-grid a{min-height:0;aspect-ratio:600/400;padding:0;background-size:100% 100%;background-repeat:no-repeat;background-position:center}
+ .hg-mini-grid a span,.hg-mini-grid a strong{display:none}
+ .hg-children-feature{
+   min-height:0;aspect-ratio:900/500;padding:0;
+   background-image:url('/images/hands-gifted/18_Children_and_Learning.webp');
+   background-size:100% 100%;background-repeat:no-repeat;background-position:center
+ }
+ .hg-children-feature>div{display:none}
+ .hg-biblical-close{
+   display:block;min-height:0;aspect-ratio:1920/500;padding:0;
+   background-image:url('/images/hands-gifted/19_Biblical_Foundation.webp');
+   background-size:100% 100%;background-repeat:no-repeat;background-position:center
+ }
+ .hg-biblical-close>*{display:none}
+}
