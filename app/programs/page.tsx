@@ -1,19 +1,14 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
-import { handsGiftedSkills } from "../../lib/handsGiftedSkills";
-
-const pathways = [
-  {title:"Children & Family Learning",text:"Parent-guided learning, responsibility, creativity, practical projects, and individual gift development.",href:"/academy",action:"Explore the Academy"},
-  {title:"Bible & Faith Learning",text:"Scripture-centered study, reflection, character development, and practical application for family life.",href:"/resources/kids-learning#scripture",action:"Open faith resources"},
-  {title:"Family & Household Development",text:"Routines, household systems, organization, stewardship, practical life skills, and family stability.",href:"/family",action:"Explore family development"},
-  {title:"Creative Arts & Technology",text:"Art, music, media, digital creativity, technology, and hands-on projects that help children and families develop useful gifts.",href:"/resources/kids-learning",action:"Find learning resources"},
-  {title:"Entrepreneurship & Opportunity",text:"Financial literacy, customer discovery, pricing, cost awareness, ethical selling, and turning demonstrated skills into responsible opportunity.",href:"/resources",action:"Explore resources"},
-  {title:"Family & Community Support",text:"A developing pathway for trustworthy resources, referrals, practical information, and future community support built from demonstrated capacity.",href:"/resources",action:"Open family resources"},
+const choices=[
+ ["Family Learning","Activities, child development, practical learning, and family participation.","/activities"],
+ ["Faith & Biblical Living","Scripture-centered resources and practical biblical application.","/resources#faith"],
+ ["Home & Family Development","Household routines, family systems, organization, and stability.","/resources#home"],
+ ["Skills & Purpose","Cooking, gardening, braiding, sewing, creativity, and useful skill development.","/skills"],
+ ["Services","See Hands Gifted support and service options as they become available.","/services"],
 ] as const;
-
 export default function ProgramsPage(){return <main className="public-page"><SiteHeader/>
-<section className="public-page-hero"><span>Hands Gifted Programs</span><h1>Learn a skill. Strengthen the family. Put faith into practice.</h1><p>Hands Gifted connects family learning, practical life skills, faith, creativity, services, and useful resources. Choose a pathway below, then move into activities, skill worlds, resources, or protected family learning where appropriate.</p><div className="hg-hero-actions"><a className="button gold" href="/activities">Try a family activity</a><a className="button" href="/resources">Browse resources</a></div></section>
-<section className="public-page-content"><div className="section-heading left"><span>Hands-on skill worlds</span><h2>Practice useful skills through real family life.</h2><p>These public skill worlds connect learning with activities, resources, developing services, and future products.</p></div><div className="public-page-grid">{handsGiftedSkills.map(skill=><article className="public-page-card" key={skill.slug}><span className="status-label">{skill.serviceStatus}</span><h2>{skill.title}</h2><p>{skill.summary}</p><div className="public-page-actions"><a className="button gold" href={`/skills/${skill.slug}`}>Learn & explore</a><a className="button" href={skill.resourceHref}>Related resources</a></div></article>)}</div></section>
-<section className="public-page-content program-pathways"><div className="section-heading left"><span>Family development pathways</span><h2>More than a list of programs.</h2><p>Each pathway leads somewhere useful: learning, practice, resources, family development, or a service inquiry.</p></div><div className="public-page-grid">{pathways.map(item=><article className="public-page-card" key={item.title}><h2>{item.title}</h2><p>{item.text}</p><div className="public-page-actions"><a className="button gold" href={item.href}>{item.action}</a></div></article>)}</div></section>
-<section className="public-page-content"><article className="public-page-card public-page-wide"><span className="status-label">Privacy by design</span><h2>Public learning and private family records stay separate.</h2><p>Hands Gifted can share approved lessons, activities, resources, products, and services publicly while private child records, household administration, testing, and family-specific information remain in protected systems.</p><div className="public-page-actions"><a className="button gold" href="/academy">Family Academy</a><a className="button" href="/services">View services</a></div></article></section>
-<SiteFooter/></main>}
+ <section className="public-page-hero compact-directory-hero"><span>Programs & Services</span><h1>What would you like to explore?</h1><p>Choose a path. Details appear only after you select one.</p></section>
+ <section className="public-page-content compact-directory"><div className="directory-grid">
+ {choices.map(([title,text,href])=><a className="directory-card" href={href} key={title}><h2>{title}</h2><p>{text}</p><strong>Open →</strong></a>)}
+ </div></section><SiteFooter/></main>}
