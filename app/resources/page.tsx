@@ -1,4 +1,21 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
-import { publicResourceAreas } from "../../lib/publicResources";
-export default function ResourcesPage(){return <main className="public-page"><SiteHeader/><section className="public-page-hero"><span>Hands Gifted Resource Center</span><h1>Start with the need. Keep learning from there.</h1><p>Use practical family information, scripture pathways, learning resources, and community navigation as starting points. Then move into an activity, program, skill world, service, or protected Academy experience when it fits.</p><div className="hg-hero-actions"><a className="button gold" href="/resources/kids-learning">Children & learning</a><a className="button" href="/resources/community-resources">Community resources</a><a className="button" href="/programs">Programs</a></div></section><section className="public-page-content"><div className="public-page-grid">{publicResourceAreas.map(area=><a className="public-page-card" href={`/resources/${area.slug}`} key={area.slug}><span className="status-label">{area.tag}</span><h2>{area.title}</h2><p>{area.summary}</p><strong>Explore this resource area →</strong></a>)}<article className="public-page-card public-page-wide"><span className="status-label">Choose your next step</span><h2>Learn → practice → go deeper.</h2><p>Public resources remain useful on their own. Families can continue into hands-on activities, skill development, the Academy, original products, or a clearly scoped service without mixing private family records into the public site.</p><div className="public-page-actions"><a className="button gold" href="/activities">Try an activity</a><a className="button" href="/skills">Explore skills</a><a className="button" href="/academy">Academy</a></div></article></div></section><SiteFooter/></main>}
+
+const groups=[
+  ["kids-learning","Kids & Learning","School support, activities, life skills, interests, and family learning.","/activities"],
+  ["family","Family Resources","Marriage, parenting, communication, routines, and family connection.","/programs"],
+  ["faith","Bible & Faith","Scripture study, biblical living, character, and practical application.","/resources/bible-faith"],
+  ["home","Home & Daily Living","Meals, cleaning, organization, household routines, and stewardship.","/resources/household-management"],
+  ["stability","Stability & Community","Money, work, transportation, community resources, and rebuilding stability.","/resources/community-resources"],
+  ["skills","Skills & Purpose","Cooking, sewing, gardening, braiding, creativity, and useful work.","/skills"],
+] as const;
+
+export default function ResourcesPage(){
+ return <main className="public-page"><SiteHeader/>
+  <section className="public-page-hero compact-directory-hero"><span>Hands Gifted Resources</span><h1>What do you need help with?</h1><p>Choose one area. Open only the information you need.</p></section>
+  <section className="public-page-content compact-directory"><div className="directory-grid">
+   {groups.map(([id,title,text,href])=><a id={id} className="directory-card" href={href} key={id}><h2>{title}</h2><p>{text}</p><strong>Open →</strong></a>)}
+  </div></section>
+  <SiteFooter/>
+ </main>;
+}
