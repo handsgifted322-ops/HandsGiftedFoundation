@@ -1,30 +1,16 @@
 import { SiteHeader } from "../../components/SiteHeader";
 import { SiteFooter } from "../../components/SiteFooter";
 
-const contactReasons = [
-  ["Resource correction or suggestion", "Report an outdated link, suggest a legitimate family or youth resource, or share public information that may belong in the Resource Center.", "Hands%20Gifted%20Resource%20Suggestion"],
-  ["Product interest", "Ask about workbooks, planners, children's learning resources, skill-based products, family systems, or other Hands Gifted creations as they become available.", "Hands%20Gifted%20Product%20Interest"],
-  ["Collaboration or partnership", "Organizations, educators, youth programs, vendors, and community groups can introduce a real collaboration opportunity. Hands Gifted will not label an organization a partner until a partnership actually exists.", "Hands%20Gifted%20Collaboration%20Inquiry"],
-  ["General question", "Use the public contact channel for questions about Hands Gifted resources, the website, products, services, or current availability.", "Hands%20Gifted%20General%20Inquiry"],
-] as const;
-
 export default function ContactPage(){
-  return <main className="public-page">
-    <SiteHeader />
-    <section className="public-page-hero">
-      <span>Contact Hands Gifted</span>
-      <h1>Questions, service requests, resources, products, and collaboration.</h1>
-      <p>Use the service-booking pathway for Cooking, Gardening, Braiding, or Sewing inquiries. Use this public contact page for resource corrections, product questions, collaboration conversations, and general Hands Gifted business inquiries.</p>
-      <div className="hg-hero-actions"><a className="button gold" href="/book">Book / request a service</a><a className="button" href="/skills">Explore Hands Gifted Skills</a></div>
-    </section>
-    <section className="public-page-content">
-      <div className="public-page-grid">
-        <article className="public-page-card public-page-wide"><span className="status-label">Public contact</span><h2>Email Hands Gifted</h2><p>For general public inquiries, use the Hands Gifted business email and include enough detail to identify what you are contacting us about.</p><div className="contact-list"><a href="mailto:handsgifted322@gmail.com">handsgifted322@gmail.com</a></div></article>
-        {contactReasons.map(([title,body,subject])=><article className="public-page-card" key={title}><span className="status-label">Contact reason</span><h3>{title}</h3><p>{body}</p><a className="button" href={`mailto:handsgifted322@gmail.com?subject=${subject}`}>Email about this</a></article>)}
-        <article className="public-page-card public-page-wide"><span className="status-label">Resource integrity</span><h2>Resource listings and partnerships are not the same thing.</h2><p>Hands Gifted may share public information about an outside organization because it appears useful and has been checked. That does not mean the organization sponsors, endorses, or partners with Hands Gifted. Formal relationships should be identified only after they actually exist.</p></article>
-      </div>
-      <div className="public-page-note"><strong>Privacy:</strong> Do not send children's school records, medical information, financial records, legal documents, case-management records, passwords, precise home addresses, or other private family information through the public contact channel.</div>
-    </section>
-    <SiteFooter />
-  </main>;
+ return <main className="hg-clean-home"><SiteHeader/>
+  <section className="hg-clean-section hg-women-page">
+   <div className="hg-clean-heading"><h1>Contact Hands Gifted</h1><span>Reach out or follow along.</span></div>
+   <div className="hg-women-grid">
+    <section className="hg-women-card"><h2>Email</h2><p>Questions about Hands Gifted, website resources, or general inquiries.</p><p><a href="mailto:handsgifted322@gmail.com">handsgifted322@gmail.com</a></p></section>
+    <section className="hg-women-card"><h2>Instagram</h2><p>Follow Hands Gifted on Instagram.</p><p><a href="https://www.instagram.com/handsgifted322" target="_blank" rel="noreferrer">@handsgifted322</a></p></section>
+    <section className="hg-women-card"><h2>TikTok</h2><p>Follow Hands Gifted on TikTok.</p><p><a href="https://www.tiktok.com/@gifted.hands867" target="_blank" rel="noreferrer">@gifted.hands867</a></p></section>
+   </div>
+  </section>
+  <SiteFooter/>
+ </main>;
 }
