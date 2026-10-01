@@ -37,7 +37,18 @@ export default function Home(){
   </section>
 
   <section id="biblical-foundation" className="hg-art hg-bible-art" aria-label="A Biblical Foundation for Everyday Life"/>
-  <section id="women-content" className="hg-anchor"/><section id="children-content" className="hg-anchor"/><section id="family-content" className="hg-anchor"/><section id="faith-content" className="hg-anchor"/><section id="skills-content" className="hg-anchor"/><section id="resources-content" className="hg-anchor"/>
+  <section id="women-content" className="hg-clean-section hg-women-content">
+   <div className="hg-clean-heading"><h2>For Women</h2><span>Grow in faith, wisdom &amp; practical skills.</span></div>
+   <div className="hg-women-grid">
+    <div className="hg-women-card"><h3>Faith &amp; Womanhood</h3><p>Biblical principles for character, wisdom, stewardship, and everyday life.</p></div>
+    <div className="hg-women-card"><h3>Skills of the Hands</h3><p>Develop practical skills such as sewing, cooking, hair care, gardening, clothing care, and making.</p></div>
+    <div className="hg-women-card"><h3>Home &amp; Family Life</h3><p>Practical support for routines, meals, household organization, family care, and stability.</p></div>
+    <div className="hg-women-card"><h3>Personal Development</h3><p>Identify your gifts, strengthen your abilities, learn new skills, and set practical goals.</p></div>
+    <div className="hg-women-card"><h3>Learning &amp; Resources</h3><p>Explore useful guides, learning materials, tutorials, and practical resources.</p></div>
+    <div className="hg-women-card"><h3>Start Where You Are</h3><p>Choose one area to learn or strengthen without trying to change everything at once.</p></div>
+   </div>
+  </section>
+  <section id="children-content" className="hg-anchor"/><section id="family-content" className="hg-anchor"/><section id="faith-content" className="hg-anchor"/><section id="skills-content" className="hg-anchor"/><section id="resources-content" className="hg-anchor"/>
   <SiteFooter/>
  </main>;
 }
