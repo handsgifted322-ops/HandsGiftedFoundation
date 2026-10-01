@@ -79,3 +79,18 @@
 .hg-mini-grid a{background-size:cover;background-position:center}
 .hg-children-feature{background-image:linear-gradient(90deg,rgba(255,249,237,.98) 0%,rgba(255,249,237,.76) 50%,rgba(255,249,237,.18) 100%),url('/images/hands-gifted/18_Children_and_Learning.webp');background-size:cover;background-position:center}
 .hg-biblical-close{background-image:linear-gradient(90deg,rgba(241,223,196,.93),rgba(255,248,233,.91)),url('/images/hands-gifted/19_Biblical_Foundation.webp');background-size:cover;background-position:center}
+
+/* Reference-match refinement: 2026-09-30 */
+.hg-home{background:#fffaf4}
+.hg-new-hero{min-height:270px;grid-template-columns:1fr 1.08fr;background:#fffaf4}
+.hg-new-hero-copy{padding:28px clamp(22px,4vw,70px);align-items:center;text-align:center}
+.hg-new-hero h1{font-size:clamp(2.35rem,4.2vw,4.4rem);line-height:.98;margin:3px 0 12px}.hg-new-hero h1 br{display:none}.hg-new-hero h1 span{color:var(--plum)}
+.hg-kicker{font-size:clamp(1.35rem,2.4vw,2.35rem);color:#b77b12}
+.hg-new-hero blockquote{font-size:.9rem;margin-bottom:14px;padding-top:10px}.hg-new-hero .hg-pill{min-width:210px}
+.hg-photo-hero{min-height:270px;background-position:center}.hg-photo-hero:after,.hg-photo-hero span{display:none}
+.hg-audience-grid{gap:5px;padding:5px}.hg-audience{min-height:195px;padding:18px;align-items:center}.hg-audience:before{background:linear-gradient(90deg,rgba(25,4,31,.78),rgba(25,4,31,.05) 75%)}.hg-audience h2{font-size:clamp(1.6rem,2vw,2.15rem)}.hg-audience p{max-width:220px}.hg-audience.women{background-position:center}.hg-audience.children{background-position:center}.hg-audience.family{background-position:center}.hg-audience.faith{background-position:center}
+.hg-skills-section{padding:12px 22px 18px}.hg-section-title{margin-bottom:8px}.hg-section-title h2{font-size:1.9rem}.hg-skills-strip{gap:7px}.hg-skill-photo{height:112px}.hg-skill span{font-size:.76rem;line-height:1.15}
+.hg-feature-band{grid-template-columns:1.08fr .92fr;border-top:5px solid #fff}.hg-feature-resources{grid-template-columns:160px 1fr;padding:20px 22px;gap:14px}.hg-feature-heading h2,.hg-children-feature h2{font-size:1.9rem;line-height:.95}.hg-mini-grid a{min-height:155px;padding:11px}.hg-children-feature{min-height:235px;padding:22px;background-position:center}.hg-child-choices{justify-content:flex-end}
+.hg-biblical-close{min-height:115px;padding:22px clamp(22px,4vw,70px);grid-template-columns:1fr 1.1fr auto}.hg-biblical-close h2{font-size:1.9rem;line-height:1.05}
+@media(max-width:900px){.hg-new-hero{grid-template-columns:1fr;min-height:auto}.hg-new-hero-copy{padding:36px 22px}.hg-photo-hero{min-height:300px}.hg-audience-grid{grid-template-columns:1fr 1fr}.hg-audience{min-height:210px}.hg-feature-band{grid-template-columns:1fr}.hg-biblical-close{grid-template-columns:1fr}.hg-children-feature{min-height:280px}}
+@media(max-width:600px){.hg-new-hero h1{font-size:2.7rem}.hg-photo-hero{min-height:235px}.hg-audience-grid{grid-template-columns:1fr}.hg-audience{min-height:190px}.hg-section-title{display:flex;align-items:flex-end}.hg-section-title>div{display:block}.hg-skills-strip{display:flex}.hg-skill{flex:0 0 145px}.hg-skill-photo{height:110px}.hg-feature-resources{grid-template-columns:1fr;padding:20px 16px}.hg-mini-grid{grid-template-columns:1fr 1fr}.hg-children-feature{min-height:300px;padding:20px 16px;background-position:62% center}.hg-biblical-close{padding:28px 18px}}
