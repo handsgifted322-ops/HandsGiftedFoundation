@@ -94,3 +94,15 @@
 .hg-biblical-close{min-height:115px;padding:22px clamp(22px,4vw,70px);grid-template-columns:1fr 1.1fr auto}.hg-biblical-close h2{font-size:1.9rem;line-height:1.05}
 @media(max-width:900px){.hg-new-hero{grid-template-columns:1fr;min-height:auto}.hg-new-hero-copy{padding:36px 22px}.hg-photo-hero{min-height:300px}.hg-audience-grid{grid-template-columns:1fr 1fr}.hg-audience{min-height:210px}.hg-feature-band{grid-template-columns:1fr}.hg-biblical-close{grid-template-columns:1fr}.hg-children-feature{min-height:280px}}
 @media(max-width:600px){.hg-new-hero h1{font-size:2.7rem}.hg-photo-hero{min-height:235px}.hg-audience-grid{grid-template-columns:1fr}.hg-audience{min-height:190px}.hg-section-title{display:flex;align-items:flex-end}.hg-section-title>div{display:block}.hg-skills-strip{display:flex}.hg-skill{flex:0 0 145px}.hg-skill-photo{height:110px}.hg-feature-resources{grid-template-columns:1fr;padding:20px 16px}.hg-mini-grid{grid-template-columns:1fr 1fr}.hg-children-feature{min-height:300px;padding:20px 16px;background-position:62% center}.hg-biblical-close{padding:28px 18px}}
+
+/* Mobile photography correction: source WebPs contain composed card artwork.
+   Show each source once rather than cropping/repeating its embedded design. */
+@media(max-width:600px){
+ .hg-audience{
+   background-size:cover;
+   background-repeat:no-repeat;
+   background-position:center;
+ }
+ .hg-audience>div{visibility:hidden}
+ .hg-audience:before{display:none}
+}
