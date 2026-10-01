@@ -21,7 +21,7 @@ export default function Home(){
   <section id="start-here" className="hg-art hg-hero-art" aria-label="Hands Gifted — Discover the Gift. Build the Skill." />
 
   <section id="explore" className="hg-clean-audiences" aria-label="Explore Hands Gifted">
-   {audiences.map(([id,label,file])=><a key={id} id={id} href={id==="women"?"/women":"#"+id+"-content"} aria-label={"Explore "+label} className="hg-art hg-audience-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}} />)}
+   {audiences.map(([id,label,file])=><a key={id} id={id} href={id==="women"?"/women":id==="children"?"/children":id==="family"?"/family-home":"/bible-faith"} aria-label={"Explore "+label} className="hg-art hg-audience-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}} />)}
   </section>
 
   <section id="skills" className="hg-clean-section">
