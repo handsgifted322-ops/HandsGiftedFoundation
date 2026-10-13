@@ -26,14 +26,14 @@ export default function Home(){
 
   <section id="skills" className="hg-clean-section">
    <div className="hg-clean-heading"><h2>Skills of the Hands</h2><span>Practical skills for everyday life.</span></div>
-   <div className="hg-clean-skills">{skills.map(([label,file])=><a key={label} href="#skills-content" className="hg-clean-skill"><div className="hg-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}}/><span>{label}</span></a>)}</div>
+   <div className="hg-clean-skills">{skills.map(([label,file])=><a key={label} href="/skills" className="hg-clean-skill"><div className="hg-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}}/><span>{label}</span></a>)}</div>
   </section>
 
   <section id="resources" className="hg-clean-feature">
    <div className="hg-clean-resources"><div className="hg-clean-heading"><h2>Featured Resources</h2><span>Practical help for real life.</span></div>
-    <div className="hg-clean-resource-grid">{resources.map(([label,file])=><a key={label} href="#resources-content" className="hg-clean-resource"><div className="hg-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}}/><span>{label}</span></a>)}</div>
+    <div className="hg-clean-resource-grid">{resources.map(([label,file])=><a key={label} href="/resources" className="hg-clean-resource"><div className="hg-art" style={{backgroundImage:`url('/images/hands-gifted/${file}')`}}/><span>{label}</span></a>)}</div>
    </div>
-   <a id="children-learning" href="#children-content" aria-label="Children and Learning" className="hg-art hg-children-art"/>
+   <a id="children-learning" href="/resources/kids-learning" aria-label="Children and Learning" className="hg-art hg-children-art"/>
   </section>
 
   <section id="biblical-foundation" className="hg-art hg-bible-art" aria-label="A Biblical Foundation for Everyday Life"/>
