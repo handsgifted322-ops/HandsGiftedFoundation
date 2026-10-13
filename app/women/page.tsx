@@ -6,7 +6,7 @@ const paths=[
  ["Skills of the Hands","Learn useful skills including sewing, cooking, hair care, gardening, clothing care, home care, crafts, and making.","Explore practical skills","/#skills"],
  ["Home & Family","Strengthen routines, meals, organization, family care, and the everyday work of the home.","Strengthen home life","/family-home"],
  ["Develop My Gifts","Recognize your interests and abilities, choose something to strengthen, and take a practical next step.","Start developing","/women#develop"],
- ["Learn Something New","Find beginner-friendly guides, learning materials, tutorials, and practical resources.","Browse resources","/#resources"],
+ ["Learn Something New","Find beginner-friendly guides, learning materials, tutorials, and practical resources.","Browse resources","/resources"],
  ["Start Where I Am","Not sure where to begin? Choose the part of life that needs attention now and take one manageable step.","Choose where to start","/women#start"]
 ] as const;
 const starts=[
