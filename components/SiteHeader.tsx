@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-const nav=[["Home","/"],["Women","/women"],["Children","/children"],["Family & Home","/family-home"],["Skills","/#skills"],["Bible & Faith","/bible-faith"],["Resources","/#resources"],["Contact","/contact"]] as const;
+const nav=[["Home","/"],["Women","/women"],["Children","/children"],["Family & Home","/family-home"],["Skills","/#skills"],["Bible & Faith","/bible-faith"],["Resources","/resources"],["Contact","/contact"]] as const;
 export function SiteHeader(){const[open,setOpen]=useState(false);return <header className="site-header hg-clean-header">
  <a className="brand-home" href="/" aria-label="Hands Gifted home"><img className="brand-logo" src="/hands-gifted-logo.jpg" alt="Hands Gifted logo"/><span className="brand-copy"><strong>Hands Gifted</strong></span></a>
  <nav className="primary-nav" aria-label="Primary navigation">{nav.map(([l,h])=><a key={l} href={h}>{l}</a>)}</nav>
